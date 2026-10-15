@@ -1,0 +1,31 @@
+{
+  "experiencias": [
+    {
+      "instituicao": "PUC Minas",
+      "inicio": "2026-02",
+      "fim": null,
+      "pt": {
+        "cargo": "Coordenador de Mentoria Acadêmica",
+        "descricao": "Coordeno aproximadamente 50 padrinhos voluntários no acompanhamento de 127 calouros. Organizo o cronograma do programa, conduzo reuniões e acompanho as atividades da equipe.",
+        "detalhe": "Desenvolvi o Padrinho Track para automatizar processos administrativos e acadêmicos do programa."
+      },
+      "en": {
+        "cargo": "Academic Mentoring Coordinator",
+        "descricao": "I coordinate around 50 volunteer mentors supporting 127 first-year students. I organize the program schedule, lead meetings and follow up on the team's activities.",
+        "detalhe": "I built Padrinho Track to automate the program's administrative and academic processes."
+      }
+    },
+    {
+      "instituicao": "Metria · Open source",
+      "inicio": null,
+      "fim": null,
+      "pt": {"cargo": "Contribuição em software livre", "descricao": "Implementação de um provedor de uso do Command Code no Metria.", "detalhe": "Uma oportunidade de trabalhar com uma base de código existente e contribuir com uma integração específica."},
+      "en": {"cargo": "Open source contribution", "descricao": "Implemented a Command Code usage provider for Metria.", "detalhe": "An opportunity to work within an existing codebase and contribute a focused integration."}
+    }
+  ],
+  "formacaoComplementar": [
+    {"instituicao": "UFMG", "periodo": "03/2026", "pt": "Python e Análise de Dados · 20 horas", "en": "Python and Data Analysis · 20 hours"},
+    {"instituicao": "Anthropic", "periodo": "06/2026", "pt": "Claude Code in Action", "en": "Claude Code in Action"},
+    {"instituicao": "Teatro PUC Minas", "periodo": "03–12/2026", "pt": "Comunicação e Oratória", "en": "Communication and Public Speaking"}
+  ]
+}

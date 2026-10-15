@@ -1,0 +1,299 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1800" height="2290" viewBox="0 0 1800 2290">
+  <title>Wireframes mobile — portfólio acadêmico</title>
+  <desc>Wireframes de média fidelidade. Fonte SVG para importação no Figma, não um arquivo Figma nem um protótipo funcional. Elementos vetoriais e texto editável. Prévia de projetos redesenhada em vetores a partir das capturas locais, sem dados de terceiros. Fontes locais Georgia e Arial; podem ser substituídas na importação. Links, idiomas, filtros, menu e formulário apenas representados visualmente. Dados não fornecidos marcados como a informar; nenhuma data inventada para Metria.</desc>
+  <rect x="0" y="0" width="1800" height="2290" rx="0" fill="#e6e2d9" />
+  <text x="48" y="52" font-family="Georgia, Times New Roman, serif" font-size="27" font-weight="400" fill="#263b39">Wireframes / fonte SVG para importação no Figma</text>
+  <text x="48" y="84" font-family="Arial, Helvetica, sans-serif" font-size="14" font-weight="400" fill="#63706b">Mobile · quatro telas independentes de 390 px de largura · colunas longas lado a lado · mesma hierarquia do desktop</text>
+  <text x="48" y="111" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="400" fill="#63706b">Prévia estática · textos e formas editáveis · sem navegação ou envio real · não criado no Figma</text>
+  <text x="48" y="150" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="600" fill="#245c59">01 · Sobre mim / 390 px</text>
+  <g id="mobile-sobre" transform="translate(48 176)">
+    <rect x="0" y="0" width="390" height="1640" rx="0" fill="#f5f0e7" />
+    <g id="cabecalho-sobre" transform="translate(0 0)">
+      <text x="24" y="48" font-family="Georgia, Times New Roman, serif" font-size="27" font-weight="400" fill="#245c59">CG</text>
+      <text x="243" y="43" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="700" fill="#245c59">PT</text>
+      <text x="274" y="43" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="400" fill="#63706b">EN</text>
+      <line x1="243" y1="51" x2="260" y2="51" stroke="#245c59" stroke-width="2" />
+      <line x1="333" y1="30" x2="364" y2="30" stroke="#245c59" stroke-width="1.5" />
+      <line x1="333" y1="39" x2="364" y2="39" stroke="#245c59" stroke-width="1.5" />
+      <line x1="333" y1="48" x2="364" y2="48" stroke="#245c59" stroke-width="1.5" />
+      <line x1="24" y1="74" x2="366" y2="74" stroke="#d8d2c7" stroke-width="1" />
+    </g>
+    <text x="332" y="66" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="400" fill="#245c59">Menu</text>
+    <text x="24" y="114" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="700" fill="#245c59">01 / SOBRE MIM</text>
+    <text x="24" y="180" font-family="Georgia, Times New Roman, serif" font-size="45" font-weight="400" fill="#263b39">Olá, sou o</text>
+    <text x="24" y="233" font-family="Georgia, Times New Roman, serif" font-size="45" font-weight="400" fill="#263b39">Christiano.</text>
+    <text x="24" y="282" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="400" fill="#63706b">Estudante de Engenharia de Software</text>
+    <text x="24" y="308" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="400" fill="#63706b">na PUC Minas. Exploro Python, Java</text>
+    <text x="24" y="334" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="400" fill="#63706b">e automação para transformar problemas</text>
+    <text x="24" y="360" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="400" fill="#63706b">do dia a dia em soluções úteis.</text>
+    <rect x="24" y="399" width="166" height="46" rx="3" fill="#245c59" stroke="#245c59" />
+    <text x="42" y="428" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="600" fill="#f5f0e7">Ver projetos  →</text>
+    <rect x="202" y="399" width="164" height="46" rx="3" fill="none" stroke="#245c59" />
+    <text x="220" y="428" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="600" fill="#245c59">Contato  ↗</text>
+    <g id="ficha-academica" transform="translate(24 481)">
+      <rect x="0" y="0" width="342" height="307" rx="4" fill="#245c59" />
+      <text x="24" y="36" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="700" fill="#f5f0e7">EM FORMAÇÃO</text>
+      <text x="24" y="89" font-family="Georgia, Times New Roman, serif" font-size="34" font-weight="400" fill="#f5f0e7">Engenharia</text>
+      <text x="24" y="130" font-family="Georgia, Times New Roman, serif" font-size="34" font-weight="400" fill="#f5f0e7">de Software</text>
+      <line x1="24" y1="155" x2="318" y2="155" stroke="#73938a" stroke-width="1" />
+      <text x="24" y="191" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="400" fill="#f5f0e7">PUC Minas</text>
+      <text x="24" y="222" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="400" fill="#f5f0e7">Belo Horizonte</text>
+      <text x="24" y="270" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="400" fill="#f5f0e7">Python  /  Java  /  SQL</text>
+    </g>
+    <text x="24" y="850" font-family="Georgia, Times New Roman, serif" font-size="29" font-weight="400" fill="#245c59">Sobre</text>
+    <text x="24" y="890" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="400" fill="#63706b">Curiosidade, prática e colaboração.</text>
+    <text x="24" y="916" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="400" fill="#63706b">Aprendo construindo e compartilhando</text>
+    <text x="24" y="942" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="400" fill="#63706b">o que descubro ao longo do curso.</text>
+    <line x1="24" y1="986" x2="366" y2="986" stroke="#d8d2c7" stroke-width="1" />
+    <text x="24" y="1034" font-family="Georgia, Times New Roman, serif" font-size="29" font-weight="400" fill="#245c59">Tecnologias</text>
+    <rect x="24" y="1059" width="82" height="30" rx="15" fill="none" stroke="#d8d2c7" />
+    <text x="37" y="1079" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="400" fill="#245c59">Python</text>
+    <rect x="118" y="1059" width="66" height="30" rx="15" fill="none" stroke="#d8d2c7" />
+    <text x="131" y="1079" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="400" fill="#245c59">Java</text>
+    <rect x="196" y="1059" width="61" height="30" rx="15" fill="none" stroke="#d8d2c7" />
+    <text x="209" y="1079" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="400" fill="#245c59">SQL</text>
+    <rect x="24" y="1105" width="122" height="30" rx="15" fill="none" stroke="#d8d2c7" />
+    <text x="37" y="1125" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="400" fill="#245c59">Automação</text>
+    <rect x="158" y="1105" width="64" height="30" rx="15" fill="none" stroke="#d8d2c7" />
+    <text x="171" y="1125" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="400" fill="#245c59">Git</text>
+    <line x1="24" y1="1174" x2="366" y2="1174" stroke="#d8d2c7" stroke-width="1" />
+    <text x="24" y="1223" font-family="Georgia, Times New Roman, serif" font-size="29" font-weight="400" fill="#245c59">Formação</text>
+    <text x="24" y="1264" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="400" fill="#263b39">Engenharia de Software</text>
+    <text x="24" y="1294" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="400" fill="#63706b">PUC Minas · Em andamento</text>
+    <g id="rodape-1" transform="translate(0 0)">
+      <line x1="24" y1="1444" x2="366" y2="1444" stroke="#d8d2c7" stroke-width="1" />
+      <text x="24" y="1478" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="400" fill="#245c59">Christiano Gonçalves Araújo</text>
+      <text x="24" y="1502" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="400" fill="#63706b">Portfólio acadêmico · PUC Minas</text>
+      <text x="24" y="1539" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="400" fill="#245c59">Sobre mim  /  Projetos</text>
+      <text x="24" y="1564" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="400" fill="#245c59">Experiências  /  Contato</text>
+    </g>
+  </g>
+  <text x="486" y="150" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="600" fill="#245c59">02 · Projetos / 390 px</text>
+  <g id="mobile-projetos" transform="translate(486 176)">
+    <rect x="0" y="0" width="390" height="2050" fill="#f5f0e7" stroke="none" rx="0" />
+    <g id="cabecalho-projetos" transform="translate(0 0)">
+      <text x="24" y="48" font-family="Georgia, Times New Roman, serif" font-size="27" font-weight="400" fill="#245c59">CG</text>
+      <text x="243" y="43" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="700" fill="#245c59">PT</text>
+      <text x="274" y="43" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="400" fill="#63706b">EN</text>
+      <line x1="243" y1="51" x2="260" y2="51" stroke="#245c59" stroke-width="2" />
+      <line x1="333" y1="30" x2="364" y2="30" stroke="#245c59" stroke-width="1.5" />
+      <line x1="333" y1="39" x2="364" y2="39" stroke="#245c59" stroke-width="1.5" />
+      <line x1="333" y1="48" x2="364" y2="48" stroke="#245c59" stroke-width="1.5" />
+      <line x1="24" y1="74" x2="366" y2="74" stroke="#d8d2c7" stroke-width="1" />
+    </g>
+    <text x="332" y="66" font-family="Arial, Helvetica, sans-serif" font-size="12" fill="#245c59" font-weight="400">Menu</text>
+    <text x="24" y="114" font-family="Arial, Helvetica, sans-serif" font-size="12" fill="#245c59" font-weight="600">02 / PROJETOS</text>
+    <text x="24" y="178" font-family="Georgia, Times New Roman, serif" font-size="43" fill="#263b39" font-weight="400">O que venho</text>
+    <text x="24" y="229" font-family="Georgia, Times New Roman, serif" font-size="43" fill="#263b39" font-weight="400">construindo.</text>
+    <text x="24" y="271" font-family="Arial, Helvetica, sans-serif" font-size="15" fill="#63706b" font-weight="400">Projetos em ordem de primeira publicação.</text>
+    <rect x="24" y="307" width="78" height="44" fill="#245c59" stroke="#d8d2c7" rx="22" />
+    <text x="38" y="335" font-family="Arial, Helvetica, sans-serif" font-size="12" fill="#fffdf8" font-weight="400">Todos</text>
+    <rect x="112" y="307" width="85" height="44" fill="none" stroke="#d8d2c7" rx="22" />
+    <text x="126" y="335" font-family="Arial, Helvetica, sans-serif" font-size="12" fill="#245c59" font-weight="400">Python</text>
+    <rect x="207" y="307" width="70" height="44" fill="none" stroke="#d8d2c7" rx="22" />
+    <text x="221" y="335" font-family="Arial, Helvetica, sans-serif" font-size="12" fill="#245c59" font-weight="400">Java</text>
+    <text x="24" y="387" font-family="Arial, Helvetica, sans-serif" font-size="12" fill="#63706b" font-weight="400">3 PROJETOS · MAIS ANTIGO → MAIS RECENTE</text>
+    <circle cx="30" cy="438" r="5" fill="#f5f0e7" stroke="#245c59" />
+    <text x="46" y="442" font-family="Arial, Helvetica, sans-serif" font-size="12" fill="#245c59" font-weight="600">MAI/2026</text>
+    <g transform="translate(24 463)">
+      <rect x="0" y="0" width="342" height="170" fill="#fffdf8" stroke="#d8d2c7" rx="4" />
+      <rect x="0" y="0" width="342" height="25" fill="#e8e5dc" stroke="#d8d2c7" rx="0" />
+      <text x="10" y="17" font-family="Arial, Helvetica, sans-serif" font-size="12" fill="#63706b" font-weight="400">Prévia esquemática · mentoria</text>
+      <rect x="10" y="36" width="58" height="122" fill="#e5eae2" stroke="#d8d2c7" rx="0" />
+      <text x="17" y="56" font-family="Arial, Helvetica, sans-serif" font-size="12" fill="#263b39" font-weight="600">Menu</text>
+      <rect x="78.0" y="38" width="79.0" height="34" fill="#fffdf8" stroke="#d8d2c7" rx="4" />
+      <text x="83.0" y="60" font-family="Arial, Helvetica, sans-serif" font-size="12" fill="#263b39" font-weight="400">Aptos</text>
+      <rect x="162.0" y="38" width="79.0" height="34" fill="#fffdf8" stroke="#d8d2c7" rx="4" />
+      <text x="167.0" y="60" font-family="Arial, Helvetica, sans-serif" font-size="12" fill="#263b39" font-weight="400">Alertas</text>
+      <rect x="246.0" y="38" width="79.0" height="34" fill="#fffdf8" stroke="#d8d2c7" rx="4" />
+      <text x="251.0" y="60" font-family="Arial, Helvetica, sans-serif" font-size="12" fill="#263b39" font-weight="400">Inaptos</text>
+      <line x1="80" y1="90" x2="330" y2="90" stroke="#d8d2c7" stroke-width="1" />
+      <line x1="80" y1="110" x2="330" y2="110" stroke="#d8d2c7" stroke-width="1" />
+    </g>
+    <text x="24" y="668" font-family="Georgia, Times New Roman, serif" font-size="30" fill="#263b39" font-weight="400">Padrinho Track</text>
+    <text x="24" y="702" font-family="Arial, Helvetica, sans-serif" font-size="15" fill="#63706b" font-weight="400">Acompanhamento do programa de mentoria,</text>
+    <text x="24" y="724" font-family="Arial, Helvetica, sans-serif" font-size="15" fill="#63706b" font-weight="400">reuniões e presenças.</text>
+    <rect x="24" y="767" width="70" height="28" fill="none" stroke="#d8d2c7" rx="14" />
+    <text x="36" y="786" font-family="Arial, Helvetica, sans-serif" font-size="12" fill="#245c59" font-weight="400">Python</text>
+    <rect x="103" y="767" width="70" height="28" fill="none" stroke="#d8d2c7" rx="14" />
+    <text x="115" y="786" font-family="Arial, Helvetica, sans-serif" font-size="12" fill="#245c59" font-weight="400">Flask</text>
+    <text x="24" y="839" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#245c59" font-weight="600">Ver no GitHub  ↗</text>
+    <line x1="24" y1="885" x2="366" y2="885" stroke="#d8d2c7" stroke-width="1" />
+    <circle cx="30" cy="923" r="5" fill="#f5f0e7" stroke="#245c59" />
+    <text x="46" y="927" font-family="Arial, Helvetica, sans-serif" font-size="12" fill="#245c59" font-weight="600">14 SET/2026</text>
+    <g transform="translate(24 948)">
+      <rect x="0" y="0" width="342" height="170" fill="#fffdf8" stroke="#d8d2c7" rx="4" />
+      <rect x="0" y="0" width="342" height="25" fill="#e8e5dc" stroke="#d8d2c7" rx="0" />
+      <text x="10" y="17" font-family="Arial, Helvetica, sans-serif" font-size="12" fill="#63706b" font-weight="400">Prévia esquemática · dados</text>
+      <rect x="10.0" y="37" width="104.66666666666667" height="35" fill="#fffdf8" stroke="#d8d2c7" rx="4" />
+      <text x="15.0" y="60" font-family="Arial, Helvetica, sans-serif" font-size="12" fill="#263b39" font-weight="400">Ativas</text>
+      <rect x="118.66666666666667" y="37" width="104.66666666666667" height="35" fill="#fffdf8" stroke="#d8d2c7" rx="4" />
+      <text x="123.66666666666667" y="60" font-family="Arial, Helvetica, sans-serif" font-size="12" fill="#263b39" font-weight="400">Aberturas</text>
+      <rect x="227.33333333333334" y="37" width="104.66666666666667" height="35" fill="#fffdf8" stroke="#d8d2c7" rx="4" />
+      <text x="232.33333333333334" y="60" font-family="Arial, Helvetica, sans-serif" font-size="12" fill="#263b39" font-weight="400">Porte</text>
+      <line x1="15" y1="153" x2="322" y2="153" stroke="#d8d2c7" stroke-width="1" />
+      <rect x="25" y="130" width="17" height="22" fill="#7d9d92" stroke="none" rx="0" />
+      <rect x="55" y="120" width="17" height="32" fill="#7d9d92" stroke="none" rx="0" />
+      <rect x="85" y="133" width="17" height="19" fill="#7d9d92" stroke="none" rx="0" />
+      <rect x="115" y="112" width="17" height="40" fill="#7d9d92" stroke="none" rx="0" />
+      <rect x="145" y="123" width="17" height="29" fill="#7d9d92" stroke="none" rx="0" />
+    </g>
+    <text x="24" y="1153" font-family="Georgia, Times New Roman, serif" font-size="30" fill="#263b39" font-weight="400">CNPJ Alimentação</text>
+    <text x="24" y="1187" font-family="Arial, Helvetica, sans-serif" font-size="15" fill="#63706b" font-weight="400">Dados nacionais do setor de alimentação em</text>
+    <text x="24" y="1209" font-family="Arial, Helvetica, sans-serif" font-size="15" fill="#63706b" font-weight="400">notebook e dashboard.</text>
+    <rect x="24" y="1252" width="70" height="28" fill="none" stroke="#d8d2c7" rx="14" />
+    <text x="36" y="1271" font-family="Arial, Helvetica, sans-serif" font-size="12" fill="#245c59" font-weight="400">Python</text>
+    <rect x="103" y="1252" width="70" height="28" fill="none" stroke="#d8d2c7" rx="14" />
+    <text x="115" y="1271" font-family="Arial, Helvetica, sans-serif" font-size="12" fill="#245c59" font-weight="400">DuckDB</text>
+    <text x="24" y="1324" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#245c59" font-weight="600">Ver no GitHub  ↗</text>
+    <text x="190" y="1324" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#245c59" font-weight="600">Abrir dashboard  ↗</text>
+    <line x1="24" y1="1370" x2="366" y2="1370" stroke="#d8d2c7" stroke-width="1" />
+    <circle cx="30" cy="1408" r="5" fill="#f5f0e7" stroke="#245c59" />
+    <text x="46" y="1412" font-family="Arial, Helvetica, sans-serif" font-size="12" fill="#245c59" font-weight="600">24 SET/2026</text>
+    <g transform="translate(24 1433)">
+      <rect x="0" y="0" width="342" height="170" fill="#fffdf8" stroke="#d8d2c7" rx="4" />
+      <rect x="0" y="0" width="342" height="25" fill="#e8e5dc" stroke="#d8d2c7" rx="0" />
+      <text x="10" y="17" font-family="Arial, Helvetica, sans-serif" font-size="12" fill="#63706b" font-weight="400">Prévia esquemática · consulta</text>
+      <rect x="10" y="37" width="258" height="28" fill="#fffdf8" stroke="#d8d2c7" rx="4" />
+      <text x="17" y="56" font-family="Arial, Helvetica, sans-serif" font-size="12" fill="#263b39" font-weight="400">Busca por nome ou número</text>
+      <rect x="277" y="37" width="53" height="28" fill="#245c59" stroke="#d8d2c7" rx="4" />
+      <text x="283" y="56" font-family="Arial, Helvetica, sans-serif" font-size="12" fill="#fffdf8" font-weight="400">Filtrar</text>
+      <rect x="10.0" y="77" width="156.0" height="28" fill="#fffdf8" stroke="#d8d2c7" rx="4" />
+      <text x="16.0" y="96" font-family="Arial, Helvetica, sans-serif" font-size="12" fill="#263b39" font-weight="400">Cargo</text>
+      <rect x="170.0" y="77" width="156.0" height="28" fill="#fffdf8" stroke="#d8d2c7" rx="4" />
+      <text x="176.0" y="96" font-family="Arial, Helvetica, sans-serif" font-size="12" fill="#263b39" font-weight="400">Partido</text>
+      <line x1="15" y1="155" x2="327" y2="155" stroke="#d8d2c7" stroke-width="1" />
+    </g>
+    <text x="24" y="1638" font-family="Georgia, Times New Roman, serif" font-size="30" fill="#263b39" font-weight="400">Candidatos TSE</text>
+    <text x="24" y="1672" font-family="Arial, Helvetica, sans-serif" font-size="15" fill="#63706b" font-weight="400">Consulta de candidaturas de Minas Gerais</text>
+    <text x="24" y="1694" font-family="Arial, Helvetica, sans-serif" font-size="15" fill="#63706b" font-weight="400">por nome, cargo e partido.</text>
+    <rect x="24" y="1737" width="70" height="28" fill="none" stroke="#d8d2c7" rx="14" />
+    <text x="36" y="1756" font-family="Arial, Helvetica, sans-serif" font-size="12" fill="#245c59" font-weight="400">Java</text>
+    <rect x="103" y="1737" width="101" height="28" fill="none" stroke="#d8d2c7" rx="14" />
+    <text x="115" y="1756" font-family="Arial, Helvetica, sans-serif" font-size="12" fill="#245c59" font-weight="400">Spring Boot</text>
+    <text x="24" y="1809" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#245c59" font-weight="600">Ver no GitHub  ↗</text>
+    <line x1="24" y1="1855" x2="366" y2="1855" stroke="#d8d2c7" stroke-width="1" />
+    <line x1="24" y1="1940" x2="366" y2="1940" stroke="#d8d2c7" stroke-width="1" />
+    <text x="24" y="1972" font-family="Arial, Helvetica, sans-serif" font-size="12" fill="#63706b" font-weight="400">Christiano Gonçalves Araújo</text>
+    <text x="24" y="1997" font-family="Arial, Helvetica, sans-serif" font-size="12" fill="#63706b" font-weight="400">Sobre mim / Projetos / Experiências / Contato</text>
+  </g>
+  <text x="924" y="150" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="600" fill="#245c59">03 · Experiências / 390 px</text>
+  <g id="mobile-experiencias" transform="translate(924 176)">
+    <rect x="0" y="0" width="390" height="1640" rx="0" fill="#f5f0e7" />
+    <g id="cabecalho-experiencias" transform="translate(0 0)">
+      <text x="24" y="48" font-family="Georgia, Times New Roman, serif" font-size="27" font-weight="400" fill="#245c59">CG</text>
+      <text x="243" y="43" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="700" fill="#245c59">PT</text>
+      <text x="274" y="43" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="400" fill="#63706b">EN</text>
+      <line x1="243" y1="51" x2="260" y2="51" stroke="#245c59" stroke-width="2" />
+      <line x1="333" y1="30" x2="364" y2="30" stroke="#245c59" stroke-width="1.5" />
+      <line x1="333" y1="39" x2="364" y2="39" stroke="#245c59" stroke-width="1.5" />
+      <line x1="333" y1="48" x2="364" y2="48" stroke="#245c59" stroke-width="1.5" />
+      <line x1="24" y1="74" x2="366" y2="74" stroke="#d8d2c7" stroke-width="1" />
+    </g>
+    <text x="332" y="66" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="400" fill="#245c59">Menu</text>
+    <text x="24" y="114" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="700" fill="#245c59">03 / EXPERIÊNCIAS</text>
+    <text x="24" y="178" font-family="Georgia, Times New Roman, serif" font-size="43" font-weight="400" fill="#263b39">Construir em</text>
+    <text x="24" y="229" font-family="Georgia, Times New Roman, serif" font-size="43" font-weight="400" fill="#263b39">conjunto.</text>
+    <text x="24" y="272" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="400" fill="#63706b">Vivências acadêmicas e colaboração</text>
+    <text x="24" y="298" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="400" fill="#63706b">para além da sala de aula.</text>
+    <line x1="24" y1="339" x2="366" y2="339" stroke="#d8d2c7" stroke-width="1" />
+    <text x="24" y="383" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="700" fill="#245c59">FEV 2026 — ATUAL</text>
+    <text x="24" y="431" font-family="Georgia, Times New Roman, serif" font-size="30" font-weight="400" fill="#263b39">Coordenação</text>
+    <text x="24" y="468" font-family="Georgia, Times New Roman, serif" font-size="30" font-weight="400" fill="#263b39">de mentoria</text>
+    <text x="24" y="506" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="400" fill="#245c59">PUC Minas</text>
+    <text x="24" y="551" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="400" fill="#63706b">Organização do acompanhamento de</text>
+    <text x="24" y="577" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="400" fill="#63706b">estudantes e apoio às atividades do</text>
+    <text x="24" y="603" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="400" fill="#63706b">programa de mentoria da universidade.</text>
+    <rect x="24" y="642" width="120" height="30" rx="15" fill="none" stroke="#d8d2c7" />
+    <text x="37" y="662" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="400" fill="#245c59">Colaboração</text>
+    <rect x="156" y="642" width="118" height="30" rx="15" fill="none" stroke="#d8d2c7" />
+    <text x="169" y="662" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="400" fill="#245c59">Organização</text>
+    <line x1="24" y1="718" x2="366" y2="718" stroke="#d8d2c7" stroke-width="1" />
+    <text x="24" y="763" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="400" fill="#63706b">DATA NÃO CONFIRMADA</text>
+    <text x="24" y="811" font-family="Georgia, Times New Roman, serif" font-size="30" font-weight="400" fill="#263b39">Contribuição</text>
+    <text x="24" y="848" font-family="Georgia, Times New Roman, serif" font-size="30" font-weight="400" fill="#263b39">open source</text>
+    <text x="24" y="886" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="400" fill="#245c59">Metria</text>
+    <text x="24" y="930" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="400" fill="#63706b">Participação no projeto Metria e</text>
+    <text x="24" y="956" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="400" fill="#63706b">aprendizado por meio da colaboração</text>
+    <text x="24" y="982" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="400" fill="#63706b">com uma base de código aberta.</text>
+    <line x1="24" y1="1051" x2="366" y2="1051" stroke="#d8d2c7" stroke-width="1" />
+    <text x="24" y="1100" font-family="Georgia, Times New Roman, serif" font-size="29" font-weight="400" fill="#245c59">Formação</text>
+    <text x="24" y="1136" font-family="Georgia, Times New Roman, serif" font-size="29" font-weight="400" fill="#245c59">complementar</text>
+    <text x="24" y="1192" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="400" fill="#63706b">Estudos práticos em Python, Java</text>
+    <text x="24" y="1218" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="400" fill="#63706b">e automação.</text>
+    <text x="24" y="1280" font-family="Arial, Helvetica, sans-serif" font-size="14" font-weight="400" fill="#63706b">Cursos e certificados:</text>
+    <text x="24" y="1304" font-family="Arial, Helvetica, sans-serif" font-size="14" font-weight="400" fill="#63706b">detalhes a confirmar.</text>
+    <g id="rodape-3" transform="translate(0 0)">
+      <line x1="24" y1="1444" x2="366" y2="1444" stroke="#d8d2c7" stroke-width="1" />
+      <text x="24" y="1478" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="400" fill="#245c59">Christiano Gonçalves Araújo</text>
+      <text x="24" y="1502" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="400" fill="#63706b">Portfólio acadêmico · PUC Minas</text>
+      <text x="24" y="1539" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="400" fill="#245c59">Sobre mim  /  Projetos</text>
+      <text x="24" y="1564" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="400" fill="#245c59">Experiências  /  Contato</text>
+    </g>
+  </g>
+  <text x="1362" y="150" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="600" fill="#245c59">04 · Contato / 390 px</text>
+  <g id="mobile-contato" transform="translate(1362 176)">
+    <rect x="0" y="0" width="390" height="1640" rx="0" fill="#f5f0e7" />
+    <g id="cabecalho-contato" transform="translate(0 0)">
+      <text x="24" y="48" font-family="Georgia, Times New Roman, serif" font-size="27" font-weight="400" fill="#245c59">CG</text>
+      <text x="243" y="43" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="700" fill="#245c59">PT</text>
+      <text x="274" y="43" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="400" fill="#63706b">EN</text>
+      <line x1="243" y1="51" x2="260" y2="51" stroke="#245c59" stroke-width="2" />
+      <line x1="333" y1="30" x2="364" y2="30" stroke="#245c59" stroke-width="1.5" />
+      <line x1="333" y1="39" x2="364" y2="39" stroke="#245c59" stroke-width="1.5" />
+      <line x1="333" y1="48" x2="364" y2="48" stroke="#245c59" stroke-width="1.5" />
+      <line x1="24" y1="74" x2="366" y2="74" stroke="#d8d2c7" stroke-width="1" />
+    </g>
+    <text x="332" y="66" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="400" fill="#245c59">Menu</text>
+    <text x="24" y="114" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="700" fill="#245c59">04 / CONTATO</text>
+    <text x="24" y="178" font-family="Georgia, Times New Roman, serif" font-size="45" font-weight="400" fill="#263b39">Vamos</text>
+    <text x="24" y="231" font-family="Georgia, Times New Roman, serif" font-size="45" font-weight="400" fill="#263b39">conversar?</text>
+    <text x="24" y="279" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="400" fill="#63706b">Um projeto, uma ideia ou uma oportunidade</text>
+    <text x="24" y="305" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="400" fill="#63706b">de aprender em conjunto? Entre em contato.</text>
+    <g transform="translate(24 354)">
+      <path d="M3 5 H21 V19 H3 Z M3 5 L12 12 L21 5" fill="none" stroke="#245c59" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+    </g>
+    <text x="64" y="371" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="400" fill="#245c59">E-mail</text>
+    <text x="64" y="394" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="400" fill="#63706b">christiano.gonara@gmail.com</text>
+    <g transform="translate(24 433)">
+      <path d="M5 19 L3 22 L8 21 C17 25 25 15 20 7 C14 -1 3 3 3 12 C3 15 4 17 5 19 M8 8 C8 13 11 16 16 16" fill="none" stroke="#245c59" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+    </g>
+    <text x="64" y="450" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="400" fill="#245c59">WhatsApp</text>
+    <text x="64" y="473" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="400" fill="#63706b">Número a informar</text>
+    <g transform="translate(24 512)">
+      <path d="M4 9 V20 M4 4 V5 M10 20 V9 H14 V11 C19 6 22 10 22 14 V20" fill="none" stroke="#245c59" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+    </g>
+    <text x="64" y="529" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="400" fill="#245c59">LinkedIn</text>
+    <text x="64" y="552" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="400" fill="#63706b">Perfil a informar</text>
+    <g transform="translate(24 591)">
+      <path d="M8 21 V17 C2 16 1 10 5 6 L5 2 L10 4 H15 L19 2 L19 7 C23 12 20 17 16 17 V21" fill="none" stroke="#245c59" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+    </g>
+    <text x="64" y="608" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="400" fill="#245c59">GitHub</text>
+    <text x="64" y="631" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="400" fill="#63706b">Perfil a informar</text>
+    <line x1="24" y1="681" x2="366" y2="681" stroke="#d8d2c7" stroke-width="1" />
+    <text x="24" y="736" font-family="Georgia, Times New Roman, serif" font-size="28" font-weight="400" fill="#245c59">Envie uma mensagem</text>
+    <text x="24" y="785" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="600" fill="#245c59">Nome *</text>
+    <rect x="24" y="797" width="342" height="46" rx="3" fill="#fcfaf6" stroke="#d8d2c7" />
+    <text x="38" y="825" font-family="Arial, Helvetica, sans-serif" font-size="14" font-weight="400" fill="#63706b">Como você se chama?</text>
+    <text x="24" y="884" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="600" fill="#245c59">E-mail *</text>
+    <rect x="24" y="896" width="342" height="46" rx="3" fill="#fcfaf6" stroke="#d8d2c7" />
+    <text x="38" y="924" font-family="Arial, Helvetica, sans-serif" font-size="14" font-weight="400" fill="#63706b">Seu e-mail para resposta</text>
+    <text x="24" y="983" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="600" fill="#245c59">Mensagem *</text>
+    <rect x="24" y="995" width="342" height="146" rx="3" fill="#fcfaf6" stroke="#d8d2c7" />
+    <text x="38" y="1023" font-family="Arial, Helvetica, sans-serif" font-size="14" font-weight="400" fill="#63706b">Conte um pouco sobre sua ideia...</text>
+    <rect x="24" y="1181" width="342" height="46" rx="3" fill="#245c59" stroke="#245c59" />
+    <text x="42" y="1210" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="600" fill="#f5f0e7">Enviar mensagem  ↗</text>
+    <text x="24" y="1266" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="400" fill="#63706b">Envio previsto via FormSubmit.</text>
+    <text x="24" y="1288" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="400" fill="#63706b">Requer configuração e ativação</text>
+    <text x="24" y="1310" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="400" fill="#63706b">do endereço de destino.</text>
+    <text x="24" y="1332" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="400" fill="#63706b">Este wireframe não envia mensagens.</text>
+    <g id="rodape-4" transform="translate(0 0)">
+      <line x1="24" y1="1444" x2="366" y2="1444" stroke="#d8d2c7" stroke-width="1" />
+      <text x="24" y="1478" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="400" fill="#245c59">Christiano Gonçalves Araújo</text>
+      <text x="24" y="1502" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="400" fill="#63706b">Portfólio acadêmico · PUC Minas</text>
+      <text x="24" y="1539" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="400" fill="#245c59">Sobre mim  /  Projetos</text>
+      <text x="24" y="1564" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="400" fill="#245c59">Experiências  /  Contato</text>
+    </g>
+  </g>
+  <text x="48" y="2250" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="400" fill="#63706b">390 px por tela · conteúdo empilhado · menu fechado · previews vetoriais · fontes e camadas devem ser revisadas após importar</text>
+</svg>
