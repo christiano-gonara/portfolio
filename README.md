@@ -11,7 +11,7 @@ A proposta é apresentar meus projetos, minha formação e experiências de form
 - Interface estática implementada com HTML, CSS e JavaScript em pastas separadas.
 - Conteúdo de perfil, projetos e experiências em arquivos JSON.
 - Capturas conferidas visualmente no desktop e no celular; sem suíte de testes automatizados, conforme o escopo combinado.
-- Formulário configurado para o FormSubmit. **O recebimento das mensagens depende da ativação do destinatário por e-mail e ainda não foi confirmado.**
+- Formulário **ativado no FormSubmit**, com envio realizado pelo site publicado e recebimento da mensagem confirmado pelo destinatário.
 - Hospedagem: **GitHub Pages**, em <https://christiano-gonara.github.io/portfolio/>.
 - Wireframes desktop e celular disponíveis em SVG. **Nenhum documento Figma foi incluído nesta versão; o enunciado da Sprint 01 solicita essa etapa.**
 
@@ -68,7 +68,9 @@ A timeline usa a data de primeira publicação de cada repositório para ordenar
 
 O formulário envia `name`, `email` e `message` por `POST` ao FormSubmit, que faz a verificação antispam e encaminha a mensagem ao e-mail do portfólio. Não existe simulação de envio por JavaScript.
 
-Para ativar:
+A ativação deste portfólio foi concluída. O envio passou pela verificação antispam, retornou à página de agradecimento e a mensagem foi recebida no e-mail do destinatário.
+
+Etapas de ativação inicial, mantidas como referência para uma nova configuração:
 
 1. Acesse a página Contato, preferencialmente já publicada.
 2. Preencha os campos e envie uma mensagem.
@@ -202,7 +204,7 @@ Arraste os SVGs para o canvas de um arquivo Figma. Confira se os elementos foram
 
 Foram abertas as quatro páginas no navegador e registradas capturas em desktop e celular. Após o ajuste tipográfico, a inspeção do navegador mostrou fonte mínima de **12px** e largura da página igual ao viewport nos tamanhos conferidos de **1440px e 390px**.
 
-Não há suíte de testes automatizados. Essa conferência visual não comprova recebimento de e-mail nem substitui a ativação do FormSubmit.
+Não há suíte de testes automatizados. O formulário foi conferido separadamente por envio real: ativação e CAPTCHA concluídos pelo responsável, redirecionamento à página de agradecimento e recebimento confirmado pelo destinatário.
 
 ## Documentações utilizadas
 
