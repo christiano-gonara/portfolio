@@ -208,7 +208,8 @@ function renderExperiences() {
     card.append(head, node('h3', '', course[language]), node('p', '', course.instituicao));
     courses.append(card);
   });
-  observeReveals(target);
+  // Os cards de cursos ficam fora de #experience-list, então observa a página toda.
+  observeReveals();
 }
 /* ---------- Gráficos: matriz de tecnologias e linha do tempo ---------- */
 
