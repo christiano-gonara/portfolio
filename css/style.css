@@ -813,9 +813,13 @@ h3 {
 
 .timeline {
   display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
   gap: var(--s-300);
   padding-bottom: var(--s-700);
 }
+
+.timeline > * { grid-column: span 6; }
+.timeline > .project--compact { grid-column: span 3; }
 
 .project {
   display: grid;
@@ -826,6 +830,34 @@ h3 {
   border: 1px solid var(--line);
   border-radius: var(--r-3xl);
   background: var(--surface);
+}
+
+.project--featured {
+  background: var(--pale);
+}
+
+.project--featured img {
+  height: 300px;
+}
+
+.project--compact {
+  grid-template-columns: minmax(0, 1fr);
+  align-content: start;
+  align-items: start;
+  gap: var(--s-200);
+}
+
+.project--compact img {
+  height: 200px;
+}
+
+.project--compact .project-body {
+  padding: 0 var(--s-100) var(--s-100);
+}
+
+.project--compact h2 {
+  font-size: 24px;
+  line-height: 32px;
 }
 
 .project figure {
@@ -1482,6 +1514,8 @@ h3 {
   .featured-inner { grid-template-columns: 1fr; gap: var(--s-200); }
   .featured-text { padding: var(--s-100) var(--s-100) var(--s-200); }
 
+  .timeline { grid-template-columns: 1fr; }
+  .timeline > *, .timeline > .project--compact { grid-column: auto; }
   .project, .skeleton-card { grid-template-columns: 1fr; gap: var(--s-200); }
   .project-body { padding: var(--s-75) var(--s-100) var(--s-100); }
   .project img, .skeleton .block { height: auto; max-height: 280px; }

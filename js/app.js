@@ -116,7 +116,9 @@ function renderProjects(options = {}) {
   const target = document.querySelector('#project-timeline');
   if (!target) return;
   const text = profile[language];
-  const visible = [...projects].sort((a, b) => a.publicadoEm.localeCompare(b.publicadoEm))
+  // Destaque primeiro; os demais seguem em ordem cronológica.
+  const visible = [...projects]
+    .sort((a, b) => Boolean(b.destaque) - Boolean(a.destaque) || a.publicadoEm.localeCompare(b.publicadoEm))
     .filter(project => category === 'all' || project.categoria === category);
   target.replaceChildren();
   target.setAttribute('aria-busy', 'false');
@@ -129,9 +131,14 @@ function renderProjects(options = {}) {
     target.append(emptyState(text));
     return;
   }
+  const compactCount = visible.filter(project => !project.destaque).length;
   visible.forEach((project, index) => {
     const detail = project[language];
     const article = node('article', 'project');
+    // Cartões simples ficam em pares; o último, se sobrar sozinho, ocupa a linha toda.
+    const lastAlone = !project.destaque && compactCount % 2 === 1 && index === visible.length - 1;
+    if (project.destaque) article.classList.add('project--featured');
+    else if (!lastAlone) article.classList.add('project--compact');
     article.dataset.reveal = '';
     article.style.setProperty('--delay', `${index * 100}ms`);
     const figure = node('figure');

@@ -32,6 +32,7 @@
     "id": "cnpj-alimentacao",
     "nome": "CNPJ Alimentação",
     "publicadoEm": "2026-09-14",
+    "destaque": true,
     "categoria": "Python",
     "tecnologias": [
       "Python",
