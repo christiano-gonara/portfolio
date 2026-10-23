@@ -15,9 +15,9 @@
     <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
     <link rel="preload" href="../assets/fonts/Gabarito-Variable.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="preload" href="../assets/fonts/Figtree-Variable.woff2" as="font" type="font/woff2" crossorigin>
-    <link rel="stylesheet" href="../css/style.css?v=23">
+    <link rel="stylesheet" href="../css/style.css?v=24">
     <script>document.documentElement.classList.add('js');</script>
-    <script type="module" src="../js/app.js?v=23"></script>
+    <script type="module" src="../js/app.js?v=24"></script>
   </head>
   <body data-page="projects">
     <svg class="sprite" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
@@ -75,9 +75,11 @@
         </div>
       </div>
       <section class="cta-band wrap" data-reveal>
-        <div class="cta-inner">
-          <a class="button" href="contato.html" data-internal><span data-i18n="talk">Entrar em contato</span><svg class="icon" aria-hidden="true"><use href="#icon-arrow"></use></svg></a>
-        </div>
+        <a class="cta-inner" href="contato.html" data-internal>
+          <svg class="icon cta-mark" aria-hidden="true"><use href="#icon-mail"></use></svg>
+          <span class="cta-label" data-i18n="talk">Entrar em contato</span>
+          <span class="cta-arrow" aria-hidden="true"><svg class="icon"><use href="#icon-arrow"></use></svg></span>
+        </a>
       </section>
       <div class="wrap">
         <div id="content-status" class="state state-error" role="alert" hidden></div>

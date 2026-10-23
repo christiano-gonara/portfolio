@@ -183,10 +183,11 @@ function renderExperiences() {
     const meta = node('div', 'experience-meta');
     const period = item.inicio
       ? `${monthYear(item.inicio)} ${text.to} ${item.fim ? monthYear(item.fim) : text.current}`
-      : text.noDate;
+      : '';
     const place = node('strong', '', item.instituicao);
     place.prepend(icon('briefcase'));
-    meta.append(place, node('span', '', period));
+    meta.append(place);
+    if (item.inicio) meta.append(node('span', '', period));
     const description = node('div');
     description.append(node('h2', '', item[language].cargo),
       node('p', '', item[language].descricao), node('p', '', item[language].detalhe));
@@ -196,11 +197,16 @@ function renderExperiences() {
   const courses = document.querySelector('#course-list');
   courses.replaceChildren();
   courses.setAttribute('aria-busy', 'false');
-  experiences.formacaoComplementar.forEach(course => {
-    const row = node('div', 'course');
-    row.append(node('span', 'date', course.periodo), node('strong', '', course[language]),
-      node('span', 'institution', course.instituicao));
-    courses.append(row);
+  experiences.formacaoComplementar.forEach((course, index) => {
+    const card = node('article', 'course-card');
+    card.dataset.reveal = '';
+    card.style.setProperty('--delay', `${index * 100}ms`);
+    const head = node('div', 'course-head');
+    const mark = node('span', 'course-icon');
+    mark.append(icon(course.icone));
+    head.append(mark, node('span', 'course-period', course.periodo));
+    card.append(head, node('h3', '', course[language]), node('p', '', course.instituicao));
+    courses.append(card);
   });
   observeReveals(target);
 }
@@ -222,6 +228,11 @@ function renderStack() {
       list.append(item);
     });
     tile.append(head, list);
+    if (index === 0) {
+      const watermark = icon(group.icone);
+      watermark.classList.add('stack-watermark');
+      tile.append(watermark);
+    }
     grid.append(tile);
   });
   target.replaceChildren(grid);
