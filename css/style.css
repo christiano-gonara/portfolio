@@ -793,7 +793,7 @@ h3 {
 }
 
 .timeline > * { grid-column: span 6; }
-.timeline > .project--compact { grid-column: span 3; }
+.timeline > .project--compact { grid-column: span 3; align-self: start; }
 
 .project {
   display: grid;
@@ -812,19 +812,8 @@ h3 {
 
 .project--compact {
   grid-template-columns: minmax(0, 1fr);
-  grid-template-rows: auto 1fr;
   align-items: start;
   gap: var(--s-200);
-}
-
-.project--compact .project-body {
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-}
-
-.project--compact .project-actions {
-  margin-top: auto;
 }
 
 .project--compact .project-body {
