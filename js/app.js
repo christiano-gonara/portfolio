@@ -25,7 +25,8 @@ const externalLink = (url, label, className = 'text-link') => {
   return link;
 };
 async function loadJSON(file) {
-  const response = await fetch(new URL(`data/${file}`, root));
+  // no-cache: o navegador revalida o JSON a cada visita, sem usar uma cópia antiga com o JS novo.
+  const response = await fetch(new URL(`data/${file}`, root), { cache: 'no-cache' });
   if (!response.ok) throw new Error(`Falha ao carregar ${file}: ${response.status}`);
   return response.json();
 }
