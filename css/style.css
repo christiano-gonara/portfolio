@@ -685,9 +685,70 @@ h3 {
 .about-detail {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: var(--s-700);
+  gap: var(--s-500) var(--s-700);
+  align-items: start;
   padding-top: var(--s-800);
   padding-bottom: var(--s-800);
+}
+
+.about-bottom {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: var(--s-500) var(--s-700);
+  align-items: stretch;
+}
+
+.about-bottom > div {
+  display: flex;
+  flex-direction: column;
+}
+
+.about-bottom .education-block {
+  flex: 1;
+}
+
+.points {
+  display: grid;
+  gap: var(--s-100);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  color: var(--muted);
+}
+
+.points li {
+  position: relative;
+  padding-left: var(--s-300);
+}
+
+.points li::before {
+  content: '';
+  position: absolute;
+  top: 10px;
+  left: var(--s-50);
+  width: 8px;
+  height: 8px;
+  border-radius: var(--r-full);
+  background: var(--teal);
+}
+
+.stack {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--s-300);
+}
+
+.stack-group h4 {
+  margin: 0 0 var(--s-75);
+  color: var(--muted);
+  font: 600 14px/20px var(--mono);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.stack-group .skills {
+  gap: var(--s-75);
 }
 
 .section-small-title {
@@ -717,10 +778,9 @@ h3 {
 }
 
 .education-block {
-  margin-top: var(--s-400);
-  padding: var(--s-300);
+  padding: var(--s-200) var(--s-300);
   border: 1px solid var(--line);
-  border-radius: var(--r-2xl);
+  border-radius: var(--r-3xl);
   background: var(--surface);
 }
 
@@ -1207,67 +1267,8 @@ h3 {
   background: var(--surface);
 }
 
-.dot {
-  display: inline-block;
-  width: 12px;
-  height: 12px;
-  border-radius: var(--r-full);
-  background: var(--teal);
-  vertical-align: middle;
-}
-
-.dot.is-off {
-  width: 4px;
-  height: 4px;
-  background: var(--line);
-}
-
 .chart-card + .caption {
   margin-top: var(--s-100);
-}
-
-.matrix {
-  width: 100%;
-  border-collapse: collapse;
-  font-size: 14px;
-  line-height: 20px;
-}
-
-.matrix th, .matrix td {
-  padding: var(--s-75) var(--s-50);
-  text-align: center;
-}
-
-.name-short {
-  display: none;
-}
-
-.matrix thead th {
-  vertical-align: bottom;
-  font-weight: 600;
-}
-
-.matrix tbody th {
-  text-align: left;
-  font-weight: 500;
-  white-space: nowrap;
-}
-
-.matrix tbody tr {
-  border-top: 1px solid var(--line);
-  transition: background var(--dur-ui) var(--ease);
-}
-
-.matrix tbody tr:hover {
-  background: var(--pale);
-}
-
-.matrix .matrix-count {
-  padding-right: var(--s-75);
-  text-align: right;
-  color: var(--muted);
-  font-family: var(--mono);
-  white-space: nowrap;
 }
 
 .courses-section {
@@ -1735,12 +1736,8 @@ a.social-link:hover .arrow {
 
   .experience-list { grid-template-columns: 1fr; }
   .about-detail > * { min-width: 0; }
-  .matrix { table-layout: fixed; }
-  .name-long { display: none; }
-  .name-short { display: inline; }
-  .matrix thead td { width: 28%; }
-  .matrix tbody th { white-space: normal; }
-  .matrix .matrix-count, .matrix thead th:last-child { display: none; }
+  .about-bottom { grid-template-columns: 1fr; }
+  .stack { grid-template-columns: 1fr; }
   .chart-card { padding: var(--s-200); }
   .contact-layout { grid-template-columns: 1fr; padding-top: var(--s-500); padding-bottom: var(--s-600); }
 

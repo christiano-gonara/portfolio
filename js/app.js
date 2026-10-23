@@ -205,63 +205,17 @@ function renderExperiences() {
 }
 /* ---------- Gráficos: matriz de tecnologias e linha do tempo ---------- */
 
-const dot = (on) => {
-  const mark = node('span', on ? 'dot' : 'dot is-off');
-  mark.setAttribute('aria-hidden', 'true');
-  return mark;
-};
-function renderStackMatrix() {
+function renderStack() {
   const target = document.querySelector('#profile-skills');
   if (!target || !profile) return;
-  const text = profile[language];
-  target.setAttribute('aria-busy', 'false');
-  if (!projects.length) {
-    target.replaceChildren(renderTags(profile.tecnologias));
-    return;
-  }
-  const ordered = [...projects].sort((a, b) => a.publicadoEm.localeCompare(b.publicadoEm));
-  const used = (name) => ordered.filter(project => project.pilha.includes(name)).length;
-  const rows = [...profile.tecnologias].sort((a, b) => used(b) - used(a));
-  const table = node('table', 'matrix');
-  table.append(node('caption', 'sr-only', text.matrixCaption));
-  const head = node('tr');
-  head.append(node('td'));
-  ordered.forEach(project => {
-    const th = node('th');
-    th.scope = 'col';
-    const link = node('a', 'text-link');
-    link.setAttribute('aria-label', project.nome);
-    link.append(node('span', 'name-long', project.nome), node('span', 'name-short', project.nomeCurto));
-    link.href = `projetos.html#${project.id}`;
-    link.dataset.internal = '';
-    th.append(link);
-    head.append(th);
+  const card = node('div', 'chart-card stack');
+  profile.stack.forEach(group => {
+    const block = node('div', 'stack-group');
+    block.append(node('h4', '', group[language]), renderTags(group.itens));
+    card.append(block);
   });
-  const total = node('th', 'sr-only', '#');
-  total.scope = 'col';
-  head.append(total);
-  const thead = node('thead');
-  thead.append(head);
-  table.append(thead);
-  const body = node('tbody');
-  rows.forEach(name => {
-    const row = node('tr');
-    const label = node('th', '', name);
-    label.scope = 'row';
-    row.append(label);
-    ordered.forEach(project => {
-      const on = project.pilha.includes(name);
-      const cell = node('td');
-      cell.append(dot(on), node('span', 'sr-only', on ? text.matrixUsed : text.matrixUnused));
-      row.append(cell);
-    });
-    row.append(node('td', 'matrix-count', `${used(name)} ${text.of} ${ordered.length}`));
-    body.append(row);
-  });
-  table.append(body);
-  const card = node('div', 'chart-card');
-  card.append(table);
   target.replaceChildren(card);
+  target.setAttribute('aria-busy', 'false');
 }
 
 const percent = (value) => new Intl.NumberFormat(locale(), { maximumFractionDigits: 1 }).format(value);
@@ -319,7 +273,7 @@ function renderLanguage() {
     notfound: 'notFoundTitleDocument' }[page];
   document.title = `${text[titleKey]} · ${profile.nome}`;
   updateMenuLabel();
-  renderStackMatrix();
+  renderStack();
   prepareTagline();
   renderProjects();
   renderExperiences();
@@ -485,11 +439,8 @@ async function init() {
   });
   initForm();
   initCopy();
-  // Gráficos usam os projetos; se falhar, a página segue sem eles.
-  if (page === 'about') {
-    projects = await loadJSON('projetos.json').catch(() => []);
-    languages = await loadJSON('linguagens.json').catch(() => undefined);
-  }
+  // O gráfico de linguagens é opcional; se falhar, a página segue sem ele.
+  if (page === 'about') languages = await loadJSON('linguagens.json').catch(() => undefined);
   renderLanguage();
   observeReveals();
   if (page === 'projects') {

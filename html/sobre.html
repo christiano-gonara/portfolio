@@ -15,9 +15,9 @@
     <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
     <link rel="preload" href="../assets/fonts/Gabarito-Variable.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="preload" href="../assets/fonts/Figtree-Variable.woff2" as="font" type="font/woff2" crossorigin>
-    <link rel="stylesheet" href="../css/style.css?v=17">
+    <link rel="stylesheet" href="../css/style.css?v=20">
     <script>document.documentElement.classList.add('js');</script>
-    <script type="module" src="../js/app.js?v=17"></script>
+    <script type="module" src="../js/app.js?v=20"></script>
   </head>
   <body data-page="about">
     <svg class="sprite" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
@@ -99,22 +99,32 @@
         <div data-reveal>
           <p class="eyebrow" data-i18n="aboutEyebrow">01 / Sobre mim</p>
           <h2 data-i18n="aboutTitle">Tecnologia, com gente por perto.</h2>
-          <p class="body-copy" data-i18n="aboutBody">Aprendo na sala de aula e nos projetos. No Programa de Apadrinhamento da PUC Minas, coordeno voluntários e criei o Padrinho Track para acompanhar os calouros. Também estudo APIs, bancos de dados e IA aplicada.</p>
+          <ul class="points">
+            <li data-i18n="aboutP1">Aprendo na sala de aula e nos projetos.</li>
+            <li data-i18n="aboutP2">Coordeno voluntários no Programa de Apadrinhamento da PUC Minas.</li>
+            <li data-i18n="aboutP3">Criei o Padrinho Track para acompanhar os calouros.</li>
+            <li data-i18n="aboutP4">Estudo APIs, bancos de dados e IA aplicada.</li>
+          </ul>
         </div>
         <div data-reveal style="--delay:100ms">
           <h3 class="section-small-title"><span class="chip-icon"><svg class="icon" aria-hidden="true"><use href="#icon-code"></use></svg></span><span data-i18n="langTitle">Linguagens mais usadas</span></h3>
           <div id="language-chart" aria-busy="true"></div>
           <p class="caption" id="language-note"></p>
-          <h3 class="section-small-title section-gap"><span class="chip-icon"><svg class="icon" aria-hidden="true"><use href="#icon-code"></use></svg></span><span data-i18n="skillsTitle">Ferramentas que uso</span></h3>
-          <div id="profile-skills" aria-busy="true">
-            <div class="skeleton-chips" data-skeleton aria-hidden="true"><span></span><span></span><span></span><span></span><span></span><span></span></div>
+        </div>
+        <div class="about-bottom" data-reveal style="--delay:100ms">
+          <div>
+            <h3 class="section-small-title"><span class="chip-icon"><svg class="icon" aria-hidden="true"><use href="#icon-code"></use></svg></span><span data-i18n="stackTitle">Minha stack</span></h3>
+            <div id="profile-skills" aria-busy="true">
+              <div class="skeleton-chips" data-skeleton aria-hidden="true"><span></span><span></span><span></span><span></span><span></span><span></span></div>
+            </div>
           </div>
-          <p class="caption" data-i18n="skillsNote">Marcado onde usei em cada projeto.</p>
-          <div class="education-block">
+          <div>
             <h3 class="section-small-title"><span class="chip-icon"><svg class="icon" aria-hidden="true"><use href="#icon-school"></use></svg></span><span data-i18n="educationTitle">Minha formação</span></h3>
-            <strong data-i18n="degree">Engenharia de Software</strong>
-            <p data-i18n="institution">PUC Minas · Belo Horizonte</p>
-            <p data-i18n="degreePeriod">2025 a 2028 · previsão de conclusão</p>
+            <div class="education-block">
+              <strong data-i18n="degree">Engenharia de Software</strong>
+              <p data-i18n="institution">PUC Minas · Belo Horizonte</p>
+              <p data-i18n="degreePeriod">2025 a 2028 · previsão de conclusão</p>
+            </div>
           </div>
         </div>
       </section>

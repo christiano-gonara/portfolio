@@ -2,7 +2,6 @@
   {
     "id": "padrinho-track",
     "nome": "Padrinho Track",
-    "nomeCurto": "Padrinho",
     "publicadoEm": "2026-05-13",
     "categoria": "Python",
     "tecnologias": [
@@ -11,13 +10,6 @@
       "PostgreSQL / SQLite",
       "Google Sheets API",
       "pytest"
-    ],
-    "pilha": [
-      "Python",
-      "Flask",
-      "SQL",
-      "PostgreSQL",
-      "Git & GitHub"
     ],
     "repositorio": "https://github.com/christiano-gonara/padrinho-track",
     "imagem": "assets/projects/padrinho-track.png",
@@ -45,7 +37,6 @@
   {
     "id": "cnpj-alimentacao",
     "nome": "CNPJ Alimentação",
-    "nomeCurto": "CNPJ",
     "publicadoEm": "2026-09-14",
     "destaque": true,
     "categoria": "Python",
@@ -56,11 +47,6 @@
       "Parquet",
       "Jupyter",
       "HTML / CSS / JavaScript"
-    ],
-    "pilha": [
-      "Python",
-      "JavaScript",
-      "Git & GitHub"
     ],
     "repositorio": "https://github.com/christiano-gonara/cnpj-alimentacao",
     "demo": "https://christiano-gonara.github.io/cnpj-alimentacao/",
@@ -89,7 +75,6 @@
   {
     "id": "candidatos-tse",
     "nome": "Candidatos TSE",
-    "nomeCurto": "TSE",
     "publicadoEm": "2026-09-24",
     "categoria": "Java",
     "tecnologias": [
@@ -98,11 +83,6 @@
       "Thymeleaf",
       "OpenCSV",
       "HTML / CSS"
-    ],
-    "pilha": [
-      "Java",
-      "Spring Boot",
-      "Git & GitHub"
     ],
     "repositorio": "https://github.com/christiano-gonara/candidatosTSE",
     "imagem": "assets/projects/candidatos-tse.png",

@@ -6,16 +6,6 @@
   "whatsapp": "5531998909804",
   "github": "https://github.com/christiano-gonara",
   "linkedin": "https://www.linkedin.com/in/christiano-gonara/",
-  "tecnologias": [
-    "Python",
-    "Java",
-    "JavaScript",
-    "Flask",
-    "Spring Boot",
-    "SQL",
-    "PostgreSQL",
-    "Git & GitHub"
-  ],
   "pt": {
     "navAbout": "Sobre mim",
     "navProjects": "Projetos",
@@ -38,9 +28,6 @@
     "focusValue": "Backend, dados e automação",
     "aboutEyebrow": "01 / Sobre mim",
     "aboutTitle": "Tecnologia, com gente por perto.",
-    "aboutBody": "Aprendo na sala de aula e nos projetos. No Programa de Apadrinhamento da PUC Minas, coordeno voluntários e criei o Padrinho Track para acompanhar os calouros. Também estudo APIs, bancos de dados e IA aplicada.",
-    "skillsTitle": "Ferramentas que uso",
-    "skillsNote": "Marcado onde usei em cada projeto.",
     "educationTitle": "Minha formação",
     "degree": "Engenharia de Software",
     "institution": "PUC Minas · Belo Horizonte",
@@ -123,14 +110,15 @@
     "openOutlook": "Outlook",
     "openMailApp": "App de email",
     "emailHow": "Enviar por:",
-    "matrixCaption": "Tecnologias usadas em cada projeto",
-    "matrixUsed": "usada",
-    "matrixUnused": "não usada",
-    "of": "de",
     "langTitle": "Linguagens mais usadas",
     "langNote": "Proporção de código nos meus {n} repositórios públicos do GitHub, em {date}. Vem da contagem do próprio GitHub.",
     "langOther": "Outras",
-    "didTitle": "O que fiz"
+    "didTitle": "O que fiz",
+    "aboutP1": "Aprendo na sala de aula e nos projetos.",
+    "aboutP2": "Coordeno voluntários no Programa de Apadrinhamento da PUC Minas.",
+    "aboutP3": "Criei o Padrinho Track para acompanhar os calouros.",
+    "aboutP4": "Estudo APIs, bancos de dados e IA aplicada.",
+    "stackTitle": "Minha stack"
   },
   "en": {
     "navAbout": "About",
@@ -154,9 +142,6 @@
     "focusValue": "Backend, data and automation",
     "aboutEyebrow": "01 / About",
     "aboutTitle": "Technology, with people nearby.",
-    "aboutBody": "I learn in the classroom and through projects. In PUC Minas' mentoring program I coordinate volunteers and built Padrinho Track to support new students. I also study APIs, databases and applied AI.",
-    "skillsTitle": "Tools I work with",
-    "skillsNote": "Marked where I used it in each project.",
     "educationTitle": "Education",
     "degree": "Software Engineering",
     "institution": "PUC Minas · Belo Horizonte",
@@ -239,13 +224,62 @@
     "openOutlook": "Outlook",
     "openMailApp": "Mail app",
     "emailHow": "Send with:",
-    "matrixCaption": "Technologies used in each project",
-    "matrixUsed": "used",
-    "matrixUnused": "not used",
-    "of": "of",
     "langTitle": "Most used languages",
     "langNote": "Share of code across my {n} public GitHub repositories, as of {date}. Counted by GitHub itself.",
     "langOther": "Other",
-    "didTitle": "What I did"
-  }
+    "didTitle": "What I did",
+    "aboutP1": "I learn in the classroom and through projects.",
+    "aboutP2": "I coordinate volunteers in PUC Minas' mentoring program.",
+    "aboutP3": "I built Padrinho Track to support new students.",
+    "aboutP4": "I study APIs, databases and applied AI.",
+    "stackTitle": "My stack"
+  },
+  "stack": [
+    {
+      "pt": "Linguagens",
+      "en": "Languages",
+      "itens": [
+        "Python",
+        "Java",
+        "JavaScript",
+        "C",
+        "SQL",
+        "HTML / CSS"
+      ]
+    },
+    {
+      "pt": "Frameworks e bibliotecas",
+      "en": "Frameworks and libraries",
+      "itens": [
+        "React",
+        "Flask",
+        "Spring Boot",
+        "Thymeleaf",
+        "Scrapy",
+        "Pandas",
+        "pytest"
+      ]
+    },
+    {
+      "pt": "Dados",
+      "en": "Data",
+      "itens": [
+        "PostgreSQL",
+        "SQLite",
+        "DuckDB",
+        "Parquet",
+        "Jupyter"
+      ]
+    },
+    {
+      "pt": "Ferramentas",
+      "en": "Tools",
+      "itens": [
+        "Git & GitHub",
+        "Vite",
+        "Maven",
+        "Google Sheets API"
+      ]
+    }
+  ]
 }
