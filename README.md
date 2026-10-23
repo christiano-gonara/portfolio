@@ -46,14 +46,14 @@ O conteúdo pode ser atualizado sem alterar o layout: basta editar os arquivos d
 ### Decisões de interface
 
 - **Legibilidade:** nenhum texto da interface abaixo de **14px** (medido no navegador nas seis páginas principais); corpo principal entre 16px e 18px. Todos os tamanhos seguem a escala do Tailwind (14, 16, 18, 20, 24, 30, 36, 48, 60 e 72px).
-- **Tipografia:** **Bricolage Grotesque** nos títulos, **Instrument Sans** no texto e **JetBrains Mono** em datas, hospedadas no próprio repositório. Sem itálico e sem pesos acima de bold.
+- **Tipografia:** **Gabarito** nos títulos, **Figtree** no texto e **JetBrains Mono** em datas, hospedadas no próprio repositório. Sem itálico e sem pesos acima de bold.
 - **Espaçamento e cantos:** espaçamentos de uma lista fechada (2, 4, 8, 12, 16, 24, 32, 40, 48, 64, 80 e 96px) e raios do Tailwind. Elementos dentro de cards usam o raio do card menos o espaço entre eles.
 - **Cor:** bege e azul petróleo, sem gradientes de fundo. O único gradiente é o do título principal da página inicial, aplicado só ao texto.
 - **Affordance:** botões com aparência de botão, links sublinhados, ação explícita para ampliar capturas e botão principal único acima da dobra.
 - **Gestalt:** informações relacionadas ficam próximas; projetos, experiências e formação usam cards com o mesmo formato, alinhamento e separadores.
 - **Navegação:** pílula de vidro flutuante; no celular, o botão de menu vira um X e abre uma tela cheia com os links entrando em sequência. A página atual fica marcada.
 - **Movimento:** transições com a curva `cubic-bezier(0.32, 0.72, 0, 1)`. Os blocos sobem e desfocam ao entrar na tela, usando `IntersectionObserver`, sem listener de scroll. A frase de destaque acende palavra por palavra ao rolar.
-- **Ícones:** [Phosphor](https://phosphoricons.com/) em SVG local, acompanhados de rótulos nas ações importantes. Ícones decorativos são ignorados por leitores de tela.
+- **Ícones:** [Tabler Icons](https://tabler.io/icons) em SVG local, acompanhados de rótulos nas ações importantes. Ícones decorativos são ignorados por leitores de tela.
 - **Estados:** hover, clique, foco visível, carregamento com esqueletos no formato do conteúdo, estado vazio nos filtros e erro de carregamento com botão para tentar de novo. Nenhum `alert()`.
 - **Formulário:** validação no navegador com mensagens específicas por campo, botão desabilitado durante o envio e retorno ao estado normal ao voltar pelo histórico.
 - **Acessibilidade:** link para pular ao conteúdo, alvos de pelo menos 44px, rótulos nos campos e respeito à preferência por movimento reduzido, que desativa animações e mostra tudo de imediato.
@@ -63,16 +63,16 @@ O conteúdo pode ser atualizado sem alterar o layout: basta editar os arquivos d
 | Página | Conteúdo |
 |---|---|
 | Sobre mim | Apresentação, formação, tecnologias e destaque do Padrinho Track. |
-| Projetos | Timeline gerada a partir do JSON, filtros Python/Java, descrições, tecnologias, capturas e links dos repositórios. |
+| Projetos | Bento grid com projeto em destaque, gerado a partir do JSON, filtros Python/Java, descrições, tecnologias, capturas e links dos repositórios. |
 | Experiências | Mentoria acadêmica, contribuição open source e formação complementar. |
 | Contato | Email com botão de copiar e atalhos para Gmail, Outlook e app de email; WhatsApp, LinkedIn e GitHub com o endereço visível; formulário com validação. |
-| Gráficos | Matriz de tecnologias por projeto (Sobre) e linha do tempo de formação, experiência, cursos e projetos (Experiências), em HTML e CSS, com dados dos JSON. |
+| Gráficos | Barra empilhada das linguagens mais usadas e matriz de tecnologias por projeto (Sobre), em HTML e CSS, com dados dos JSON. |
 | Privacidade e uso | O que o site guarda, como o formulário trata os dados, hospedagem e uso do conteúdo. |
 | Página 404 | Página própria para endereços inexistentes, com caminho de volta ao início. |
 
 A troca PT/EN traduz a interface e os dados. O idioma é mantido nos links internos e, quando permitido pelo navegador, no armazenamento local.
 
-A timeline usa a data de primeira publicação de cada repositório para ordenar os projetos do mais antigo ao mais recente. Essa data não é apresentada como início do desenvolvimento.
+O projeto em destaque vem primeiro; os demais seguem pela data de primeira publicação, do mais antigo ao mais recente. Essa data não é apresentada como início do desenvolvimento.
 
 ### Formulário de contato
 
@@ -100,8 +100,8 @@ O aviso abaixo do botão informa que os dados são processados por um serviço e
 | Apresentação | CSS3 | Layout responsivo, tipografia, estados e identidade visual. |
 | Comportamento | JavaScript com módulos nativos | Leitura dos JSONs, idioma, filtros e menu. |
 | Conteúdo | JSON | Perfil, traduções, projetos e experiências. |
-| Fontes | Bricolage Grotesque, Instrument Sans e JetBrains Mono (licença OFL), arquivos locais | Tipografia sem requisições a serviços de fontes. |
-| Ícones | Phosphor (licença MIT), SVG local | Ícones sem dependências externas. |
+| Fontes | Gabarito, Figtree e JetBrains Mono (licença OFL), arquivos locais | Tipografia sem requisições a serviços de fontes. |
+| Ícones | Tabler (licença MIT), SVG local | Ícones sem dependências externas. |
 | Envio de e-mail | FormSubmit | Serviço externo para processar o formulário. |
 | Hospedagem | GitHub Pages | Publicação dos arquivos estáticos. |
 
@@ -184,7 +184,7 @@ portfolio/
 ├── assets/
 │   ├── favicon.svg
 │   ├── og-image.png           # Imagem de compartilhamento
-│   ├── fonts/                 # Bricolage Grotesque, Instrument Sans e JetBrains Mono
+│   ├── fonts/                 # Gabarito, Figtree e JetBrains Mono
 │   └── projects/              # Capturas reais dos projetos
 ├── docs/
 │   ├── capturas/              # Imagens da interface implementada
@@ -228,7 +228,7 @@ As animações de entrada foram verificadas em execução real e também com a p
 - [Enunciado e materiais da disciplina](https://github.com/joaopauloaramuni/desenvolvimento-e-integracao-de-aplicacoes-web)
 - [Modelo de README indicado no laboratório](https://github.com/joaopauloaramuni/desenvolvimento-e-integracao-de-aplicacoes-web/blob/main/TEMPLATES/template_README.md), adaptado às camadas efetivamente utilizadas.
 - [Skill landing-page-design](https://github.com/elayadesign/ai-design-skills/blob/main/skills/landing-page-design/SKILL.md), usada como guia do sistema visual
-- [Bricolage Grotesque](https://github.com/ateliertriay/bricolage), [Instrument Sans](https://github.com/Instrument/instrument-sans), [JetBrains Mono](https://github.com/JetBrains/JetBrainsMono) e [Phosphor Icons](https://github.com/phosphor-icons/core)
+- [Gabarito](https://github.com/naipefoundry/gabarito), [Figtree](https://github.com/erikdkennedy/figtree), [JetBrains Mono](https://github.com/JetBrains/JetBrainsMono) e [Tabler Icons](https://github.com/tabler/tabler-icons)
 - [GitHub Pages](https://docs.github.com/en/pages/getting-started-with-github-pages/creating-a-github-pages-site)
 - [FormSubmit](https://formsubmit.co/documentation)
 - [Padrinho Track](https://github.com/christiano-gonara/padrinho-track)

@@ -1,0 +1,32 @@
+{
+  "atualizadoEm": "2026-10-23",
+  "fonte": "GitHub",
+  "repositorios": 17,
+  "linguagens": [
+    {
+      "nome": "HTML",
+      "bytes": 492227
+    },
+    {
+      "nome": "Python",
+      "bytes": 223353
+    },
+    {
+      "nome": "CSS",
+      "bytes": 220984
+    },
+    {
+      "nome": "JavaScript",
+      "bytes": 201270
+    },
+    {
+      "nome": "Java",
+      "bytes": 54244
+    },
+    {
+      "nome": "Outras",
+      "bytes": 94944,
+      "detalhe": "Jupyter Notebook, C"
+    }
+  ]
+}

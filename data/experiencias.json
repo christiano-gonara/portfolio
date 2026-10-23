@@ -34,24 +34,18 @@
   "formacaoComplementar": [
     {
       "instituicao": "UFMG",
-      "inicio": "2026-03",
-      "fim": "2026-03",
       "periodo": "03/2026",
       "pt": "Python e Análise de Dados · 20 horas",
       "en": "Python and Data Analysis · 20 hours"
     },
     {
       "instituicao": "Anthropic",
-      "inicio": "2026-06",
-      "fim": "2026-06",
       "periodo": "06/2026",
       "pt": "Claude Code in Action",
       "en": "Claude Code in Action"
     },
     {
       "instituicao": "Teatro PUC Minas",
-      "inicio": "2026-03",
-      "fim": "2026-12",
       "periodo": "03–12/2026",
       "pt": "Comunicação e Oratória",
       "en": "Communication and Public Speaking"

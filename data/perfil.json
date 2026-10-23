@@ -65,7 +65,6 @@
     "noDate": "Contribuição em software livre",
     "contactEyebrow": "04 / Contato",
     "contactTitle": "Contato.",
-    "contactIntro": "Procuro estágio em desenvolvimento. Escolha o canal mais fácil para você.",
     "emailLink": "Email",
     "whatsappLink": "WhatsApp",
     "linkedinLink": "LinkedIn",
@@ -100,8 +99,6 @@
     "errEmail": "Escreva um email válido, como nome@exemplo.com.",
     "errMessage": "Escreva pelo menos 10 caracteres.",
     "sending": "Enviando…",
-    "ctaTitle": "Procuro estágio.",
-    "ctaBody": "Desenvolvimento, dados ou automação. Me chame pelo canal que preferir.",
     "emptyTitle": "Nenhum projeto aqui.",
     "emptyBody": "Tente outro filtro.",
     "emptyAction": "Ver todos",
@@ -138,16 +135,9 @@
     "matrixUsed": "usada",
     "matrixUnused": "não usada",
     "of": "de",
-    "timelineTitle": "Linha do tempo",
-    "timelineCaption": "Formação, experiência, cursos e projetos de 2025 a 2028",
-    "today": "Hoje",
-    "tlSolid": "Até hoje",
-    "tlPlanned": "Previsto",
-    "tlEducation": "Formação",
-    "tlExperience": "Experiência",
-    "tlCourses": "Cursos",
-    "tlProjects": "Projetos",
-    "timelineNote": "A contribuição ao Metria não tem data informada e fica fora do gráfico."
+    "langTitle": "Linguagens mais usadas",
+    "langNote": "Proporção de código nos meus {n} repositórios públicos do GitHub, em {date}. Vem da contagem do próprio GitHub.",
+    "langOther": "Outras"
   },
   "en": {
     "navAbout": "About",
@@ -198,7 +188,6 @@
     "noDate": "Open source contribution",
     "contactEyebrow": "04 / Contact",
     "contactTitle": "Contact.",
-    "contactIntro": "I'm looking for a development internship. Pick whichever channel is easiest for you.",
     "emailLink": "Email",
     "whatsappLink": "WhatsApp",
     "linkedinLink": "LinkedIn",
@@ -233,8 +222,6 @@
     "errEmail": "Write a valid email, like name@example.com.",
     "errMessage": "Write at least 10 characters.",
     "sending": "Sending…",
-    "ctaTitle": "I'm looking for an internship.",
-    "ctaBody": "Development, data or automation. Reach me on whichever channel you prefer.",
     "emptyTitle": "No projects here.",
     "emptyBody": "Try another filter.",
     "emptyAction": "See all",
@@ -271,19 +258,8 @@
     "matrixUsed": "used",
     "matrixUnused": "not used",
     "of": "of",
-    "timelineTitle": "Timeline",
-    "timelineCaption": "Education, experience, courses and projects from 2025 to 2028",
-    "today": "Today",
-    "tlSolid": "Up to today",
-    "tlPlanned": "Planned",
-    "tlEducation": "Education",
-    "tlExperience": "Experience",
-    "tlCourses": "Courses",
-    "tlProjects": "Projects",
-    "timelineNote": "The Metria contribution has no date on record, so it is left out of the chart."
-  },
-  "formacao": {
-    "inicio": "2025-01",
-    "fim": "2028-12"
+    "langTitle": "Most used languages",
+    "langNote": "Share of code across my {n} public GitHub repositories, as of {date}. Counted by GitHub itself.",
+    "langOther": "Other"
   }
 }

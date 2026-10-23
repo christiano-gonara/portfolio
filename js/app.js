@@ -38,6 +38,7 @@ function readLanguage() {
 let language = readLanguage();
 let profile;
 let projects = [];
+let languages;
 let experiences;
 let category = 'all';
 const locale = () => language === 'pt' ? 'pt-BR' : 'en-US';
@@ -158,7 +159,7 @@ function renderProjects(options = {}) {
     const date = node('p', 'project-date');
     const time = node('time', '', monthYear(project.publicadoEm));
     time.dateTime = project.publicadoEm;
-    date.append(time, node('span', '', text.published));
+    date.append(icon('calendar'), time, node('span', '', text.published));
     const heading = node('h2', '', project.nome);
     heading.id = project.id;
     article.setAttribute('aria-labelledby', project.id);
@@ -199,7 +200,9 @@ function renderExperiences() {
     const period = item.inicio
       ? `${monthYear(item.inicio)} ${text.to} ${item.fim ? monthYear(item.fim) : text.current}`
       : text.noDate;
-    meta.append(node('strong', '', item.instituicao), node('span', '', period));
+    const place = node('strong', '', item.instituicao);
+    place.prepend(icon('briefcase'));
+    meta.append(place, node('span', '', period));
     const description = node('div');
     description.append(node('h2', '', item[language].cargo),
       node('p', '', item[language].descricao), node('p', '', item[language].detalhe));
@@ -278,110 +281,39 @@ function renderStackMatrix() {
   target.replaceChildren(card);
 }
 
-const DAY = 86400000;
-function renderTimeline() {
-  const target = document.querySelector('#timeline');
-  if (!target || !profile || !experiences) return;
+const percent = (value) => new Intl.NumberFormat(locale(), { maximumFractionDigits: 1 }).format(value);
+function renderLanguages() {
+  const target = document.querySelector('#language-chart');
+  if (!target || !profile || !languages) return;
   const text = profile[language];
-  const monthStart = (date) => Date.UTC(+date.slice(0, 4), +date.slice(5, 7) - 1, 1);
-  const monthEnd = (date) => Date.UTC(+date.slice(0, 4), +date.slice(5, 7), 1);
-  const t0 = Date.UTC(2025, 0, 1);
-  const t1 = Date.UTC(2029, 0, 1);
-  const now = Date.now();
-  const at = (time) => Math.min(100, Math.max(0, (time - t0) / (t1 - t0) * 100));
-  const groups = [
-    { name: text.tlEducation, items: [{
-      label: text.degree, sub: text.degreePeriod,
-      start: monthStart(profile.formacao.inicio), end: monthEnd(profile.formacao.fim)
-    }] },
-    { name: text.tlExperience, items: experiences.experiencias.filter(item => item.inicio).map(item => ({
-      label: item[language].cargo,
-      sub: `${item.instituicao} · ${monthYear(item.inicio)} ${text.to} ${item.fim ? monthYear(item.fim) : text.current}`,
-      start: monthStart(item.inicio), end: item.fim ? monthEnd(item.fim) : now
-    })) },
-    { name: text.tlCourses, items: experiences.formacaoComplementar.map(course => ({
-      label: course.instituicao, sub: `${course[language]} · ${course.periodo}`,
-      start: monthStart(course.inicio), end: monthEnd(course.fim),
-      point: course.inicio === course.fim
-    })) },
-    { name: text.tlProjects, items: [...projects].sort((a, b) => a.publicadoEm.localeCompare(b.publicadoEm)).map(project => ({
-      label: project.nome, sub: monthYear(project.publicadoEm),
-      start: Date.parse(`${project.publicadoEm}T12:00:00Z`), point: true
-    })) }
-  ].filter(group => group.items.length);
-
-  const chart = node('div', 'tl');
-  const axis = node('div', 'tl-axis');
-  axis.append(node('span'));
-  const scale = node('div', 'tl-scale');
-  [2025, 2026, 2027, 2028].forEach(year => {
-    const tick = node('span', 'tl-year', String(year));
-    tick.style.left = `${at(Date.UTC(year, 0, 1))}%`;
-    scale.append(tick);
+  const total = languages.linguagens.reduce((sum, item) => sum + item.bytes, 0);
+  const bar = node('div', 'lang-bar');
+  bar.setAttribute('aria-hidden', 'true');
+  const list = node('ul', 'lang-legend');
+  languages.linguagens.forEach((item, index) => {
+    const share = item.bytes / total * 100;
+    const name = item.nome === 'Outras' ? text.langOther : item.nome;
+    const label = `${name}: ${percent(share)}%${item.detalhe ? ` (${item.detalhe})` : ''}`;
+    const segment = node('span', 'lang-segment');
+    segment.style.flexGrow = share.toFixed(2);
+    segment.style.setProperty('--series', `var(--lang-${index + 1})`);
+    segment.title = label;
+    bar.append(segment);
+    const row = node('li', 'lang-row');
+    row.style.setProperty('--series', `var(--lang-${index + 1})`);
+    row.append(node('i', 'lang-swatch'), node('span', '', name), node('strong', '', `${percent(share)}%`));
+    list.append(row);
   });
-  const todayTag = node('span', 'tl-today-tag', text.today);
-  todayTag.style.left = `${at(now)}%`;
-  scale.append(todayTag);
-  axis.append(scale);
-  chart.append(axis);
-
-  groups.forEach(group => {
-    const section = node('div', 'tl-group');
-    section.append(node('h3', '', group.name));
-    const list = node('ol', 'tl-list');
-    group.items.forEach(item => {
-      const row = node('li', 'tl-row');
-      const label = node('div', 'tl-label');
-      label.append(node('strong', '', item.label), node('span', '', item.sub));
-      const track = node('div', 'tl-track');
-      track.setAttribute('aria-hidden', 'true');
-      const today = node('span', 'tl-today');
-      today.style.left = `${at(now)}%`;
-      track.append(today);
-      if (item.point) {
-        const mark = node('span', 'tl-dot');
-        mark.style.left = `${at(item.start + (item.end ? 15 * DAY : 0))}%`;
-        track.append(mark);
-      } else {
-        const solidEnd = Math.min(item.end, now);
-        if (solidEnd > item.start) {
-          const solid = node('span', 'tl-bar');
-          solid.style.left = `${at(item.start)}%`;
-          solid.style.width = `${at(solidEnd) - at(item.start)}%`;
-          track.append(solid);
-        }
-        const plannedStart = Math.max(item.start, now);
-        if (item.end > plannedStart) {
-          const planned = node('span', 'tl-bar is-planned');
-          planned.style.left = `${at(plannedStart)}%`;
-          planned.style.width = `${at(item.end) - at(plannedStart)}%`;
-          track.append(planned);
-        }
-      }
-      row.append(label, track);
-      list.append(row);
-    });
-    section.append(list);
-    chart.append(section);
-  });
-
-  const legend = node('p', 'tl-legend');
-  const solid = node('span', 'tl-key');
-  solid.append(node('i', 'tl-swatch'), text.tlSolid);
-  const planned = node('span', 'tl-key');
-  planned.append(node('i', 'tl-swatch is-planned'), text.tlPlanned);
-  legend.append(solid, planned);
-  const nodes = [chart, legend];
-  if (experiences.experiencias.some(item => !item.inicio)) {
-    nodes.push(node('p', 'caption', text.timelineNote));
-  }
   const card = node('div', 'chart-card');
-  card.setAttribute('role', 'group');
-  card.setAttribute('aria-label', text.timelineCaption);
-  card.append(...nodes);
+  card.append(bar, list);
   target.replaceChildren(card);
   target.setAttribute('aria-busy', 'false');
+  const note = document.querySelector('#language-note');
+  const date = new Intl.DateTimeFormat(locale(), { dateStyle: 'medium', timeZone: 'UTC' })
+    .format(new Date(`${languages.atualizadoEm}T12:00:00Z`));
+  note.textContent = text.langNote.replace('{n}', languages.repositorios).replace('{date}', date);
 }
+
 function renderLanguage() {
   const text = profile[language];
   document.documentElement.lang = language === 'pt' ? 'pt-BR' : 'en';
@@ -408,7 +340,7 @@ function renderLanguage() {
   prepareTagline();
   renderProjects();
   renderExperiences();
-  renderTimeline();
+  renderLanguages();
   document.querySelectorAll('.field-error:not([hidden])').forEach(error => {
     error.textContent = text[error.dataset.error];
   });
@@ -571,7 +503,10 @@ async function init() {
   initForm();
   initCopy();
   // Gráficos usam os projetos; se falhar, a página segue sem eles.
-  if (page === 'about' || page === 'experience') projects = await loadJSON('projetos.json').catch(() => []);
+  if (page === 'about') {
+    projects = await loadJSON('projetos.json').catch(() => []);
+    languages = await loadJSON('linguagens.json').catch(() => undefined);
+  }
   renderLanguage();
   observeReveals();
   if (page === 'projects') {
@@ -587,7 +522,6 @@ async function init() {
   if (page === 'experience') {
     experiences = await loadJSON('experiencias.json');
     renderExperiences();
-    renderTimeline();
   }
 }
 init().catch(showError);

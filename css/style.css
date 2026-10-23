@@ -2,17 +2,17 @@
    fontes na escala do Tailwind (mínimo 14px), espaçamentos e raios de listas fechadas. */
 
 @font-face {
-  font-family: 'Bricolage Grotesque';
-  src: url('../assets/fonts/BricolageGrotesque-Variable.woff2') format('woff2');
-  font-weight: 200 800;
+  font-family: 'Gabarito';
+  src: url('../assets/fonts/Gabarito-Variable.woff2') format('woff2');
+  font-weight: 400 900;
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
-  font-family: 'Instrument Sans';
-  src: url('../assets/fonts/InstrumentSans-Variable.woff2') format('woff2');
-  font-weight: 400 700;
+  font-family: 'Figtree';
+  src: url('../assets/fonts/Figtree-Variable.woff2') format('woff2');
+  font-weight: 300 900;
   font-style: normal;
   font-display: swap;
 }
@@ -35,10 +35,17 @@
   --sand: #d9b38c;
   --line: #d6dcd2;
   --pale: #e4eae1;
+  /* Série categórica do gráfico de linguagens: passou na validação de cor (daltonismo e distância). */
+  --lang-1: #12907a;
+  --lang-2: #e0803a;
+  --lang-3: #4a78c2;
+  --lang-4: #c4547f;
+  --lang-5: #b8941f;
+  --lang-6: #8a8f8c;
   --glass: rgb(255 253 248 / 0.8);
 
-  --display: 'Bricolage Grotesque', 'Instrument Sans', system-ui, sans-serif;
-  --sans: 'Instrument Sans', system-ui, sans-serif;
+  --display: 'Gabarito', 'Figtree', system-ui, sans-serif;
+  --sans: 'Figtree', system-ui, sans-serif;
   --mono: 'JetBrains Mono', ui-monospace, monospace;
 
   /* Espaçamento: somente estes valores. */
@@ -142,7 +149,11 @@ svg.icon {
   width: 20px;
   height: 20px;
   flex-shrink: 0;
-  fill: currentColor;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2.25;
+  stroke-linecap: round;
+  stroke-linejoin: round;
 }
 
 svg.sprite {
@@ -1136,6 +1147,89 @@ h3 {
 
 /* ---------- Gráficos ---------- */
 
+.chip-icon {
+  display: inline-grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  border-radius: var(--r-xl);
+  background: var(--pale);
+  color: var(--teal);
+  flex-shrink: 0;
+}
+
+.section-small-title {
+  display: flex;
+  align-items: center;
+  gap: var(--s-100);
+}
+
+.section-gap {
+  margin-top: var(--s-400);
+}
+
+.proof li {
+  align-items: flex-start;
+}
+
+.experience-meta strong, .project-date {
+  display: flex;
+  align-items: center;
+  gap: var(--s-75);
+}
+
+.lang-bar {
+  display: flex;
+  gap: 2px;
+  height: 24px;
+  margin-bottom: var(--s-200);
+}
+
+.lang-segment {
+  flex-basis: 0;
+  min-width: 4px;
+  background: var(--series);
+}
+
+.lang-segment:first-child {
+  border-radius: var(--r) 0 0 var(--r);
+}
+
+.lang-segment:last-child {
+  border-radius: 0 var(--r) var(--r) 0;
+}
+
+.lang-legend {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--s-75) var(--s-300);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-size: 14px;
+  line-height: 20px;
+}
+
+.lang-row {
+  display: flex;
+  align-items: center;
+  gap: var(--s-75);
+}
+
+.lang-row strong {
+  margin-left: auto;
+  color: var(--muted);
+  font: 500 14px/20px var(--mono);
+}
+
+.lang-swatch {
+  width: 12px;
+  height: 12px;
+  border-radius: var(--r-sm);
+  background: var(--series);
+  flex-shrink: 0;
+}
+
 .chart-card {
   padding: var(--s-200) var(--s-300);
   border: 1px solid var(--line);
@@ -1204,150 +1298,6 @@ h3 {
   color: var(--muted);
   font-family: var(--mono);
   white-space: nowrap;
-}
-
-.timeline-section {
-  padding-bottom: var(--s-600);
-}
-
-.timeline-section > h2 {
-  font-size: 30px;
-  line-height: 36px;
-}
-
-.tl-axis, .tl-row {
-  display: grid;
-  grid-template-columns: 240px minmax(0, 1fr);
-  gap: var(--s-200);
-  align-items: center;
-}
-
-.tl-scale {
-  position: relative;
-  height: 48px;
-  border-bottom: 1px solid var(--line);
-}
-
-.tl-year, .tl-today-tag {
-  position: absolute;
-  bottom: var(--s-75);
-  color: var(--muted);
-  font: 500 14px/20px var(--mono);
-}
-
-.tl-year {
-  padding-left: var(--s-75);
-  border-left: 1px solid var(--line);
-}
-
-.tl-today-tag {
-  top: 0;
-  bottom: auto;
-  transform: translateX(-50%);
-  color: var(--teal);
-  font-weight: 700;
-}
-
-.tl-group {
-  padding-top: var(--s-200);
-}
-
-.tl-group h3 {
-  margin: 0 0 var(--s-75);
-  color: var(--muted);
-  font: 600 14px/20px var(--sans);
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-}
-
-.tl-list {
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-
-.tl-row {
-  padding: var(--s-75) 0;
-  border-radius: var(--r-lg);
-  transition: background var(--dur-ui) var(--ease);
-}
-
-.tl-row:hover {
-  background: var(--pale);
-}
-
-.tl-label {
-  display: flex;
-  flex-direction: column;
-  padding-left: var(--s-75);
-  font-size: 14px;
-  line-height: 20px;
-}
-
-.tl-label span {
-  color: var(--muted);
-}
-
-.tl-track {
-  position: relative;
-  height: 24px;
-  background: linear-gradient(to right, var(--line) 1px, transparent 1px) 0 0 / 25% 100%;
-}
-
-.tl-today {
-  position: absolute;
-  top: -4px;
-  bottom: -4px;
-  border-left: 1px dashed var(--teal);
-}
-
-.tl-bar, .tl-dot {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-}
-
-.tl-bar {
-  height: 12px;
-  min-width: 8px;
-  border-radius: var(--r);
-  background: var(--teal);
-}
-
-.tl-bar.is-planned, .tl-swatch.is-planned {
-  background: repeating-linear-gradient(45deg, var(--teal) 0 2px, var(--surface) 2px 6px);
-  box-shadow: inset 0 0 0 1px var(--teal);
-}
-
-.tl-dot {
-  width: 12px;
-  height: 12px;
-  margin-left: -6px;
-  border-radius: var(--r-full);
-  background: var(--teal);
-  box-shadow: 0 0 0 2px var(--surface);
-}
-
-.tl-legend {
-  display: flex;
-  gap: var(--s-300);
-  margin: var(--s-200) 0 var(--s-75);
-  color: var(--muted);
-  font-size: 14px;
-  line-height: 20px;
-}
-
-.tl-key {
-  display: inline-flex;
-  align-items: center;
-  gap: var(--s-75);
-}
-
-.tl-swatch {
-  width: 16px;
-  height: 12px;
-  border-radius: var(--r);
-  background: var(--teal);
 }
 
 .courses-section {
@@ -1621,9 +1571,9 @@ a.social-link:hover .arrow {
 .cta-inner {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   gap: var(--s-400);
-  padding: var(--s-500);
+  padding: var(--s-400);
   border-radius: var(--r-3xl);
   background: var(--teal);
   color: var(--surface);
@@ -1822,8 +1772,6 @@ a.social-link:hover .arrow {
   .matrix thead td { width: 28%; }
   .matrix tbody th { white-space: normal; }
   .matrix .matrix-count, .matrix thead th:last-child { display: none; }
-  .tl-axis, .tl-row { grid-template-columns: 1fr; gap: var(--s-75); }
-  .tl-axis > :first-child { display: none; }
   .chart-card { padding: var(--s-200); }
   .contact-layout { grid-template-columns: 1fr; padding-top: var(--s-500); padding-bottom: var(--s-600); }
 
