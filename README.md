@@ -13,6 +13,7 @@ A proposta é apresentar meus projetos, minha formação e experiências de form
 - Capturas conferidas visualmente no desktop e no celular; sem suíte de testes automatizados, conforme o escopo combinado.
 - Formulário **ativado no FormSubmit**, com envio realizado pelo site publicado e recebimento da mensagem confirmado pelo destinatário.
 - Hospedagem: **GitHub Pages**, em <https://christiano-gonara.github.io/portfolio/>.
+- Interface redesenhada com base na skill [landing-page-design](https://github.com/elayadesign/ai-design-skills), adaptada a um portfólio: uma só fonte, escala tipográfica fixa, espaçamentos e raios padronizados, movimento com curva própria, estados completos e páginas de apoio (404 e privacidade).
 - Wireframes desktop e celular disponíveis em SVG. **Nenhum documento Figma foi incluído nesta versão; o enunciado da Sprint 01 solicita essa etapa.**
 
 ## Índice
@@ -44,12 +45,18 @@ O conteúdo pode ser atualizado sem alterar o layout: basta editar os arquivos d
 
 ### Decisões de interface
 
-- **Legibilidade:** nenhum texto da interface abaixo de 12px; corpo principal entre 14px e 17px.
-- **Affordance:** botões com aparência de botão, links sublinhados e ação explícita para ampliar capturas de tela.
-- **Gestalt:** informações relacionadas ficam próximas; projetos e experiências usam agrupamentos consistentes, alinhamento e separadores.
-- **Ícones:** SVGs acompanhados de rótulos nas ações importantes. Ícones decorativos são ignorados por leitores de tela.
-- **Interação:** filtros, idioma e página atual têm estados visíveis; controles principais possuem alvos de pelo menos 44px de altura.
-- **Acessibilidade:** foco visível, campos com rótulos, link para pular ao conteúdo e respeito à preferência por movimento reduzido.
+- **Legibilidade:** nenhum texto da interface abaixo de **14px** (medido no navegador nas seis páginas principais); corpo principal entre 16px e 18px. Todos os tamanhos seguem a escala do Tailwind (14, 16, 18, 20, 24, 30, 36, 48, 60 e 72px).
+- **Tipografia:** uma única família, **Geist**, hospedada no próprio repositório. Geist Mono aparece só em datas e números. Sem itálico e sem pesos acima de bold.
+- **Espaçamento e cantos:** espaçamentos de uma lista fechada (2, 4, 8, 12, 16, 24, 32, 40, 48, 64, 80 e 96px) e raios do Tailwind. Elementos dentro de cards usam o raio do card menos o espaço entre eles.
+- **Cor:** bege e azul petróleo, sem gradientes de fundo. O único gradiente é o do título principal da página inicial, aplicado só ao texto.
+- **Affordance:** botões com aparência de botão, links sublinhados, ação explícita para ampliar capturas e botão principal único acima da dobra.
+- **Gestalt:** informações relacionadas ficam próximas; projetos, experiências e formação usam cards com o mesmo formato, alinhamento e separadores.
+- **Navegação:** pílula de vidro flutuante; no celular, o botão de menu vira um X e abre uma tela cheia com os links entrando em sequência. A página atual fica marcada.
+- **Movimento:** transições com a curva `cubic-bezier(0.32, 0.72, 0, 1)`. Os blocos sobem e desfocam ao entrar na tela, usando `IntersectionObserver`, sem listener de scroll. A frase de destaque acende palavra por palavra ao rolar.
+- **Ícones:** [Phosphor](https://phosphoricons.com/) em SVG local, acompanhados de rótulos nas ações importantes. Ícones decorativos são ignorados por leitores de tela.
+- **Estados:** hover, clique, foco visível, carregamento com esqueletos no formato do conteúdo, estado vazio nos filtros e erro de carregamento com botão para tentar de novo. Nenhum `alert()`.
+- **Formulário:** validação no navegador com mensagens específicas por campo, botão desabilitado durante o envio e retorno ao estado normal ao voltar pelo histórico.
+- **Acessibilidade:** link para pular ao conteúdo, alvos de pelo menos 44px, rótulos nos campos e respeito à preferência por movimento reduzido, que desativa animações e mostra tudo de imediato.
 
 ## Funcionalidades principais
 
@@ -58,7 +65,9 @@ O conteúdo pode ser atualizado sem alterar o layout: basta editar os arquivos d
 | Sobre mim | Apresentação, formação, tecnologias e destaque do Padrinho Track. |
 | Projetos | Timeline gerada a partir do JSON, filtros Python/Java, descrições, tecnologias, capturas e links dos repositórios. |
 | Experiências | Mentoria acadêmica, contribuição open source e formação complementar. |
-| Contato | Ícones clicáveis de e-mail, WhatsApp, LinkedIn e GitHub, mais formulário. |
+| Contato | Links de e-mail, WhatsApp, LinkedIn e GitHub, mais formulário com validação. |
+| Privacidade e uso | O que o site guarda, como o formulário trata os dados, hospedagem e uso do conteúdo. |
+| Página 404 | Página própria para endereços inexistentes, com caminho de volta ao início. |
 
 A troca PT/EN traduz a interface e os dados. O idioma é mantido nos links internos e, quando permitido pelo navegador, no armazenamento local.
 
@@ -88,7 +97,8 @@ O aviso abaixo do botão informa que os dados são processados por um serviço e
 | Apresentação | CSS3 | Layout responsivo, tipografia, estados e identidade visual. |
 | Comportamento | JavaScript com módulos nativos | Leitura dos JSONs, idioma, filtros e menu. |
 | Conteúdo | JSON | Perfil, traduções, projetos e experiências. |
-| Ícones | SVG local | Ícones e marca sem dependências externas. |
+| Fontes | Geist e Geist Mono (licença OFL), arquivos locais | Tipografia sem requisições a serviços de fontes. |
+| Ícones | Phosphor (licença MIT), SVG local | Ícones sem dependências externas. |
 | Envio de e-mail | FormSubmit | Serviço externo para processar o formulário. |
 | Hospedagem | GitHub Pages | Publicação dos arquivos estáticos. |
 
@@ -151,11 +161,13 @@ Não há etapa de build própria. `.nojekyll` informa que o conteúdo deve ser s
 ```text
 portfolio/
 ├── index.html                 # Ponto de entrada da hospedagem
+├── 404.html                   # Página para endereços inexistentes
 ├── html/
 │   ├── sobre.html
 │   ├── projetos.html
 │   ├── experiencias.html
 │   ├── contato.html
+│   ├── privacidade.html
 │   └── obrigado.html          # Retorno do serviço de formulário
 ├── css/
 │   └── style.css
@@ -168,6 +180,8 @@ portfolio/
 │   └── experiencias.json
 ├── assets/
 │   ├── favicon.svg
+│   ├── og-image.png           # Imagem de compartilhamento
+│   ├── fonts/                 # Geist e Geist Mono
 │   └── projects/              # Capturas reais dos projetos
 ├── docs/
 │   ├── capturas/              # Imagens da interface implementada
@@ -187,7 +201,7 @@ portfolio/
 
 [Captura da página Contato no celular](docs/capturas/contato-mobile.png).
 
-Os projetos apresentados são Padrinho Track, CNPJ Alimentação e Candidatos TSE. As imagens do Padrinho Track e CNPJ Alimentação foram obtidas dos respectivos repositórios públicos; a captura do Candidatos TSE foi feita com a aplicação executada localmente. O dashboard do Padrinho Track contém registros demonstrativos, não dados dos participantes do programa. Os projetos de dados refletem os arquivos utilizados, não atualizações em tempo real.
+Os projetos apresentados são Padrinho Track, CNPJ Alimentação e Candidatos TSE. A imagem do Padrinho Track foi obtida do repositório público; a do CNPJ Alimentação foi capturada do dashboard em seu design atual; a captura do Candidatos TSE foi feita com a aplicação executada localmente. O dashboard do Padrinho Track contém registros demonstrativos, não dados dos participantes do programa. Os projetos de dados refletem os arquivos utilizados, não atualizações em tempo real.
 
 ### Wireframes
 
@@ -202,14 +216,16 @@ Arraste os SVGs para o canvas de um arquivo Figma. Confira se os elementos foram
 
 ## Conferência visual
 
-Foram abertas as quatro páginas no navegador e registradas capturas em desktop e celular. Após o ajuste tipográfico, a inspeção do navegador mostrou fonte mínima de **12px** e largura da página igual ao viewport nos tamanhos conferidos de **1440px e 390px**.
+Foram abertas as páginas no navegador e registradas capturas em desktop e celular, incluindo o menu em tela cheia, o formulário com erros de validação, a troca para inglês e a página 404. Uma medição no navegador mostrou fonte mínima de **14px** nas seis páginas principais e largura da página igual ao viewport em **1440px** e **500px**. A largura de 390px não pôde ser medida desta forma, mas o layout foi conferido visualmente na captura de celular.
 
-Não há suíte de testes automatizados. O formulário foi conferido separadamente por envio real: ativação e CAPTCHA concluídos pelo responsável, redirecionamento à página de agradecimento e recebimento confirmado pelo destinatário.
+As animações de entrada foram verificadas em execução real e também com a preferência por movimento reduzido ativada. Não há suíte de testes automatizados. O formulário foi conferido separadamente por envio real, antes desta mudança visual: ativação e CAPTCHA concluídos pelo responsável, redirecionamento à página de agradecimento e recebimento confirmado pelo destinatário. Depois do redesenho, a validação foi testada no navegador, mas **não foi feito um novo envio real**.
 
 ## Documentações utilizadas
 
 - [Enunciado e materiais da disciplina](https://github.com/joaopauloaramuni/desenvolvimento-e-integracao-de-aplicacoes-web)
 - [Modelo de README indicado no laboratório](https://github.com/joaopauloaramuni/desenvolvimento-e-integracao-de-aplicacoes-web/blob/main/TEMPLATES/template_README.md), adaptado às camadas efetivamente utilizadas.
+- [Skill landing-page-design](https://github.com/elayadesign/ai-design-skills/blob/main/skills/landing-page-design/SKILL.md), usada como guia do sistema visual
+- [Geist](https://github.com/vercel/geist-font) e [Phosphor Icons](https://github.com/phosphor-icons/core)
 - [GitHub Pages](https://docs.github.com/en/pages/getting-started-with-github-pages/creating-a-github-pages-site)
 - [FormSubmit](https://formsubmit.co/documentation)
 - [Padrinho Track](https://github.com/christiano-gonara/padrinho-track)

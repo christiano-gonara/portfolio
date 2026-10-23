@@ -22,7 +22,7 @@
     },
     "en": {
       "tipo": "Academic coordination · Web application",
-      "descricao": "A system for organizing PUC Minas' student mentoring program. It brings together mentor and first-year student records, meetings, attendance, reports and certificates.",
+      "descricao": "A system for organizing PUC Minas' student mentoring program. It brings together mentor and new student records, meetings, attendance, reports and certificates.",
       "contribuicao": "I built the application around the coordination team's needs, integrating Google Sheets and the program's monitoring rules.",
       "legenda": "Project dashboard with demonstration data.",
       "alt": "Padrinho Track dashboard showing a program summary and demonstration mentor records"
@@ -48,15 +48,15 @@
       "tipo": "Análise de dados · Dashboard executivo",
       "descricao": "Análise nacional do setor de bares, restaurantes e alimentação fora do lar com dados abertos de CNPJ da Receita Federal. O dashboard apresenta indicadores, evolução das aberturas, porte e distribuição por estado.",
       "contribuicao": "Preparei a ingestão e o tratamento dos dados com DuckDB e Parquet, documentei a análise em notebook e organizei os resultados em um dashboard web. Os resultados representam a competência da base utilizada, não dados em tempo real.",
-      "legenda": "Panorama nacional no dashboard publicado do projeto.",
-      "alt": "Dashboard CNPJ Alimentação com panorama nacional e indicadores agregados do setor"
+      "legenda": "Perfil do setor no dashboard publicado do projeto.",
+      "alt": "Dashboard CNPJ Alimentação com o perfil do setor: empresas ativas, porte, estado líder e negócio mais comum"
     },
     "en": {
       "tipo": "Data analysis · Executive dashboard",
       "descricao": "A nationwide analysis of bars, restaurants and food services using Brazil’s public federal company registry data. The dashboard presents sector indicators, business openings, company size and distribution by state.",
-      "contribuicao": "I built the data ingestion and processing pipeline with DuckDB and Parquet, documented the analysis in a notebook and presented the results in a web dashboard. Figures reflect the source dataset period, not real-time data.",
-      "legenda": "National overview from the published project dashboard.",
-      "alt": "CNPJ Alimentação dashboard showing national food service industry indicators"
+      "contribuicao": "I built the data ingestion and processing pipeline with DuckDB and Parquet, documented the analysis in a notebook and presented the results in a web dashboard. Figures reflect the source dataset period, not live data.",
+      "legenda": "Sector profile in the project’s published dashboard.",
+      "alt": "CNPJ Alimentação dashboard showing the sector profile: active companies, company size, leading state and most common business"
     }
   },
   {
@@ -83,7 +83,7 @@
     "en": {
       "tipo": "Election data · Academic web application",
       "descricao": "A web application for browsing electoral candidacies in Minas Gerais from a local election dataset. Users can search by name, ballot name or number and combine office and party filters.",
-      "contribuicao": "I implemented CSV loading, in-memory filtering and a web interface for viewing results. This is an informational academic project; the source file is not updated in real time.",
+      "contribuicao": "I implemented CSV loading, filtering in memory and a web interface for viewing results. This is an informational academic project; the source file is not updated in real time.",
       "legenda": "Application interface running locally, with search and filters.",
       "alt": "Candidatos TSE interface with name or number search and office and party filters"
     }
