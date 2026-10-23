@@ -6,12 +6,12 @@
       "fim": null,
       "pt": {
         "cargo": "Coordenador de Mentoria Acadêmica",
-        "descricao": "Coordeno aproximadamente 50 padrinhos voluntários no acompanhamento de 127 calouros. Organizo o cronograma do programa, conduzo reuniões e acompanho as atividades da equipe.",
-        "detalhe": "Desenvolvi o Padrinho Track para automatizar processos administrativos e acadêmicos do programa."
+        "descricao": "Coordeno cerca de 50 padrinhos voluntários que acompanham 127 calouros. Organizo o cronograma, conduzo reuniões e acompanho a equipe.",
+        "detalhe": "Criei o Padrinho Track para automatizar processos administrativos e acadêmicos do programa."
       },
       "en": {
         "cargo": "Academic Mentoring Coordinator",
-        "descricao": "I coordinate around 50 volunteer mentors supporting 127 new students. I organize the program schedule, lead meetings and follow up on the team's activities.",
+        "descricao": "I coordinate about 50 volunteer mentors who support 127 new students. I organize the schedule, lead meetings and follow up with the team.",
         "detalhe": "I built Padrinho Track to automate the program's administrative and academic processes."
       }
     },
@@ -21,13 +21,13 @@
       "fim": null,
       "pt": {
         "cargo": "Contribuição em software livre",
-        "descricao": "Implementação de um provedor de uso do Command Code no Metria.",
-        "detalhe": "Uma oportunidade de trabalhar com uma base de código existente e contribuir com uma integração específica."
+        "descricao": "Implementei um provedor de uso do Command Code no Metria.",
+        "detalhe": "Trabalhei em uma base de código existente, com uma integração específica."
       },
       "en": {
         "cargo": "Open source contribution",
-        "descricao": "Implemented a Command Code usage provider for Metria.",
-        "detalhe": "An opportunity to work within an existing codebase and contribute a focused integration."
+        "descricao": "I implemented a Command Code usage provider for Metria.",
+        "detalhe": "I worked in an existing codebase, on one specific integration."
       }
     }
   ],

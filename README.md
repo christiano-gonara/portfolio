@@ -46,7 +46,7 @@ O conteúdo pode ser atualizado sem alterar o layout: basta editar os arquivos d
 ### Decisões de interface
 
 - **Legibilidade:** nenhum texto da interface abaixo de **14px** (medido no navegador nas seis páginas principais); corpo principal entre 16px e 18px. Todos os tamanhos seguem a escala do Tailwind (14, 16, 18, 20, 24, 30, 36, 48, 60 e 72px).
-- **Tipografia:** uma única família, **Geist**, hospedada no próprio repositório. Geist Mono aparece só em datas e números. Sem itálico e sem pesos acima de bold.
+- **Tipografia:** **Bricolage Grotesque** nos títulos, **Instrument Sans** no texto e **JetBrains Mono** em datas, hospedadas no próprio repositório. Sem itálico e sem pesos acima de bold.
 - **Espaçamento e cantos:** espaçamentos de uma lista fechada (2, 4, 8, 12, 16, 24, 32, 40, 48, 64, 80 e 96px) e raios do Tailwind. Elementos dentro de cards usam o raio do card menos o espaço entre eles.
 - **Cor:** bege e azul petróleo, sem gradientes de fundo. O único gradiente é o do título principal da página inicial, aplicado só ao texto.
 - **Affordance:** botões com aparência de botão, links sublinhados, ação explícita para ampliar capturas e botão principal único acima da dobra.
@@ -65,7 +65,7 @@ O conteúdo pode ser atualizado sem alterar o layout: basta editar os arquivos d
 | Sobre mim | Apresentação, formação, tecnologias e destaque do Padrinho Track. |
 | Projetos | Timeline gerada a partir do JSON, filtros Python/Java, descrições, tecnologias, capturas e links dos repositórios. |
 | Experiências | Mentoria acadêmica, contribuição open source e formação complementar. |
-| Contato | Links de e-mail, WhatsApp, LinkedIn e GitHub, mais formulário com validação. |
+| Contato | Email com botão de copiar e atalhos para Gmail, Outlook e app de email; WhatsApp, LinkedIn e GitHub com o endereço visível; formulário com validação. |
 | Privacidade e uso | O que o site guarda, como o formulário trata os dados, hospedagem e uso do conteúdo. |
 | Página 404 | Página própria para endereços inexistentes, com caminho de volta ao início. |
 
@@ -74,6 +74,8 @@ A troca PT/EN traduz a interface e os dados. O idioma é mantido nos links inter
 A timeline usa a data de primeira publicação de cada repositório para ordenar os projetos do mais antigo ao mais recente. Essa data não é apresentada como início do desenvolvimento.
 
 ### Formulário de contato
+
+O `mailto:` abre o app padrão do sistema, que no Mac costuma ser o Mail e quase ninguém usa. Por isso o email aparece escrito, com botão de copiar (funciona em qualquer sistema) e atalhos para Gmail e Outlook na web. O `mailto:` fica como último atalho.
 
 O formulário envia `name`, `email` e `message` por `POST` ao FormSubmit, que faz a verificação antispam e encaminha a mensagem ao e-mail do portfólio. Não existe simulação de envio por JavaScript.
 
@@ -97,7 +99,7 @@ O aviso abaixo do botão informa que os dados são processados por um serviço e
 | Apresentação | CSS3 | Layout responsivo, tipografia, estados e identidade visual. |
 | Comportamento | JavaScript com módulos nativos | Leitura dos JSONs, idioma, filtros e menu. |
 | Conteúdo | JSON | Perfil, traduções, projetos e experiências. |
-| Fontes | Geist e Geist Mono (licença OFL), arquivos locais | Tipografia sem requisições a serviços de fontes. |
+| Fontes | Bricolage Grotesque, Instrument Sans e JetBrains Mono (licença OFL), arquivos locais | Tipografia sem requisições a serviços de fontes. |
 | Ícones | Phosphor (licença MIT), SVG local | Ícones sem dependências externas. |
 | Envio de e-mail | FormSubmit | Serviço externo para processar o formulário. |
 | Hospedagem | GitHub Pages | Publicação dos arquivos estáticos. |
@@ -181,7 +183,7 @@ portfolio/
 ├── assets/
 │   ├── favicon.svg
 │   ├── og-image.png           # Imagem de compartilhamento
-│   ├── fonts/                 # Geist e Geist Mono
+│   ├── fonts/                 # Bricolage Grotesque, Instrument Sans e JetBrains Mono
 │   └── projects/              # Capturas reais dos projetos
 ├── docs/
 │   ├── capturas/              # Imagens da interface implementada
@@ -225,7 +227,7 @@ As animações de entrada foram verificadas em execução real e também com a p
 - [Enunciado e materiais da disciplina](https://github.com/joaopauloaramuni/desenvolvimento-e-integracao-de-aplicacoes-web)
 - [Modelo de README indicado no laboratório](https://github.com/joaopauloaramuni/desenvolvimento-e-integracao-de-aplicacoes-web/blob/main/TEMPLATES/template_README.md), adaptado às camadas efetivamente utilizadas.
 - [Skill landing-page-design](https://github.com/elayadesign/ai-design-skills/blob/main/skills/landing-page-design/SKILL.md), usada como guia do sistema visual
-- [Geist](https://github.com/vercel/geist-font) e [Phosphor Icons](https://github.com/phosphor-icons/core)
+- [Bricolage Grotesque](https://github.com/ateliertriay/bricolage), [Instrument Sans](https://github.com/Instrument/instrument-sans), [JetBrains Mono](https://github.com/JetBrains/JetBrainsMono) e [Phosphor Icons](https://github.com/phosphor-icons/core)
 - [GitHub Pages](https://docs.github.com/en/pages/getting-started-with-github-pages/creating-a-github-pages-site)
 - [FormSubmit](https://formsubmit.co/documentation)
 - [Padrinho Track](https://github.com/christiano-gonara/padrinho-track)

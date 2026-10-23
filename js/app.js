@@ -224,6 +224,9 @@ function renderLanguage() {
     const translated = text[element.dataset.i18n];
     if (translated !== undefined) element.textContent = translated;
   });
+  document.querySelectorAll('[data-i18n-label]').forEach(element => {
+    element.setAttribute('aria-label', text[element.dataset.i18nLabel]);
+  });
   document.querySelectorAll('[data-placeholder]').forEach(element => {
     element.placeholder = text[element.dataset.placeholder];
   });
@@ -355,6 +358,41 @@ function showError(error) {
   box.replaceChildren(icon('warning'), node('p', '', message), retry);
   box.hidden = false;
 }
+/* ---------- Copiar email ---------- */
+
+// Cada sistema abre um app de email diferente, então copiar o endereço é o caminho universal.
+async function copyText(value) {
+  try {
+    await navigator.clipboard.writeText(value);
+    return true;
+  } catch {
+    const field = node('textarea');
+    field.value = value;
+    field.style.cssText = 'position:fixed;opacity:0';
+    document.body.append(field);
+    field.select();
+    const ok = document.execCommand('copy');
+    field.remove();
+    return ok;
+  }
+}
+function initCopy() {
+  document.querySelectorAll('[data-copy-email]').forEach(button => {
+    const label = button.querySelector('span');
+    label.setAttribute('aria-live', 'polite');
+    let timer;
+    button.addEventListener('click', async () => {
+      if (!(await copyText(button.dataset.copyEmail))) return;
+      button.dataset.copied = '';
+      label.textContent = profile[language].copied;
+      clearTimeout(timer);
+      timer = setTimeout(() => {
+        delete button.dataset.copied;
+        label.textContent = profile[language].copyEmail;
+      }, 2000);
+    });
+  });
+}
 async function init() {
   if (menuButton && overlay) initMenu();
   profile = await loadJSON('perfil.json');
@@ -369,6 +407,7 @@ async function init() {
     });
   });
   initForm();
+  initCopy();
   renderLanguage();
   observeReveals();
   if (page === 'projects') {

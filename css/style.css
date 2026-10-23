@@ -2,17 +2,25 @@
    fontes na escala do Tailwind (mínimo 14px), espaçamentos e raios de listas fechadas. */
 
 @font-face {
-  font-family: 'Geist';
-  src: url('../assets/fonts/Geist-Variable.woff2') format('woff2');
-  font-weight: 100 900;
+  font-family: 'Bricolage Grotesque';
+  src: url('../assets/fonts/BricolageGrotesque-Variable.woff2') format('woff2');
+  font-weight: 200 800;
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
-  font-family: 'Geist Mono';
-  src: url('../assets/fonts/GeistMono-Variable.woff2') format('woff2');
-  font-weight: 100 900;
+  font-family: 'Instrument Sans';
+  src: url('../assets/fonts/InstrumentSans-Variable.woff2') format('woff2');
+  font-weight: 400 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'JetBrains Mono';
+  src: url('../assets/fonts/JetBrainsMono-Variable.woff2') format('woff2');
+  font-weight: 100 800;
   font-style: normal;
   font-display: swap;
 }
@@ -29,8 +37,9 @@
   --pale: #e4eae1;
   --glass: rgb(255 253 248 / 0.8);
 
-  --sans: 'Geist', system-ui, sans-serif;
-  --mono: 'Geist Mono', ui-monospace, monospace;
+  --display: 'Bricolage Grotesque', 'Instrument Sans', system-ui, sans-serif;
+  --sans: 'Instrument Sans', system-ui, sans-serif;
+  --mono: 'JetBrains Mono', ui-monospace, monospace;
 
   /* Espaçamento: somente estes valores. */
   --s-25: 2px;
@@ -120,8 +129,9 @@ h1, h2, h3, p {
 }
 
 h1, h2, h3 {
+  font-family: var(--display);
   text-wrap: balance;
-  font-weight: 600;
+  font-weight: 700;
 }
 
 p, li {
@@ -221,6 +231,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
   border-radius: var(--r-full);
   background: var(--teal);
   color: var(--surface);
+  font-family: var(--display);
   font-size: 14px;
   line-height: 20px;
   font-weight: 700;
@@ -556,7 +567,7 @@ h3 {
 }
 
 .proof strong {
-  font: 600 36px/40px var(--mono);
+  font: 700 36px/40px var(--display);
   color: var(--teal);
 }
 
@@ -1178,19 +1189,17 @@ h3 {
   min-height: 64px;
   padding: var(--s-100) var(--s-200) var(--s-100) var(--s-100);
   border: 1px solid var(--line);
-  border-radius: var(--r-full);
+  border-radius: var(--r-3xl);
   background: var(--surface);
-  font-weight: 600;
   text-decoration: none;
   transition: border-color var(--dur-ui) var(--ease), transform var(--dur-ui) var(--ease);
 }
 
-.social-link:hover {
+a.social-link:hover {
   border-color: var(--teal);
-  color: var(--teal);
 }
 
-.social-link:active {
+a.social-link:active {
   transform: scale(0.98);
 }
 
@@ -1205,15 +1214,87 @@ h3 {
   flex-shrink: 0;
 }
 
+.social-text {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.social-name {
+  font-weight: 600;
+  line-height: 24px;
+}
+
+.social-path {
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 20px;
+  overflow-wrap: anywhere;
+}
+
+a.social-link:hover .social-name {
+  color: var(--teal);
+}
+
 .social-link .arrow {
   margin-left: auto;
+  color: var(--teal);
   opacity: 0.6;
   transition: transform var(--dur-ui) var(--ease), opacity var(--dur-ui) var(--ease);
 }
 
-.social-link:hover .arrow {
+a.social-link:hover .arrow {
   opacity: 1;
   transform: translate(2px, -2px);
+}
+
+.social-email {
+  flex-direction: column;
+  align-items: stretch;
+  gap: var(--s-100);
+}
+
+.email-head {
+  display: flex;
+  align-items: center;
+  gap: var(--s-200);
+}
+
+.email-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s-75);
+}
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--s-75);
+  min-height: 44px;
+  padding: var(--s-75) var(--s-200);
+  border: 1px solid var(--line);
+  border-radius: var(--r-full);
+  background: transparent;
+  color: var(--teal);
+  font: 600 14px/20px var(--sans);
+  text-decoration: none;
+  cursor: pointer;
+  transition: background var(--dur-ui) var(--ease), border-color var(--dur-ui) var(--ease), color var(--dur-ui) var(--ease), transform var(--dur-ui) var(--ease);
+}
+
+.chip:hover {
+  background: var(--pale);
+  border-color: var(--teal);
+}
+
+.chip:active {
+  transform: scale(0.98);
+}
+
+.chip[data-copied] {
+  background: var(--teal);
+  border-color: var(--teal);
+  color: var(--surface);
 }
 
 .contact-form {
@@ -1300,19 +1381,6 @@ h3 {
   color: var(--muted);
   font-size: 14px;
   line-height: 20px;
-}
-
-.form-direct {
-  margin: var(--s-300) 0 0;
-  color: var(--muted);
-  font-size: 14px;
-  line-height: 20px;
-  text-align: center;
-}
-
-.form-direct a {
-  color: var(--teal);
-  font-weight: 600;
 }
 
 .honey {

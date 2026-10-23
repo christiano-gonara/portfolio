@@ -15,15 +15,15 @@
     "imagem": "assets/projects/padrinho-track.png",
     "pt": {
       "tipo": "Gestão acadêmica · Aplicação web",
-      "descricao": "Sistema para organizar o Programa de Apadrinhamento da PUC Minas. Centraliza o acompanhamento de padrinhos e calouros, reuniões, presenças, relatórios e emissão de certificados.",
-      "contribuicao": "Desenvolvi a aplicação a partir das necessidades da coordenação, com integração ao Google Sheets e regras de acompanhamento do programa.",
+      "descricao": "Sistema para organizar o Programa de Apadrinhamento da PUC Minas. Reúne padrinhos e calouros, reuniões, presenças, relatórios e certificados.",
+      "contribuicao": "Criei a aplicação a partir da necessidade da coordenação, com integração ao Google Sheets e as regras do programa.",
       "legenda": "Dashboard do projeto com dados demonstrativos.",
       "alt": "Dashboard do Padrinho Track com resumo do programa e lista demonstrativa de padrinhos"
     },
     "en": {
       "tipo": "Academic coordination · Web application",
-      "descricao": "A system for organizing PUC Minas' student mentoring program. It brings together mentor and new student records, meetings, attendance, reports and certificates.",
-      "contribuicao": "I built the application around the coordination team's needs, integrating Google Sheets and the program's monitoring rules.",
+      "descricao": "A system to organize PUC Minas' mentoring program. It brings together mentors and new students, meetings, attendance, reports and certificates.",
+      "contribuicao": "I built the application around the coordination team's needs, with Google Sheets integration and the program's rules.",
       "legenda": "Project dashboard with demonstration data.",
       "alt": "Padrinho Track dashboard showing a program summary and demonstration mentor records"
     }
@@ -47,15 +47,15 @@
     "imagem": "assets/projects/cnpj-alimentacao.png",
     "pt": {
       "tipo": "Análise de dados · Dashboard executivo",
-      "descricao": "Análise nacional do setor de bares, restaurantes e alimentação fora do lar com dados abertos de CNPJ da Receita Federal. O dashboard apresenta indicadores, evolução das aberturas, porte e distribuição por estado.",
-      "contribuicao": "Preparei a ingestão e o tratamento dos dados com DuckDB e Parquet, documentei a análise em notebook e organizei os resultados em um dashboard web. Os resultados representam a competência da base utilizada, não dados em tempo real.",
+      "descricao": "Análise do setor de bares, restaurantes e alimentação fora do lar com dados abertos de CNPJ da Receita Federal. O dashboard mostra indicadores, aberturas por ano, porte e estados.",
+      "contribuicao": "Preparei a ingestão e o tratamento dos dados com DuckDB e Parquet, documentei a análise em notebook e montei o dashboard web. Os números são da data da base usada, não em tempo real.",
       "legenda": "Perfil do setor no dashboard publicado do projeto.",
       "alt": "Dashboard CNPJ Alimentação com o perfil do setor: empresas ativas, porte, estado líder e negócio mais comum"
     },
     "en": {
       "tipo": "Data analysis · Executive dashboard",
-      "descricao": "A nationwide analysis of bars, restaurants and food services using Brazil’s public federal company registry data. The dashboard presents sector indicators, business openings, company size and distribution by state.",
-      "contribuicao": "I built the data ingestion and processing pipeline with DuckDB and Parquet, documented the analysis in a notebook and presented the results in a web dashboard. Figures reflect the source dataset period, not live data.",
+      "descricao": "An analysis of bars, restaurants and food services using Brazil's open federal company registry data. The dashboard shows indicators, openings per year, company size and states.",
+      "contribuicao": "I built the data ingestion and processing with DuckDB and Parquet, documented the analysis in a notebook and made the web dashboard. Figures are from the dataset's date, not live.",
       "legenda": "Sector profile in the project’s published dashboard.",
       "alt": "CNPJ Alimentação dashboard showing the sector profile: active companies, company size, leading state and most common business"
     }
@@ -76,15 +76,15 @@
     "imagem": "assets/projects/candidatos-tse.png",
     "pt": {
       "tipo": "Dados eleitorais · Aplicação web acadêmica",
-      "descricao": "Aplicação para consultar candidaturas de Minas Gerais a partir de um arquivo de dados eleitorais. Permite pesquisar por nome, nome de urna ou número e combinar filtros de cargo e partido.",
-      "contribuicao": "Desenvolvi a leitura do CSV, a filtragem em memória e a apresentação dos resultados em uma interface web. É um projeto acadêmico e informativo; os dados do arquivo não representam atualização em tempo real.",
+      "descricao": "Aplicação para consultar candidaturas de Minas Gerais a partir de um arquivo de dados eleitorais. Busca por nome, nome de urna ou número, com filtros de cargo e partido.",
+      "contribuicao": "Fiz a leitura do CSV, a filtragem em memória e a interface web. É um projeto acadêmico e informativo. Os dados não são atualizados em tempo real.",
       "legenda": "Interface da aplicação executada localmente, com busca e filtros.",
       "alt": "Interface do Candidatos TSE com busca por nome ou número e filtros por cargo e partido"
     },
     "en": {
       "tipo": "Election data · Academic web application",
-      "descricao": "A web application for browsing electoral candidacies in Minas Gerais from a local election dataset. Users can search by name, ballot name or number and combine office and party filters.",
-      "contribuicao": "I implemented CSV loading, filtering in memory and a web interface for viewing results. This is an informational academic project; the source file is not updated in real time.",
+      "descricao": "A web application to browse candidacies in Minas Gerais from an election dataset. Search by name, ballot name or number, with office and party filters.",
+      "contribuicao": "I implemented CSV loading, in memory filtering and the web interface. It's an academic, informational project. The data isn't updated in real time.",
       "legenda": "Application interface running locally, with search and filters.",
       "alt": "Candidatos TSE interface with name or number search and office and party filters"
     }
