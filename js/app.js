@@ -217,6 +217,171 @@ function renderExperiences() {
   });
   observeReveals(target);
 }
+/* ---------- Gráficos: matriz de tecnologias e linha do tempo ---------- */
+
+const dot = (on) => {
+  const mark = node('span', on ? 'dot' : 'dot is-off');
+  mark.setAttribute('aria-hidden', 'true');
+  return mark;
+};
+function renderStackMatrix() {
+  const target = document.querySelector('#profile-skills');
+  if (!target || !profile) return;
+  const text = profile[language];
+  target.setAttribute('aria-busy', 'false');
+  if (!projects.length) {
+    target.replaceChildren(renderTags(profile.tecnologias));
+    return;
+  }
+  const ordered = [...projects].sort((a, b) => a.publicadoEm.localeCompare(b.publicadoEm));
+  const used = (name) => ordered.filter(project => project.pilha.includes(name)).length;
+  const rows = [...profile.tecnologias].sort((a, b) => used(b) - used(a));
+  const table = node('table', 'matrix');
+  table.append(node('caption', 'sr-only', text.matrixCaption));
+  const head = node('tr');
+  head.append(node('td'));
+  ordered.forEach(project => {
+    const th = node('th');
+    th.scope = 'col';
+    const link = node('a', 'text-link');
+    link.setAttribute('aria-label', project.nome);
+    link.append(node('span', 'name-long', project.nome), node('span', 'name-short', project.nomeCurto));
+    link.href = `projetos.html#${project.id}`;
+    link.dataset.internal = '';
+    th.append(link);
+    head.append(th);
+  });
+  const total = node('th', 'sr-only', '#');
+  total.scope = 'col';
+  head.append(total);
+  const thead = node('thead');
+  thead.append(head);
+  table.append(thead);
+  const body = node('tbody');
+  rows.forEach(name => {
+    const row = node('tr');
+    const label = node('th', '', name);
+    label.scope = 'row';
+    row.append(label);
+    ordered.forEach(project => {
+      const on = project.pilha.includes(name);
+      const cell = node('td');
+      cell.append(dot(on), node('span', 'sr-only', on ? text.matrixUsed : text.matrixUnused));
+      row.append(cell);
+    });
+    row.append(node('td', 'matrix-count', `${used(name)} ${text.of} ${ordered.length}`));
+    body.append(row);
+  });
+  table.append(body);
+  const card = node('div', 'chart-card');
+  card.append(table);
+  target.replaceChildren(card);
+}
+
+const DAY = 86400000;
+function renderTimeline() {
+  const target = document.querySelector('#timeline');
+  if (!target || !profile || !experiences) return;
+  const text = profile[language];
+  const monthStart = (date) => Date.UTC(+date.slice(0, 4), +date.slice(5, 7) - 1, 1);
+  const monthEnd = (date) => Date.UTC(+date.slice(0, 4), +date.slice(5, 7), 1);
+  const t0 = Date.UTC(2025, 0, 1);
+  const t1 = Date.UTC(2029, 0, 1);
+  const now = Date.now();
+  const at = (time) => Math.min(100, Math.max(0, (time - t0) / (t1 - t0) * 100));
+  const groups = [
+    { name: text.tlEducation, items: [{
+      label: text.degree, sub: text.degreePeriod,
+      start: monthStart(profile.formacao.inicio), end: monthEnd(profile.formacao.fim)
+    }] },
+    { name: text.tlExperience, items: experiences.experiencias.filter(item => item.inicio).map(item => ({
+      label: item[language].cargo,
+      sub: `${item.instituicao} · ${monthYear(item.inicio)} ${text.to} ${item.fim ? monthYear(item.fim) : text.current}`,
+      start: monthStart(item.inicio), end: item.fim ? monthEnd(item.fim) : now
+    })) },
+    { name: text.tlCourses, items: experiences.formacaoComplementar.map(course => ({
+      label: course.instituicao, sub: `${course[language]} · ${course.periodo}`,
+      start: monthStart(course.inicio), end: monthEnd(course.fim),
+      point: course.inicio === course.fim
+    })) },
+    { name: text.tlProjects, items: [...projects].sort((a, b) => a.publicadoEm.localeCompare(b.publicadoEm)).map(project => ({
+      label: project.nome, sub: monthYear(project.publicadoEm),
+      start: Date.parse(`${project.publicadoEm}T12:00:00Z`), point: true
+    })) }
+  ].filter(group => group.items.length);
+
+  const chart = node('div', 'tl');
+  const axis = node('div', 'tl-axis');
+  axis.append(node('span'));
+  const scale = node('div', 'tl-scale');
+  [2025, 2026, 2027, 2028].forEach(year => {
+    const tick = node('span', 'tl-year', String(year));
+    tick.style.left = `${at(Date.UTC(year, 0, 1))}%`;
+    scale.append(tick);
+  });
+  const todayTag = node('span', 'tl-today-tag', text.today);
+  todayTag.style.left = `${at(now)}%`;
+  scale.append(todayTag);
+  axis.append(scale);
+  chart.append(axis);
+
+  groups.forEach(group => {
+    const section = node('div', 'tl-group');
+    section.append(node('h3', '', group.name));
+    const list = node('ol', 'tl-list');
+    group.items.forEach(item => {
+      const row = node('li', 'tl-row');
+      const label = node('div', 'tl-label');
+      label.append(node('strong', '', item.label), node('span', '', item.sub));
+      const track = node('div', 'tl-track');
+      track.setAttribute('aria-hidden', 'true');
+      const today = node('span', 'tl-today');
+      today.style.left = `${at(now)}%`;
+      track.append(today);
+      if (item.point) {
+        const mark = node('span', 'tl-dot');
+        mark.style.left = `${at(item.start + (item.end ? 15 * DAY : 0))}%`;
+        track.append(mark);
+      } else {
+        const solidEnd = Math.min(item.end, now);
+        if (solidEnd > item.start) {
+          const solid = node('span', 'tl-bar');
+          solid.style.left = `${at(item.start)}%`;
+          solid.style.width = `${at(solidEnd) - at(item.start)}%`;
+          track.append(solid);
+        }
+        const plannedStart = Math.max(item.start, now);
+        if (item.end > plannedStart) {
+          const planned = node('span', 'tl-bar is-planned');
+          planned.style.left = `${at(plannedStart)}%`;
+          planned.style.width = `${at(item.end) - at(plannedStart)}%`;
+          track.append(planned);
+        }
+      }
+      row.append(label, track);
+      list.append(row);
+    });
+    section.append(list);
+    chart.append(section);
+  });
+
+  const legend = node('p', 'tl-legend');
+  const solid = node('span', 'tl-key');
+  solid.append(node('i', 'tl-swatch'), text.tlSolid);
+  const planned = node('span', 'tl-key');
+  planned.append(node('i', 'tl-swatch is-planned'), text.tlPlanned);
+  legend.append(solid, planned);
+  const nodes = [chart, legend];
+  if (experiences.experiencias.some(item => !item.inicio)) {
+    nodes.push(node('p', 'caption', text.timelineNote));
+  }
+  const card = node('div', 'chart-card');
+  card.setAttribute('role', 'group');
+  card.setAttribute('aria-label', text.timelineCaption);
+  card.append(...nodes);
+  target.replaceChildren(card);
+  target.setAttribute('aria-busy', 'false');
+}
 function renderLanguage() {
   const text = profile[language];
   document.documentElement.lang = language === 'pt' ? 'pt-BR' : 'en';
@@ -239,14 +404,11 @@ function renderLanguage() {
     notfound: 'notFoundTitleDocument' }[page];
   document.title = `${text[titleKey]} · ${profile.nome}`;
   updateMenuLabel();
-  const skills = document.querySelector('#profile-skills');
-  if (skills) {
-    skills.replaceChildren(renderTags(profile.tecnologias));
-    skills.setAttribute('aria-busy', 'false');
-  }
+  renderStackMatrix();
   prepareTagline();
   renderProjects();
   renderExperiences();
+  renderTimeline();
   document.querySelectorAll('.field-error:not([hidden])').forEach(error => {
     error.textContent = text[error.dataset.error];
   });
@@ -408,6 +570,8 @@ async function init() {
   });
   initForm();
   initCopy();
+  // Gráficos usam os projetos; se falhar, a página segue sem eles.
+  if (page === 'about' || page === 'experience') projects = await loadJSON('projetos.json').catch(() => []);
   renderLanguage();
   observeReveals();
   if (page === 'projects') {
@@ -423,6 +587,7 @@ async function init() {
   if (page === 'experience') {
     experiences = await loadJSON('experiencias.json');
     renderExperiences();
+    renderTimeline();
   }
 }
 init().catch(showError);

@@ -66,6 +66,7 @@ O conteúdo pode ser atualizado sem alterar o layout: basta editar os arquivos d
 | Projetos | Timeline gerada a partir do JSON, filtros Python/Java, descrições, tecnologias, capturas e links dos repositórios. |
 | Experiências | Mentoria acadêmica, contribuição open source e formação complementar. |
 | Contato | Email com botão de copiar e atalhos para Gmail, Outlook e app de email; WhatsApp, LinkedIn e GitHub com o endereço visível; formulário com validação. |
+| Gráficos | Matriz de tecnologias por projeto (Sobre) e linha do tempo de formação, experiência, cursos e projetos (Experiências), em HTML e CSS, com dados dos JSON. |
 | Privacidade e uso | O que o site guarda, como o formulário trata os dados, hospedagem e uso do conteúdo. |
 | Página 404 | Página própria para endereços inexistentes, com caminho de volta ao início. |
 

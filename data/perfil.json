@@ -40,7 +40,7 @@
     "aboutTitle": "Tecnologia, com gente por perto.",
     "aboutBody": "Aprendo na sala de aula e nos projetos. No Programa de Apadrinhamento da PUC Minas, coordeno voluntários e criei o Padrinho Track para acompanhar os calouros. Também estudo APIs, bancos de dados e IA aplicada.",
     "skillsTitle": "Ferramentas que uso",
-    "skillsNote": "O que uso nos estudos e projetos.",
+    "skillsNote": "Marcado onde usei em cada projeto.",
     "educationTitle": "Minha formação",
     "degree": "Engenharia de Software",
     "institution": "PUC Minas · Belo Horizonte",
@@ -133,7 +133,21 @@
     "openGmail": "Gmail",
     "openOutlook": "Outlook",
     "openMailApp": "App de email",
-    "emailHow": "Enviar por:"
+    "emailHow": "Enviar por:",
+    "matrixCaption": "Tecnologias usadas em cada projeto",
+    "matrixUsed": "usada",
+    "matrixUnused": "não usada",
+    "of": "de",
+    "timelineTitle": "Linha do tempo",
+    "timelineCaption": "Formação, experiência, cursos e projetos de 2025 a 2028",
+    "today": "Hoje",
+    "tlSolid": "Até hoje",
+    "tlPlanned": "Previsto",
+    "tlEducation": "Formação",
+    "tlExperience": "Experiência",
+    "tlCourses": "Cursos",
+    "tlProjects": "Projetos",
+    "timelineNote": "A contribuição ao Metria não tem data informada e fica fora do gráfico."
   },
   "en": {
     "navAbout": "About",
@@ -159,7 +173,7 @@
     "aboutTitle": "Technology, with people nearby.",
     "aboutBody": "I learn in the classroom and through projects. In PUC Minas' mentoring program I coordinate volunteers and built Padrinho Track to support new students. I also study APIs, databases and applied AI.",
     "skillsTitle": "Tools I work with",
-    "skillsNote": "What I use in my studies and projects.",
+    "skillsNote": "Marked where I used it in each project.",
     "educationTitle": "Education",
     "degree": "Software Engineering",
     "institution": "PUC Minas · Belo Horizonte",
@@ -252,6 +266,24 @@
     "openGmail": "Gmail",
     "openOutlook": "Outlook",
     "openMailApp": "Mail app",
-    "emailHow": "Send with:"
+    "emailHow": "Send with:",
+    "matrixCaption": "Technologies used in each project",
+    "matrixUsed": "used",
+    "matrixUnused": "not used",
+    "of": "of",
+    "timelineTitle": "Timeline",
+    "timelineCaption": "Education, experience, courses and projects from 2025 to 2028",
+    "today": "Today",
+    "tlSolid": "Up to today",
+    "tlPlanned": "Planned",
+    "tlEducation": "Education",
+    "tlExperience": "Experience",
+    "tlCourses": "Courses",
+    "tlProjects": "Projects",
+    "timelineNote": "The Metria contribution has no date on record, so it is left out of the chart."
+  },
+  "formacao": {
+    "inicio": "2025-01",
+    "fim": "2028-12"
   }
 }
