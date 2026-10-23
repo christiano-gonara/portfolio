@@ -54,7 +54,7 @@ O conteúdo pode ser atualizado sem alterar o layout: basta editar os arquivos d
 - **Navegação:** pílula de vidro flutuante; no celular, o botão de menu vira um X e abre uma tela cheia com os links entrando em sequência. A página atual fica marcada.
 - **Movimento:** transições com a curva `cubic-bezier(0.32, 0.72, 0, 1)`. Os blocos sobem e desfocam ao entrar na tela, usando `IntersectionObserver`, sem listener de scroll. A frase de destaque acende palavra por palavra ao rolar.
 - **Ícones:** [Tabler Icons](https://tabler.io/icons) em SVG local, acompanhados de rótulos nas ações importantes. Ícones decorativos são ignorados por leitores de tela.
-- **Estados:** hover, clique, foco visível, carregamento com esqueletos no formato do conteúdo, estado vazio nos filtros e erro de carregamento com botão para tentar de novo. Nenhum `alert()`.
+- **Estados:** hover, clique, foco visível, carregamento com esqueletos no formato do conteúdo, e erro de carregamento com botão para tentar de novo. Nenhum `alert()`.
 - **Formulário:** validação no navegador com mensagens específicas por campo, botão desabilitado durante o envio e retorno ao estado normal ao voltar pelo histórico.
 - **Acessibilidade:** link para pular ao conteúdo, alvos de pelo menos 44px, rótulos nos campos e respeito à preferência por movimento reduzido, que desativa animações e mostra tudo de imediato.
 
@@ -63,7 +63,7 @@ O conteúdo pode ser atualizado sem alterar o layout: basta editar os arquivos d
 | Página | Conteúdo |
 |---|---|
 | Sobre mim | Apresentação, formação, tecnologias e destaque do Padrinho Track. |
-| Projetos | Bento grid com projeto em destaque, gerado a partir do JSON, filtros Python/Java, descrições, tecnologias, capturas e links dos repositórios. |
+| Projetos | Bento grid com projeto em destaque, gerado a partir do JSON. Cada card tem a captura em moldura de janela do macOS, descrição curta, lista do que fiz, tecnologias e links. |
 | Experiências | Mentoria acadêmica, contribuição open source e formação complementar. |
 | Contato | Email com botão de copiar e atalhos para Gmail, Outlook e app de email; WhatsApp, LinkedIn e GitHub com o endereço visível; formulário com validação. |
 | Gráficos | Barra empilhada das linguagens mais usadas e matriz de tecnologias por projeto (Sobre), em HTML e CSS, com dados dos JSON. |
@@ -98,7 +98,7 @@ O aviso abaixo do botão informa que os dados são processados por um serviço e
 |---|---|---|
 | Estrutura | HTML5 | Páginas, navegação e formulário semântico. |
 | Apresentação | CSS3 | Layout responsivo, tipografia, estados e identidade visual. |
-| Comportamento | JavaScript com módulos nativos | Leitura dos JSONs, idioma, filtros e menu. |
+| Comportamento | JavaScript com módulos nativos | Leitura dos JSONs, idioma, gráficos, copiar email e menu. |
 | Conteúdo | JSON | Perfil, traduções, projetos e experiências. |
 | Fontes | Gabarito, Figtree e JetBrains Mono (licença OFL), arquivos locais | Tipografia sem requisições a serviços de fontes. |
 | Ícones | Tabler (licença MIT), SVG local | Ícones sem dependências externas. |

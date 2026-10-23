@@ -15,9 +15,9 @@
     <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
     <link rel="preload" href="../assets/fonts/Gabarito-Variable.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="preload" href="../assets/fonts/Figtree-Variable.woff2" as="font" type="font/woff2" crossorigin>
-    <link rel="stylesheet" href="../css/style.css?v=14">
+    <link rel="stylesheet" href="../css/style.css?v=16">
     <script>document.documentElement.classList.add('js');</script>
-    <script type="module" src="../js/app.js?v=14"></script>
+    <script type="module" src="../js/app.js?v=16"></script>
   </head>
   <body data-page="projects">
     <svg class="sprite" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
@@ -68,18 +68,9 @@
         <header class="page-heading">
           <p class="eyebrow" data-i18n="projectsEyebrow" data-reveal>02 / Projetos</p>
           <h1 data-i18n="projectsTitle" data-reveal style="--delay:100ms">O que construí até agora.</h1>
-          <p class="lead" data-i18n="projectsIntro" data-reveal style="--delay:200ms">Projetos acadêmicos e aplicações para problemas reais. O destaque vem primeiro, depois os demais do mais antigo ao mais novo.</p>
+          <p class="lead" data-i18n="projectsIntro" data-reveal style="--delay:200ms">Projetos acadêmicos e aplicações para problemas reais.</p>
         </header>
-        <div class="filter-row" data-reveal style="--delay:300ms">
-          <div class="filters" role="group" aria-label="Tecnologia">
-            <button class="filter" type="button" data-filter="all" aria-pressed="true" data-i18n="all">Todos</button>
-            <button class="filter" type="button" data-filter="Python" aria-pressed="false">Python</button>
-            <button class="filter" type="button" data-filter="Java" aria-pressed="false">Java</button>
-          </div>
-          <p id="project-count" class="project-count" role="status" aria-live="polite"></p>
-        </div>
         <div id="project-timeline" class="timeline" aria-busy="true">
-          <div class="skeleton skeleton-card" data-skeleton aria-hidden="true"><div class="block"></div><div class="skeleton-lines"><div class="bar short"></div><div class="bar tall"></div><div class="bar"></div><div class="bar"></div></div></div>
           <div class="skeleton skeleton-card" data-skeleton aria-hidden="true"><div class="block"></div><div class="skeleton-lines"><div class="bar short"></div><div class="bar tall"></div><div class="bar"></div><div class="bar"></div></div></div>
         </div>
       </div>

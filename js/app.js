@@ -40,7 +40,6 @@ let profile;
 let projects = [];
 let languages;
 let experiences;
-let category = 'all';
 const locale = () => language === 'pt' ? 'pt-BR' : 'en-US';
 const monthYear = (date) => new Intl.DateTimeFormat(locale(), {
   month: 'short', year: 'numeric', timeZone: 'UTC'
@@ -101,37 +100,15 @@ function renderTags(values) {
   values.forEach(value => list.append(node('li', 'skill', value)));
   return list;
 }
-function emptyState(text) {
-  const box = node('div', 'state');
-  const title = node('h3', '', text.emptyTitle);
-  const reset = node('button', 'button', text.emptyAction);
-  reset.type = 'button';
-  reset.addEventListener('click', () => {
-    category = 'all';
-    renderProjects();
-  });
-  box.append(icon('search'), title, node('p', '', text.emptyBody), reset);
-  return box;
-}
 function renderProjects(options = {}) {
   const target = document.querySelector('#project-timeline');
   if (!target) return;
   const text = profile[language];
   // Destaque primeiro; os demais seguem em ordem cronológica.
   const visible = [...projects]
-    .sort((a, b) => Boolean(b.destaque) - Boolean(a.destaque) || a.publicadoEm.localeCompare(b.publicadoEm))
-    .filter(project => category === 'all' || project.categoria === category);
+    .sort((a, b) => Boolean(b.destaque) - Boolean(a.destaque) || a.publicadoEm.localeCompare(b.publicadoEm));
   target.replaceChildren();
   target.setAttribute('aria-busy', 'false');
-  document.querySelector('#project-count').textContent =
-    `${visible.length} ${visible.length === 1 ? text.projectCountOne : text.projectCount}`;
-  document.querySelectorAll('[data-filter]').forEach(button => {
-    button.setAttribute('aria-pressed', String(button.dataset.filter === category));
-  });
-  if (!visible.length) {
-    target.append(emptyState(text));
-    return;
-  }
   const compactCount = visible.filter(project => !project.destaque).length;
   visible.forEach((project, index) => {
     const detail = project[language];
@@ -142,27 +119,31 @@ function renderProjects(options = {}) {
     else if (!lastAlone) article.classList.add('project--compact');
     article.dataset.reveal = '';
     article.style.setProperty('--delay', `${index * 100}ms`);
-    const figure = node('figure');
+    // Moldura de janela do macOS em volta da captura.
+    const window_ = node('div', 'window');
+    const bar = node('div', 'window-bar');
+    bar.setAttribute('aria-hidden', 'true');
+    bar.append(node('i'), node('i'), node('i'));
     const imageLink = externalLink(new URL(project.imagem, root).href, '', 'image-link');
     imageLink.setAttribute('aria-label', `${text.openImage}: ${project.nome}`);
     const image = node('img');
     image.src = new URL(project.imagem, root).href;
     image.alt = detail.alt;
     image.loading = 'lazy';
-    image.width = 700;
-    image.height = 420;
-    const imageAction = node('span', 'image-action', text.openImage);
+    image.width = 1400;
+    image.height = 840;
+    const imageAction = node('span', 'image-action');
     imageAction.append(icon('zoom'));
     imageLink.append(image, imageAction);
-    figure.append(imageLink, node('figcaption', '', detail.legenda));
+    window_.append(bar, imageLink);
     const body = node('div', 'project-body');
-    const date = node('p', 'project-date');
-    const time = node('time', '', monthYear(project.publicadoEm));
-    time.dateTime = project.publicadoEm;
-    date.append(icon('calendar'), time, node('span', '', text.published));
     const heading = node('h2', '', project.nome);
     heading.id = project.id;
     article.setAttribute('aria-labelledby', project.id);
+    const did = node('div', 'did');
+    const didList = node('ul');
+    detail.feito.forEach(item => didList.append(node('li', '', item)));
+    did.append(node('h3', '', text.didTitle), didList);
     const repository = externalLink(project.repositorio, text.repository);
     repository.prepend(icon('github'));
     repository.append(icon('arrow-up-right'));
@@ -173,11 +154,13 @@ function renderProjects(options = {}) {
       demo.append(icon('arrow-up-right'));
       actions.append(demo);
     }
-    body.append(date, node('p', 'eyebrow', detail.tipo), heading,
-      node('p', 'body-copy', detail.descricao),
-      node('p', 'contribution', detail.contribuicao),
+    const time = node('time', 'project-when', monthYear(project.publicadoEm).replace(' de ', ' '));
+    time.dateTime = project.publicadoEm;
+    actions.append(time);
+    body.append(node('p', 'eyebrow', detail.tipo), heading,
+      node('p', 'body-copy', detail.descricao), did,
       renderTags(project.tecnologias), actions);
-    article.append(figure, body);
+    article.append(window_, body);
     target.append(article);
   });
   observeReveals(target);
@@ -511,12 +494,6 @@ async function init() {
   observeReveals();
   if (page === 'projects') {
     projects = await loadJSON('projetos.json');
-    document.querySelectorAll('[data-filter]').forEach(button => {
-      button.addEventListener('click', () => {
-        category = button.dataset.filter;
-        renderProjects();
-      });
-    });
     renderProjects({ scrollToHash: true });
   }
   if (page === 'experience') {
