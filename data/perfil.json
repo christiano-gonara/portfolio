@@ -118,7 +118,8 @@
     "aboutP2": "Coordeno voluntários no Programa de Apadrinhamento da PUC Minas.",
     "aboutP3": "Criei o Padrinho Track para acompanhar os calouros.",
     "aboutP4": "Estudo APIs, bancos de dados e IA aplicada.",
-    "stackTitle": "Minha stack"
+    "stackTitle": "Minha stack",
+    "eduStatus": "Cursando"
   },
   "en": {
     "navAbout": "About",
@@ -232,7 +233,8 @@
     "aboutP2": "I coordinate volunteers in PUC Minas' mentoring program.",
     "aboutP3": "I built Padrinho Track to support new students.",
     "aboutP4": "I study APIs, databases and applied AI.",
-    "stackTitle": "My stack"
+    "stackTitle": "My stack",
+    "eduStatus": "In progress"
   },
   "stack": [
     {
@@ -245,6 +247,11 @@
         "C",
         "SQL",
         "HTML / CSS"
+      ],
+      "icone": "code",
+      "foco": [
+        "Python",
+        "Java"
       ]
     },
     {
@@ -258,7 +265,8 @@
         "Scrapy",
         "Pandas",
         "pytest"
-      ]
+      ],
+      "icone": "stack"
     },
     {
       "pt": "Dados",
@@ -269,7 +277,8 @@
         "DuckDB",
         "Parquet",
         "Jupyter"
-      ]
+      ],
+      "icone": "database"
     },
     {
       "pt": "Ferramentas",
@@ -279,7 +288,8 @@
         "Vite",
         "Maven",
         "Google Sheets API"
-      ]
+      ],
+      "icone": "tools"
     }
   ]
 }

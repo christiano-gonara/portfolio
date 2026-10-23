@@ -209,14 +209,31 @@ function renderExperiences() {
 function renderStack() {
   const target = document.querySelector('#profile-skills');
   if (!target || !profile) return;
-  const card = node('div', 'chart-card stack');
-  profile.stack.forEach(group => {
-    const block = node('div', 'stack-group');
-    block.append(node('h4', '', group[language]), renderTags(group.itens));
-    card.append(block);
+  const grid = node('div', 'stack');
+  profile.stack.forEach((group, index) => {
+    const tile = node('div', index === 0 ? 'stack-tile is-main' : 'stack-tile');
+    const head = node('div', 'stack-head');
+    const mark = node('span', 'chip-icon');
+    mark.append(icon(group.icone));
+    head.append(mark, node('h4', '', group[language]), node('span', 'stack-count', String(group.itens.length)));
+    const list = node('ul', 'skills');
+    group.itens.forEach(name => {
+      const item = node('li', group.foco?.includes(name) ? 'skill is-focus' : 'skill', name);
+      list.append(item);
+    });
+    tile.append(head, list);
+    grid.append(tile);
   });
-  target.replaceChildren(card);
+  target.replaceChildren(grid);
   target.setAttribute('aria-busy', 'false');
+}
+// Progresso da graduação: fração do tempo entre jan/2025 e dez/2028.
+function renderProgress() {
+  const bar = document.querySelector('[data-progress]');
+  if (!bar) return;
+  const start = Date.UTC(2025, 0, 1);
+  const end = Date.UTC(2029, 0, 1);
+  bar.style.width = `${Math.min(100, Math.max(0, (Date.now() - start) / (end - start) * 100))}%`;
 }
 
 const percent = (value) => new Intl.NumberFormat(locale(), { maximumFractionDigits: 1 }).format(value);
@@ -275,6 +292,7 @@ function renderLanguage() {
   document.title = `${text[titleKey]} · ${profile.nome}`;
   updateMenuLabel();
   renderStack();
+  renderProgress();
   prepareTagline();
   renderProjects();
   renderExperiences();
