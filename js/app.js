@@ -205,7 +205,7 @@ function renderExperiences() {
     const mark = node('span', 'course-icon');
     mark.append(icon(course.icone));
     head.append(mark, node('span', 'course-period', course.periodo));
-    card.append(head, node('h3', '', course[language]), node('p', '', course.instituicao));
+    card.append(head, node('h3', '', course.instituicao), node('p', '', course[language]));
     courses.append(card);
   });
   // Os cards de cursos ficam fora de #experience-list, então observa a página toda.
