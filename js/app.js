@@ -205,7 +205,7 @@ function renderExperiences() {
     const mark = node('span', 'course-icon');
     mark.append(icon(course.icone));
     head.append(mark, node('span', 'course-period', course.periodo));
-    card.append(head, node('h3', '', course.instituicao), node('p', '', course[language]));
+    card.append(head, node('h3', '', course[language]), node('p', '', course.instituicao));
     courses.append(card);
   });
   // Os cards de cursos ficam fora de #experience-list, então observa a página toda.
@@ -225,7 +225,10 @@ function renderStack() {
     head.append(mark, node('h4', '', group[language]), node('span', 'stack-count', String(group.itens.length)));
     const list = node('ul', 'skills');
     group.itens.forEach(name => {
-      const item = node('li', group.foco?.includes(name) ? 'skill is-focus' : 'skill', name);
+      const item = node('li', group.foco?.includes(name) ? 'skill is-focus' : 'skill');
+      const badge = node('span', 'skill-icon');
+      badge.append(icon(profile.stackIcones[name] || group.icone));
+      item.append(badge, name);
       list.append(item);
     });
     tile.append(head, list);

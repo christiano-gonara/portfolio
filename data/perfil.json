@@ -289,5 +289,29 @@
       ],
       "icone": "tools"
     }
-  ]
+  ],
+  "stackIcones": {
+    "Python": "brand-python",
+    "Java": "coffee",
+    "JavaScript": "brand-javascript",
+    "C": "letter-c",
+    "SQL": "file-type-sql",
+    "HTML / CSS": "brand-html5",
+    "React": "brand-react",
+    "Flask": "flask",
+    "Spring Boot": "leaf",
+    "Thymeleaf": "file-code",
+    "Scrapy": "spider",
+    "Pandas": "table",
+    "pytest": "bug",
+    "PostgreSQL": "server",
+    "SQLite": "file-database",
+    "DuckDB": "chart-bar",
+    "Parquet": "layout-rows",
+    "Jupyter": "notebook",
+    "Git & GitHub": "brand-github",
+    "Vite": "bolt",
+    "Maven": "package",
+    "Google Sheets API": "brand-google"
+  }
 }

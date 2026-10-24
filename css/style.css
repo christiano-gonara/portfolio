@@ -788,6 +788,50 @@ h3 {
   border-color: var(--teal);
 }
 
+.stack-tile .skill {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--s-75);
+  padding-left: var(--s-50);
+}
+
+.skill-icon {
+  display: grid;
+  place-items: center;
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+  border-radius: var(--r-full);
+  background: var(--teal);
+  color: var(--sand);
+}
+
+.skill-icon svg.icon {
+  width: 14px;
+  height: 14px;
+}
+
+.stack-tile.is-main .skill-icon {
+  background: var(--sand);
+  color: var(--teal-dark);
+}
+
+.stack-tile.is-main .skill.is-focus {
+  padding-left: var(--s-75);
+}
+
+.stack-tile.is-main .skill.is-focus .skill-icon {
+  width: 28px;
+  height: 28px;
+  background: var(--teal);
+  color: var(--sand);
+}
+
+.stack-tile.is-main .skill.is-focus .skill-icon svg.icon {
+  width: 16px;
+  height: 16px;
+}
+
 .stack-tile.is-main {
   border-color: var(--teal);
   background: var(--teal);
@@ -821,7 +865,7 @@ h3 {
 }
 
 .stack-tile.is-main .skill.is-focus {
-  padding: var(--s-75) var(--s-200);
+  padding: var(--s-75) var(--s-200) var(--s-75) var(--s-75);
   border-color: var(--sand);
   background: var(--sand);
   color: var(--teal-dark);
@@ -1451,9 +1495,10 @@ h3 {
 
 .course-card p {
   margin: 0;
-  color: var(--ink);
+  color: var(--muted);
   font-size: 16px;
   line-height: 24px;
+  font-weight: 600;
 }
 
 /* ---------- Contato ---------- */
