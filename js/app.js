@@ -158,9 +158,28 @@ function renderProjects(options = {}) {
     const time = node('time', 'project-when', monthYear(project.publicadoEm).replace(' de ', ' '));
     time.dateTime = project.publicadoEm;
     actions.append(time);
+    // Detalhes recolhidos: abrem ao clicar, sem sair da página.
+    const more = node('div', 'project-more');
+    more.id = `${project.id}-detalhes`;
+    more.inert = true;
+    const moreInner = node('div', 'project-more-inner');
+    moreInner.append(node('p', 'body-copy', detail.descricao), did, renderTags(project.tecnologias), actions);
+    more.append(moreInner);
+    const toggle = node('button', 'project-toggle');
+    toggle.type = 'button';
+    toggle.setAttribute('aria-expanded', 'false');
+    toggle.setAttribute('aria-controls', more.id);
+    const toggleLabel = node('span', '', text.moreDetails);
+    toggle.append(toggleLabel, icon('chevron-down'));
+    toggle.addEventListener('click', () => {
+      const open = toggle.getAttribute('aria-expanded') !== 'true';
+      toggle.setAttribute('aria-expanded', String(open));
+      toggleLabel.textContent = open ? text.lessDetails : text.moreDetails;
+      article.classList.toggle('is-open', open);
+      more.inert = !open;
+    });
     body.append(node('p', 'eyebrow', detail.tipo), heading,
-      node('p', 'body-copy', detail.descricao), did,
-      renderTags(project.tecnologias), actions);
+      node('p', 'project-summary', detail.resumo), toggle, more);
     article.append(window_, body);
     target.append(article);
   });
@@ -220,8 +239,8 @@ function brandIcon(name) {
   svg.style.color = mark.cor;
   return svg;
 }
-function stackTile(name, big = false) {
-  const tile = node('li', big ? 'stack-item is-big' : 'stack-item');
+function stackTile(name) {
+  const tile = node('li', 'stack-item');
   tile.append(brandIcon(name), node('span', '', name));
   return tile;
 }
@@ -229,11 +248,6 @@ function renderStack() {
   const target = document.querySelector('#profile-skills');
   if (!target || !profile) return;
   const text = profile[language];
-  const focus = profile.stack[0].foco;
-  const strip = node('div', 'stack-strip');
-  const focusList = node('ul', 'stack-list');
-  focus.forEach(name => focusList.append(stackTile(name, true)));
-  strip.append(node('span', 'stack-label', text.focusLabel), focusList, node('span', 'stack-note', text.focusNote));
   const grid = node('div', 'stack');
   profile.stack.forEach(group => {
     const card = node('article', 'stack-card');
@@ -242,7 +256,7 @@ function renderStack() {
     card.append(panel, node('h4', '', group[language]), node('p', '', group.desc[language]));
     grid.append(card);
   });
-  target.replaceChildren(strip, grid);
+  target.replaceChildren(grid);
   target.setAttribute('aria-busy', 'false');
 }
 // Progresso da graduação: fração do tempo entre jan/2025 e dez/2028.
@@ -463,6 +477,7 @@ function initCopy() {
 }
 async function init() {
   if (menuButton && overlay) initMenu();
+  initHeaderScroll();
   profile = await loadJSON('perfil.json');
   document.querySelectorAll('[data-language]').forEach(button => {
     button.addEventListener('click', () => {
@@ -489,4 +504,19 @@ async function init() {
     renderExperiences();
   }
 }
+// A barra de navegação some ao descer e volta ao subir.
+function initHeaderScroll() {
+  const header = document.querySelector('.site-header');
+  if (!header) return;
+  let last = window.scrollY;
+  window.addEventListener('scroll', () => {
+    const current = window.scrollY;
+    const menuOpen = document.body.classList.contains('menu-open');
+    if (menuOpen || current < 80 || current < last - 4) header.classList.remove('is-hidden');
+    else if (current > last + 4) header.classList.add('is-hidden');
+    last = current;
+  }, { passive: true });
+  header.addEventListener('focusin', () => header.classList.remove('is-hidden'));
+}
+
 init().catch(showError);

@@ -6,13 +6,13 @@
       "fim": null,
       "pt": {
         "cargo": "Coordenador de Mentoria Acadêmica",
-        "descricao": "Coordeno cerca de 50 padrinhos voluntários que acompanham 127 calouros. Organizo o cronograma, conduzo reuniões e acompanho a equipe.",
-        "detalhe": "Criei o Padrinho Track para automatizar processos administrativos e acadêmicos do programa."
+        "descricao": "~50 padrinhos voluntários e 127 calouros. Organizo o cronograma e conduzo as reuniões.",
+        "detalhe": "Criei o Padrinho Track para automatizar o programa."
       },
       "en": {
         "cargo": "Academic Mentoring Coordinator",
-        "descricao": "I coordinate about 50 volunteer mentors who support 127 new students. I organize the schedule, lead meetings and follow up with the team.",
-        "detalhe": "I built Padrinho Track to automate the program's administrative and academic processes."
+        "descricao": "~50 volunteer mentors and 127 new students. I organize the schedule and lead meetings.",
+        "detalhe": "I built Padrinho Track to automate the program."
       }
     },
     {

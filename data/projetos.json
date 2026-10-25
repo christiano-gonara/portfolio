@@ -21,7 +21,8 @@
         "Integrei com o Google Sheets.",
         "Implementei as regras de acompanhamento do programa."
       ],
-      "alt": "Dashboard do Padrinho Track com resumo do programa e lista demonstrativa de padrinhos"
+      "alt": "Dashboard do Padrinho Track com resumo do programa e lista demonstrativa de padrinhos",
+      "resumo": "Gestão do programa de apadrinhamento da PUC Minas."
     },
     "en": {
       "tipo": "Academic coordination · Web",
@@ -31,7 +32,8 @@
         "Integrated it with Google Sheets.",
         "Implemented the program's tracking rules."
       ],
-      "alt": "Padrinho Track dashboard showing a program summary and demonstration mentor records"
+      "alt": "Padrinho Track dashboard showing a program summary and demonstration mentor records",
+      "resumo": "Management for PUC Minas' mentoring program."
     }
   },
   {
@@ -59,7 +61,8 @@
         "Documentei a análise em notebook.",
         "Publiquei o dashboard web. Os números são da data da base, não em tempo real."
       ],
-      "alt": "Dashboard CNPJ Alimentação com o perfil do setor: empresas ativas, porte, estado líder e negócio mais comum"
+      "alt": "Dashboard CNPJ Alimentação com o perfil do setor: empresas ativas, porte, estado líder e negócio mais comum",
+      "resumo": "Dashboard do setor de bares e restaurantes."
     },
     "en": {
       "tipo": "Data analysis · Dashboard",
@@ -69,7 +72,8 @@
         "Documented the analysis in a notebook.",
         "Published the web dashboard. Figures are from the dataset's date, not live."
       ],
-      "alt": "CNPJ Alimentação dashboard showing the sector profile: active companies, company size, leading state and most common business"
+      "alt": "CNPJ Alimentação dashboard showing the sector profile: active companies, company size, leading state and most common business",
+      "resumo": "Dashboard of the bar and restaurant sector."
     }
   },
   {
@@ -94,7 +98,8 @@
         "Montei a interface web.",
         "Projeto acadêmico: os dados não são em tempo real."
       ],
-      "alt": "Interface do Candidatos TSE com busca por nome ou número e filtros por cargo e partido"
+      "alt": "Interface do Candidatos TSE com busca por nome ou número e filtros por cargo e partido",
+      "resumo": "Consulta de candidaturas de Minas Gerais."
     },
     "en": {
       "tipo": "Election data · Academic web app",
@@ -104,7 +109,8 @@
         "Built the web interface.",
         "Academic project: the data isn't real time."
       ],
-      "alt": "Candidatos TSE interface with name or number search and office and party filters"
+      "alt": "Candidatos TSE interface with name or number search and office and party filters",
+      "resumo": "Browse candidacies in Minas Gerais."
     }
   }
 ]

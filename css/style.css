@@ -209,8 +209,13 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
   pointer-events: none;
 }
 
+.site-header.is-hidden .pill {
+  transform: translateY(calc(-100% - var(--s-400)));
+}
+
 .pill {
   position: relative;
+  transition: transform var(--dur-ui) var(--ease);
   z-index: 2;
   pointer-events: auto;
   display: flex;
@@ -704,58 +709,42 @@ h3 {
   flex: 1;
 }
 
-.points {
+.facts {
   display: grid;
   gap: var(--s-100);
-  margin: 0;
+  margin: var(--s-200) 0 0;
   padding: 0;
   list-style: none;
-  color: var(--muted);
 }
 
-.points li {
-  position: relative;
-  padding-left: var(--s-300);
-}
-
-.points li::before {
-  content: '';
-  position: absolute;
-  top: 10px;
-  left: var(--s-50);
-  width: 8px;
-  height: 8px;
-  border-radius: var(--r-full);
-  background: var(--teal);
-}
-
-.stack-strip {
+.facts li {
   display: flex;
-  flex-wrap: wrap;
   align-items: center;
   gap: var(--s-200);
-  margin-bottom: var(--s-200);
-  padding: var(--s-200) var(--s-300);
+  padding: var(--s-100) var(--s-200);
   border: 1px solid var(--line);
-  border-radius: var(--r-3xl);
+  border-radius: var(--r-2xl);
   background: var(--surface);
 }
 
-.stack-label {
-  color: var(--muted);
-  font: 600 14px/20px var(--mono);
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
+.facts svg.icon {
+  width: 24px;
+  height: 24px;
+  color: var(--teal);
 }
 
-.stack-note {
-  margin-left: auto;
-  color: var(--muted);
-  font-size: 14px;
-  line-height: 20px;
+.facts strong {
+  display: block;
+  color: var(--ink);
+  font-size: 16px;
+  line-height: 24px;
 }
 
-.stack-list, .stack-panel {
+.facts span {
+  color: var(--muted);
+}
+
+.stack-panel {
   display: flex;
   flex-wrap: wrap;
   gap: var(--s-75);
@@ -783,19 +772,6 @@ h3 {
 .stack-item:hover {
   transform: translateY(-2px);
   border-color: var(--teal);
-}
-
-.stack-item.is-big {
-  padding: var(--s-75) var(--s-200) var(--s-75) var(--s-100);
-  border-radius: var(--r-2xl);
-  font-size: 18px;
-  line-height: 28px;
-  font-weight: 700;
-}
-
-.stack-item.is-big svg.icon {
-  width: 28px;
-  height: 28px;
 }
 
 svg.icon.brand {
@@ -853,38 +829,12 @@ body::before {
   mask-image: radial-gradient(ellipse 80% 70% at 50% 0%, #000, transparent);
 }
 
-.hero-mark {
-  display: inline-grid;
-  place-items: center;
-  width: 64px;
-  height: 64px;
-  margin: 0 var(--s-50);
-  vertical-align: middle;
-  border: 1px solid var(--line);
-  border-radius: var(--r-2xl);
-  background: var(--surface);
-  box-shadow: 0 4px 12px rgb(23 63 61 / 0.12);
-  color: var(--teal);
-  -webkit-text-fill-color: initial;
-  animation: mark-float 4s var(--ease) infinite;
-}
-
-.hero-mark svg.icon {
-  width: 32px;
-  height: 32px;
-}
-
 .hero h1 em {
   padding: 0 var(--s-100);
   border-radius: var(--r-2xl);
   background: var(--pale);
   -webkit-box-decoration-break: clone;
   box-decoration-break: clone;
-}
-
-@keyframes mark-float {
-  0%, 100% { transform: translateY(0) rotate(-4deg); }
-  50% { transform: translateY(-8px) rotate(4deg); }
 }
 
 .status {
@@ -1137,6 +1087,65 @@ body::before {
 
 .project .body-copy {
   margin-bottom: var(--s-200);
+}
+
+.project-summary {
+  margin: 0 0 var(--s-200);
+  color: var(--ink);
+  font-size: 18px;
+  line-height: 28px;
+}
+
+.project-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--s-50);
+  padding: var(--s-75) var(--s-200);
+  border: 1px solid var(--line);
+  border-radius: var(--r-full);
+  background: var(--surface);
+  color: var(--teal);
+  font: 600 14px/20px var(--sans);
+  cursor: pointer;
+  transition: background var(--dur-ui) var(--ease), border-color var(--dur-ui) var(--ease);
+}
+
+.project-toggle:hover {
+  border-color: var(--teal);
+  background: var(--pale);
+}
+
+.project-toggle svg.icon {
+  width: 16px;
+  height: 16px;
+  transition: transform var(--dur-ui) var(--ease);
+}
+
+.project-toggle[aria-expanded="true"] svg.icon {
+  transform: rotate(180deg);
+}
+
+.project-more {
+  display: grid;
+  grid-template-rows: 0fr;
+  visibility: hidden;
+  transition: grid-template-rows var(--dur-ui) var(--ease), visibility 0s linear var(--dur-ui);
+}
+
+.project.is-open .project-more {
+  grid-template-rows: 1fr;
+  visibility: visible;
+  transition: grid-template-rows var(--dur-ui) var(--ease), visibility 0s;
+}
+
+.project-more-inner {
+  min-height: 0;
+  overflow: hidden;
+  padding-top: 0;
+}
+
+.project.is-open .project-more-inner {
+  padding-top: var(--s-200);
 }
 
 .did {
@@ -1999,8 +2008,6 @@ svg.stack-watermark {
 @media (max-width: 380px) {
   .wrap { padding-inline: var(--s-200); }
   .hero h1 { font-size: 48px; }
-  .hero-mark { width: 48px; height: 48px; }
-  .hero-mark svg.icon { width: 24px; height: 24px; }
   .hero-actions { align-items: flex-start; flex-direction: column; gap: var(--s-100); }
 }
 
