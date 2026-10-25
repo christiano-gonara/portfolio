@@ -213,33 +213,36 @@ function renderExperiences() {
 }
 /* ---------- Gráficos: matriz de tecnologias e linha do tempo ---------- */
 
+function brandIcon(name) {
+  const mark = profile.stackMarcas[name];
+  const svg = icon(mark.icone);
+  if (mark.marca) svg.classList.add('brand');
+  svg.style.color = mark.cor;
+  return svg;
+}
+function stackTile(name, big = false) {
+  const tile = node('li', big ? 'stack-item is-big' : 'stack-item');
+  tile.append(brandIcon(name), node('span', '', name));
+  return tile;
+}
 function renderStack() {
   const target = document.querySelector('#profile-skills');
   if (!target || !profile) return;
+  const text = profile[language];
+  const focus = profile.stack[0].foco;
+  const strip = node('div', 'stack-strip');
+  const focusList = node('ul', 'stack-list');
+  focus.forEach(name => focusList.append(stackTile(name, true)));
+  strip.append(node('span', 'stack-label', text.focusLabel), focusList, node('span', 'stack-note', text.focusNote));
   const grid = node('div', 'stack');
-  profile.stack.forEach((group, index) => {
-    const tile = node('div', index === 0 ? 'stack-tile is-main' : 'stack-tile');
-    const head = node('div', 'stack-head');
-    const mark = node('span', 'chip-icon');
-    mark.append(icon(group.icone));
-    head.append(mark, node('h4', '', group[language]), node('span', 'stack-count', String(group.itens.length)));
-    const list = node('ul', 'skills');
-    group.itens.forEach(name => {
-      const item = node('li', group.foco?.includes(name) ? 'skill is-focus' : 'skill');
-      const badge = node('span', 'skill-icon');
-      badge.append(icon(profile.stackIcones[name] || group.icone));
-      item.append(badge, name);
-      list.append(item);
-    });
-    tile.append(head, list);
-    if (index === 0) {
-      const watermark = icon(group.icone);
-      watermark.classList.add('stack-watermark');
-      tile.append(watermark);
-    }
-    grid.append(tile);
+  profile.stack.forEach(group => {
+    const card = node('article', 'stack-card');
+    const panel = node('ul', 'stack-panel');
+    group.itens.forEach(name => panel.append(stackTile(name)));
+    card.append(panel, node('h4', '', group[language]), node('p', '', group.desc[language]));
+    grid.append(card);
   });
-  target.replaceChildren(grid);
+  target.replaceChildren(strip, grid);
   target.setAttribute('aria-busy', 'false');
 }
 // Progresso da graduação: fração do tempo entre jan/2025 e dez/2028.
