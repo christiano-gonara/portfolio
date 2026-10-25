@@ -262,11 +262,7 @@
       "foco": [
         "Python",
         "Java"
-      ],
-      "desc": {
-        "pt": "Python e Java no dia a dia. As outras entram quando o projeto pede.",
-        "en": "Python and Java every day. The rest comes in when a project needs it."
-      }
+      ]
     },
     {
       "pt": "Frameworks e bibliotecas",
@@ -280,11 +276,7 @@
         "Pandas",
         "pytest"
       ],
-      "icone": "stack",
-      "desc": {
-        "pt": "Para web, coleta e análise de dados.",
-        "en": "For the web, scraping and data analysis."
-      }
+      "icone": "stack"
     },
     {
       "pt": "Dados",
@@ -296,11 +288,7 @@
         "Parquet",
         "Jupyter"
       ],
-      "icone": "database",
-      "desc": {
-        "pt": "Bancos e formatos para guardar, consultar e analisar.",
-        "en": "Databases and formats to store, query and analyze."
-      }
+      "icone": "database"
     },
     {
       "pt": "Ferramentas",
@@ -311,11 +299,7 @@
         "Maven",
         "Google Sheets API"
       ],
-      "icone": "tools",
-      "desc": {
-        "pt": "Versionamento, build e integrações.",
-        "en": "Versioning, builds and integrations."
-      }
+      "icone": "tools"
     }
   ],
   "stackMarcas": {

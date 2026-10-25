@@ -250,11 +250,11 @@ function renderStack() {
   const text = profile[language];
   const grid = node('div', 'stack');
   profile.stack.forEach(group => {
-    const card = node('article', 'stack-card');
+    const row = node('article', 'stack-row');
     const panel = node('ul', 'stack-panel');
     group.itens.forEach(name => panel.append(stackTile(name)));
-    card.append(panel, node('h4', '', group[language]), node('p', '', group.desc[language]));
-    grid.append(card);
+    row.append(node('h4', '', group[language]), panel);
+    grid.append(row);
   });
   target.replaceChildren(grid);
   target.setAttribute('aria-busy', 'false');

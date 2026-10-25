@@ -757,7 +757,7 @@ h3 {
   display: inline-flex;
   align-items: center;
   gap: var(--s-75);
-  padding: var(--s-75) var(--s-100);
+  padding: var(--s-50) var(--s-100);
   border: 1px solid var(--line);
   border-radius: var(--r-xl);
   background: var(--surface);
@@ -780,40 +780,46 @@ svg.icon.brand {
 }
 
 .stack {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: var(--s-200);
-}
-
-.stack-card {
-  padding: var(--s-200);
+  overflow: hidden;
   border: 1px solid var(--line);
   border-radius: var(--r-3xl);
   background: var(--surface);
 }
 
-.stack-panel {
-  align-content: flex-start;
-  min-height: 136px;
-  margin-bottom: var(--s-200);
-  padding: var(--s-200);
-  border-radius: var(--r-2xl);
-  background-color: var(--paper);
-  background-image: radial-gradient(rgb(36 92 89 / 0.2) 1px, transparent 1.5px);
-  background-size: 12px 12px;
+.stack-row {
+  position: relative;
+  display: grid;
+  grid-template-columns: 200px minmax(0, 1fr);
+  gap: var(--s-200);
+  align-items: center;
+  padding: var(--s-200) var(--s-300);
 }
 
-.stack-card h4 {
-  margin: 0 var(--s-100) var(--s-50);
+.stack-row + .stack-row {
+  border-top: 1px solid var(--line);
+}
+
+/* Pontilhado que some da direita para a esquerda, como uma sombra. */
+.stack-row::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image: radial-gradient(rgb(36 92 89 / 0.28) 1px, transparent 1.5px);
+  background-size: 12px 12px;
+  -webkit-mask-image: linear-gradient(to left, #000, transparent 70%);
+  mask-image: linear-gradient(to left, #000, transparent 70%);
+}
+
+.stack-row h4 {
+  position: relative;
+  margin: 0;
   font-size: 20px;
   line-height: 28px;
 }
 
-.stack-card p {
-  margin: 0 var(--s-100) var(--s-100);
-  color: var(--muted);
-  font-size: 16px;
-  line-height: 24px;
+.stack-panel {
+  position: relative;
 }
 
 /* Fundo pontilhado: some aos poucos para baixo. */
@@ -1980,7 +1986,7 @@ svg.stack-watermark {
 
   .experience-list { grid-template-columns: 1fr; }
   .about-detail > * { min-width: 0; }
-  .stack { grid-template-columns: 1fr; }
+  .stack-row { grid-template-columns: 1fr; gap: var(--s-100); }
   .lang-legend { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .chart-card { padding: var(--s-200); }
   .contact-layout { grid-template-columns: 1fr; padding-top: var(--s-500); padding-bottom: var(--s-600); }
