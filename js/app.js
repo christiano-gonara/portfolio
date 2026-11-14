@@ -14,9 +14,9 @@ function iniciarXadrez(raiz) {
   const branca = { K: '♔︎', R: '♖︎', P: '♙︎' };
   const preta = { K: '♚︎', P: '♟︎' };
   const inicial = {
-    g1: ['b', branca.K, 'rei branco'], a1: ['b', branca.R, 'torre branca'],
-    f2: ['b', branca.P, 'peão branco'], g2: ['b', branca.P, 'peão branco'], h2: ['b', branca.P, 'peão branco'],
-    g8: ['p', preta.K, 'rei preto'], f7: ['p', preta.P, 'peão preto'], g7: ['p', preta.P, 'peão preto'], h7: ['p', preta.P, 'peão preto'],
+    g1: ['b', branca.K, 'rei branco', 'K'], a1: ['b', branca.R, 'torre branca', 'R'],
+    f2: ['b', branca.P, 'peão branco', 'P'], g2: ['b', branca.P, 'peão branco', 'P'], h2: ['b', branca.P, 'peão branco', 'P'],
+    g8: ['p', preta.K, 'rei preto', 'K'], f7: ['p', preta.P, 'peão preto', 'P'], g7: ['p', preta.P, 'peão preto', 'P'], h7: ['p', preta.P, 'peão preto', 'P'],
   };
   let estado;
 
@@ -32,6 +32,7 @@ function iniciarXadrez(raiz) {
 
   function desenhar() {
     casasEl.textContent = '';
+    const alvos = estado.sel ? movimentos(estado.sel, estado.pos) : [];
     for (let r = 8; r >= 1; r--) {
       for (let i = 0; i < 8; i++) {
         const nome = 'abcdefgh'[i] + r;
@@ -43,7 +44,9 @@ function iniciarXadrez(raiz) {
         if (estado.resolvido && nome === 'a8') botao.classList.add('vitoria');
         if (estado.resolvido && nome === 'g8') botao.classList.add('derrota');
         botao.textContent = peca ? peca[1] : '';
-        botao.setAttribute('aria-label', nome + (peca ? ', ' + peca[2] : ', vazia'));
+        const alvo = alvos.includes(nome);
+        if (alvo) botao.classList.add(peca ? 'captura' : 'alvo');
+        botao.setAttribute('aria-label', nome + (peca ? ', ' + peca[2] : ', vazia') + (alvo ? ', pode mover' : ''));
         if (estado.sel === nome) botao.setAttribute('aria-pressed', 'true');
         botao.addEventListener('click', () => escolher(nome));
         casasEl.appendChild(botao);
@@ -62,6 +65,8 @@ function iniciarXadrez(raiz) {
       estado.sel = null; mensagem(DICA, '');
     } else if (minha) {
       estado.sel = nome; mensagem('Agora escolhe a casa.', '');
+    } else if (!movimentos(estado.sel, estado.pos).includes(nome)) {
+      mensagem('Essa peça não anda para lá. Olha as bolinhas.', 'erro');
     } else if (estado.sel === 'a1' && nome === 'a8') {
       estado.pos.a8 = estado.pos.a1;
       delete estado.pos.a1;
@@ -80,6 +85,37 @@ function iniciarXadrez(raiz) {
   recomecar.addEventListener('click', () => { reiniciar(); desenhar(); });
   reiniciar();
   desenhar();
+}
+
+// Casas para onde a peça pode ir (torre, rei e peão bastam para este desafio).
+function movimentos(sq, pos) {
+const p = pos[sq];
+if (!p) return [];
+const cols = 'abcdefgh';
+const f = cols.indexOf(sq[0]);
+const r = Number(sq[1]);
+const dentro = (x, y) => x >= 0 && x < 8 && y >= 1 && y <= 8;
+const nome = (x, y) => cols[x] + y;
+const res = [];
+const tenta = (x, y) => {
+if (!dentro(x, y)) return false;
+const q = pos[nome(x, y)];
+if (!q) { res.push(nome(x, y)); return true; }
+if (q[0] !== p[0]) res.push(nome(x, y));
+return false;
+};
+if (p[3] === 'R') {
+[[1, 0], [-1, 0], [0, 1], [0, -1]].forEach(([dx, dy]) => { let x = f + dx, y = r + dy; while (tenta(x, y)) { x += dx; y += dy; } });
+} else if (p[3] === 'K') {
+for (let dx = -1; dx <= 1; dx++) for (let dy = -1; dy <= 1; dy++) if (dx || dy) tenta(f + dx, r + dy);
+} else if (p[3] === 'P') {
+if (dentro(f, r + 1) && !pos[nome(f, r + 1)]) {
+res.push(nome(f, r + 1));
+if (r === 2 && !pos[nome(f, 4)]) res.push(nome(f, 4));
+}
+[-1, 1].forEach((dx) => { const q = dentro(f + dx, r + 1) && pos[nome(f + dx, r + 1)]; if (q && q[0] !== p[0]) res.push(nome(f + dx, r + 1)); });
+}
+return res;
 }
 
 function iniciarFormulario(form) {
