@@ -425,7 +425,7 @@ h1, h2, h3 { font-family: var(--fonte); }
 /* ---------- Rodapé ---------- */
 
 .boneco-linha { width: 100%; margin-top: 48px; display: flex; justify-content: flex-end; }
-.boneco { margin-right: 48px; margin-bottom: -3px; }
+.boneco { position: relative; z-index: 1; margin-right: 48px; margin-bottom: -37px; }
 .boneco svg { display: block; overflow: visible; }
 
 .rodape { border-top: 2px solid var(--tinta); }
