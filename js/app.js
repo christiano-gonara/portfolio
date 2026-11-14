@@ -1,522 +1,112 @@
-// Conteúdo público em JSON; não há backend nem credenciais neste projeto.
-const root = new URL('../', import.meta.url);
-const page = document.body.dataset.page;
-const reduceMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
-const node = (tag, className, text) => {
-  const element = document.createElement(tag);
-  if (className) element.className = className;
-  if (text !== undefined) element.textContent = text;
-  return element;
-};
-const icon = (name) => {
-  const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
-  svg.classList.add('icon');
-  svg.setAttribute('aria-hidden', 'true');
-  const use = document.createElementNS('http://www.w3.org/2000/svg', 'use');
-  use.setAttribute('href', `#icon-${name}`);
-  svg.append(use);
-  return svg;
-};
-const externalLink = (url, label, className = 'text-link') => {
-  const link = node('a', className, label);
-  link.href = url;
-  link.target = '_blank';
-  link.rel = 'noopener noreferrer';
-  return link;
-};
-async function loadJSON(file) {
-  // no-cache: o navegador revalida o JSON a cada visita, sem usar uma cópia antiga com o JS novo.
-  const response = await fetch(new URL(`data/${file}`, root), { cache: 'no-cache' });
-  if (!response.ok) throw new Error(`Falha ao carregar ${file}: ${response.status}`);
-  return response.json();
-}
-function readLanguage() {
-  const query = new URLSearchParams(location.search).get('lang');
-  if (query === 'pt' || query === 'en') return query;
-  try { return localStorage.getItem('portfolio-language') === 'en' ? 'en' : 'pt'; }
-  catch { return 'pt'; }
-}
-let language = readLanguage();
-let profile;
-let projects = [];
-let languages;
-let experiences;
-const locale = () => language === 'pt' ? 'pt-BR' : 'en-US';
-const monthYear = (date) => new Intl.DateTimeFormat(locale(), {
-  month: 'short', year: 'numeric', timeZone: 'UTC'
-}).format(new Date(`${date.slice(0, 7)}-01T12:00:00Z`));
+// Interações do portfólio: desafio de xadrez (página inicial) e validação do formulário (contato).
 
-/* ---------- Revelação ao rolar: IntersectionObserver, sem listener de scroll ---------- */
+const tabuleiro = document.querySelector('[data-xadrez]');
+if (tabuleiro) iniciarXadrez(tabuleiro);
 
-const canObserve = 'IntersectionObserver' in window && !reduceMotion;
-const revealObserver = canObserve ? new IntersectionObserver(entries => {
-  entries.forEach(entry => {
-    if (!entry.isIntersecting) return;
-    entry.target.classList.add('is-visible');
-    revealObserver.unobserve(entry.target);
-  });
-}, { threshold: 0.12, rootMargin: '0px 0px -48px 0px' }) : null;
-function observeReveals(scope = document) {
-  scope.querySelectorAll('[data-reveal]:not(.is-visible)').forEach(element => {
-    if (revealObserver) revealObserver.observe(element);
-    else element.classList.add('is-visible');
-  });
-}
+const formulario = document.querySelector('[data-formulario]');
+if (formulario) iniciarFormulario(formulario);
 
-/* ---------- Tagline: cada palavra acende ao cruzar a linha de gatilho ---------- */
-
-let wordObserver;
-function prepareTagline() {
-  const element = document.querySelector('[data-tagline]');
-  if (!element) return;
-  wordObserver?.disconnect();
-  const words = element.textContent.trim().split(/\s+/);
-  element.replaceChildren();
-  words.forEach((word, index) => {
-    element.append(node('span', 'word', word));
-    if (index < words.length - 1) element.append(document.createTextNode(' '));
-  });
-  const spans = [...element.querySelectorAll('.word')];
-  if (!canObserve) {
-    spans.forEach(span => span.classList.add('is-lit'));
-    return;
-  }
-  wordObserver = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      const span = entry.target;
-      const lit = entry.isIntersecting || entry.boundingClientRect.top < 0;
-      // Palavras da mesma linha acendem em sequência, na ordem de leitura.
-      const sameLine = spans.filter(item => item.offsetTop === span.offsetTop);
-      span.style.transitionDelay = lit ? `${sameLine.indexOf(span) * 60}ms` : '0ms';
-      span.classList.toggle('is-lit', lit);
-    });
-  }, { rootMargin: '0px 0px -40% 0px' });
-  spans.forEach(span => wordObserver.observe(span));
-}
-
-/* ---------- Renderização ---------- */
-
-function renderTags(values) {
-  const list = node('ul', 'skills');
-  values.forEach(value => list.append(node('li', 'skill', value)));
-  return list;
-}
-function renderProjects(options = {}) {
-  const target = document.querySelector('#project-timeline');
-  if (!target) return;
-  const text = profile[language];
-  // Destaque primeiro; os demais seguem em ordem cronológica.
-  const visible = [...projects]
-    .sort((a, b) => Boolean(b.destaque) - Boolean(a.destaque) || a.publicadoEm.localeCompare(b.publicadoEm));
-  target.replaceChildren();
-  target.setAttribute('aria-busy', 'false');
-  const compactCount = visible.filter(project => !project.destaque).length;
-  visible.forEach((project, index) => {
-    const detail = project[language];
-    const article = node('article', 'project');
-    // Cartões simples ficam em pares; o último, se sobrar sozinho, ocupa a linha toda.
-    const lastAlone = !project.destaque && compactCount % 2 === 1 && index === visible.length - 1;
-    if (project.destaque) article.classList.add('project--featured');
-    else if (!lastAlone) article.classList.add('project--compact');
-    article.dataset.reveal = '';
-    article.style.setProperty('--delay', `${index * 100}ms`);
-    // Moldura de janela do macOS em volta da captura.
-    const window_ = node('div', 'window');
-    const bar = node('div', 'window-bar');
-    bar.setAttribute('aria-hidden', 'true');
-    bar.append(node('i'), node('i'), node('i'));
-    const imageLink = externalLink(new URL(project.imagem, root).href, '', 'image-link');
-    imageLink.setAttribute('aria-label', `${text.openImage}: ${project.nome}`);
-    const image = node('img');
-    image.src = new URL(project.imagem, root).href;
-    image.alt = detail.alt;
-    image.loading = 'lazy';
-    image.width = 1400;
-    image.height = 840;
-    const imageAction = node('span', 'image-action');
-    imageAction.append(icon('zoom'));
-    imageLink.append(image, imageAction);
-    window_.append(bar, imageLink);
-    const body = node('div', 'project-body');
-    const heading = node('h2', '', project.nome);
-    heading.id = project.id;
-    article.setAttribute('aria-labelledby', project.id);
-    const did = node('div', 'did');
-    const didList = node('ul');
-    detail.feito.forEach(item => didList.append(node('li', '', item)));
-    did.append(node('h3', '', text.didTitle), didList);
-    const repository = externalLink(project.repositorio, text.repository);
-    repository.prepend(icon('github'));
-    repository.append(icon('arrow-up-right'));
-    const actions = node('div', 'project-actions');
-    actions.append(repository);
-    if (project.demo) {
-      const demo = externalLink(project.demo, text.openDemo);
-      demo.append(icon('arrow-up-right'));
-      actions.append(demo);
-    }
-    const time = node('time', 'project-when', monthYear(project.publicadoEm).replace(' de ', ' '));
-    time.dateTime = project.publicadoEm;
-    actions.append(time);
-    // Detalhes recolhidos: abrem ao clicar, sem sair da página.
-    const more = node('div', 'project-more');
-    more.id = `${project.id}-detalhes`;
-    more.inert = true;
-    const moreInner = node('div', 'project-more-inner');
-    moreInner.append(node('p', 'body-copy', detail.descricao), did, renderTags(project.tecnologias), actions);
-    more.append(moreInner);
-    const toggle = node('button', 'project-toggle');
-    toggle.type = 'button';
-    toggle.setAttribute('aria-expanded', 'false');
-    toggle.setAttribute('aria-controls', more.id);
-    const toggleLabel = node('span', '', text.moreDetails);
-    toggle.append(toggleLabel, icon('chevron-down'));
-    toggle.addEventListener('click', () => {
-      const open = toggle.getAttribute('aria-expanded') !== 'true';
-      toggle.setAttribute('aria-expanded', String(open));
-      toggleLabel.textContent = open ? text.lessDetails : text.moreDetails;
-      article.classList.toggle('is-open', open);
-      more.inert = !open;
-    });
-    body.append(node('p', 'eyebrow', detail.tipo), heading,
-      node('p', 'project-summary', detail.resumo), toggle, more);
-    article.append(window_, body);
-    target.append(article);
-  });
-  observeReveals(target);
-  // A âncora do projeto só existe depois da renderização.
-  if (options.scrollToHash && location.hash) {
-    document.getElementById(decodeURIComponent(location.hash.slice(1)))?.scrollIntoView();
-  }
-}
-function renderExperiences() {
-  const target = document.querySelector('#experience-list');
-  if (!target || !experiences) return;
-  const text = profile[language];
-  target.replaceChildren();
-  target.setAttribute('aria-busy', 'false');
-  experiences.experiencias.forEach((item, index) => {
-    const article = node('article', 'experience');
-    article.dataset.reveal = '';
-    article.style.setProperty('--delay', `${index * 100}ms`);
-    const meta = node('div', 'experience-meta');
-    const period = item.inicio
-      ? `${monthYear(item.inicio)} ${text.to} ${item.fim ? monthYear(item.fim) : text.current}`
-      : '';
-    const place = node('strong', '', item.instituicao);
-    place.prepend(icon('briefcase'));
-    meta.append(place);
-    if (item.inicio) meta.append(node('span', '', period));
-    const description = node('div');
-    description.append(node('h2', '', item[language].cargo),
-      node('p', '', item[language].descricao), node('p', '', item[language].detalhe));
-    article.append(meta, description);
-    target.append(article);
-  });
-  const courses = document.querySelector('#course-list');
-  courses.replaceChildren();
-  courses.setAttribute('aria-busy', 'false');
-  experiences.formacaoComplementar.forEach((course, index) => {
-    const card = node('article', 'course-card');
-    card.dataset.reveal = '';
-    card.style.setProperty('--delay', `${index * 100}ms`);
-    const head = node('div', 'course-head');
-    const mark = node('span', 'course-icon');
-    mark.append(icon(course.icone));
-    head.append(mark, node('span', 'course-period', course.periodo));
-    card.append(head, node('h3', '', course[language]), node('p', '', course.instituicao));
-    courses.append(card);
-  });
-  // Os cards de cursos ficam fora de #experience-list, então observa a página toda.
-  observeReveals();
-}
-/* ---------- Gráficos: matriz de tecnologias e linha do tempo ---------- */
-
-function brandIcon(name) {
-  const mark = profile.stackMarcas[name];
-  const svg = icon(mark.icone);
-  if (mark.marca) svg.classList.add('brand');
-  svg.style.color = mark.cor;
-  return svg;
-}
-function stackTile(name) {
-  const tile = node('li', 'stack-item');
-  tile.append(brandIcon(name), node('span', '', name));
-  return tile;
-}
-function renderStack() {
-  const target = document.querySelector('#profile-skills');
-  if (!target || !profile) return;
-  const text = profile[language];
-  const grid = node('div', 'stack');
-  profile.stack.forEach(group => {
-    const row = node('article', 'stack-row');
-    const panel = node('ul', 'stack-panel');
-    group.itens.forEach(name => panel.append(stackTile(name)));
-    row.append(node('h4', '', group[language]), panel);
-    grid.append(row);
-  });
-  target.replaceChildren(grid);
-  target.setAttribute('aria-busy', 'false');
-}
-// Progresso da graduação: fração do tempo entre jan/2025 e dez/2028.
-function renderProgress() {
-  const bar = document.querySelector('[data-progress]');
-  if (!bar) return;
-  const start = Date.UTC(2025, 0, 1);
-  const end = Date.UTC(2029, 0, 1);
-  bar.style.width = `${Math.min(100, Math.max(0, (Date.now() - start) / (end - start) * 100))}%`;
-}
-
-const percent = (value) => new Intl.NumberFormat(locale(), { maximumFractionDigits: 1 }).format(value);
-function renderLanguages() {
-  const target = document.querySelector('#language-chart');
-  if (!target || !profile || !languages) return;
-  const text = profile[language];
-  const total = languages.linguagens.reduce((sum, item) => sum + item.bytes, 0);
-  const bar = node('div', 'lang-bar');
-  bar.setAttribute('aria-hidden', 'true');
-  const list = node('ul', 'lang-legend');
-  languages.linguagens.forEach((item, index) => {
-    const share = item.bytes / total * 100;
-    const name = item.nome === 'Outras' ? text.langOther : item.nome;
-    const label = `${name}: ${percent(share)}%${item.detalhe ? ` (${item.detalhe})` : ''}`;
-    const segment = node('span', 'lang-segment');
-    segment.style.flexGrow = share.toFixed(2);
-    segment.style.setProperty('--series', `var(--lang-${index + 1})`);
-    segment.title = label;
-    bar.append(segment);
-    const row = node('li', 'lang-row');
-    row.style.setProperty('--series', `var(--lang-${index + 1})`);
-    row.append(node('i', 'lang-swatch'), node('span', '', name), node('strong', '', `${percent(share)}%`));
-    list.append(row);
-  });
-  const card = node('div', 'chart-card');
-  card.append(bar, list);
-  target.replaceChildren(card);
-  target.setAttribute('aria-busy', 'false');
-  const note = document.querySelector('#language-note');
-  const date = new Intl.DateTimeFormat(locale(), { dateStyle: 'medium', timeZone: 'UTC' })
-    .format(new Date(`${languages.atualizadoEm}T12:00:00Z`));
-  note.textContent = text.langNote.replace('{n}', languages.repositorios).replace('{date}', date);
-}
-
-function renderLanguage() {
-  const text = profile[language];
-  document.documentElement.lang = language === 'pt' ? 'pt-BR' : 'en';
-  document.querySelectorAll('[data-i18n]').forEach(element => {
-    const translated = text[element.dataset.i18n];
-    if (translated !== undefined) element.textContent = translated;
-  });
-  document.querySelectorAll('[data-i18n-label]').forEach(element => {
-    element.setAttribute('aria-label', text[element.dataset.i18nLabel]);
-  });
-  document.querySelectorAll('[data-placeholder]').forEach(element => {
-    element.placeholder = text[element.dataset.placeholder];
-  });
-  document.querySelectorAll('[data-language]').forEach(button => {
-    button.setAttribute('aria-pressed', String(button.dataset.language === language));
-  });
-  const titleKey = { about: 'aboutTitleDocument', projects: 'projectsTitleDocument',
-    experience: 'experienceTitleDocument', contact: 'contactTitleDocument',
-    thanks: 'thanksTitleDocument', legal: 'privacyTitleDocument',
-    notfound: 'notFoundTitleDocument' }[page];
-  document.title = `${text[titleKey]} · ${profile.nome}`;
-  updateMenuLabel();
-  renderStack();
-  renderProgress();
-  prepareTagline();
-  renderProjects();
-  renderExperiences();
-  renderLanguages();
-  document.querySelectorAll('.field-error:not([hidden])').forEach(error => {
-    error.textContent = text[error.dataset.error];
-  });
-  // Mantém o idioma ao compartilhar ou navegar para outra página.
-  document.querySelectorAll('a[data-internal]').forEach(link => {
-    const url = new URL(link.getAttribute('href'), location.href);
-    url.searchParams.set('lang', language);
-    link.href = url.href;
-  });
-  const next = document.querySelector('[name="_next"]');
-  if (next) next.value = new URL(`obrigado.html?lang=${language}`, location.href).href;
-}
-
-/* ---------- Menu em tela cheia ---------- */
-
-const menuButton = document.querySelector('.menu-button');
-const overlay = document.querySelector('.overlay');
-function updateMenuLabel() {
-  if (!menuButton || !profile) return;
-  const open = menuButton.getAttribute('aria-expanded') === 'true';
-  menuButton.setAttribute('aria-label', profile[language][open ? 'menuClose' : 'menu']);
-}
-function setMenu(open) {
-  menuButton.setAttribute('aria-expanded', String(open));
-  overlay.classList.toggle('is-open', open);
-  overlay.inert = !open;
-  document.body.classList.toggle('menu-open', open);
-  updateMenuLabel();
-  if (open) overlay.querySelector('a')?.focus();
-}
-function initMenu() {
-  menuButton.addEventListener('click', () => {
-    setMenu(menuButton.getAttribute('aria-expanded') !== 'true');
-  });
-  overlay.addEventListener('click', event => {
-    if (event.target.closest('a')) setMenu(false);
-  });
-  document.addEventListener('keydown', event => {
-    if (event.key === 'Escape' && menuButton.getAttribute('aria-expanded') === 'true') {
-      setMenu(false);
-      menuButton.focus();
-    }
-  });
-  matchMedia('(min-width: 861px)').addEventListener('change', event => {
-    if (event.matches) setMenu(false);
-  });
-}
-
-/* ---------- Formulário: validação no navegador, com mensagens específicas ---------- */
-
-function initForm() {
-  const form = document.querySelector('.contact-form');
-  if (!form) return;
-  const submit = form.querySelector('[type="submit"]');
-  const label = submit.querySelector('span');
-  const fields = [...form.querySelectorAll('input[name="name"], input[name="email"], textarea')];
-  const rules = {
-    name: value => value.trim().length >= 2,
-    email: value => /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(value.trim()),
-    message: value => value.trim().length >= 10
+function iniciarXadrez(raiz) {
+  const casasEl = raiz.querySelector('.tabuleiro');
+  const msgEl = raiz.querySelector('.xadrez-msg');
+  const recomecar = raiz.querySelector('[data-recomecar]');
+  const DICA = 'Dica: olha para a última fileira.';
+  const branca = { K: '♔︎', R: '♖︎', P: '♙︎' };
+  const preta = { K: '♚︎', P: '♟︎' };
+  const inicial = {
+    g1: ['b', branca.K, 'rei branco'], a1: ['b', branca.R, 'torre branca'],
+    f2: ['b', branca.P, 'peão branco'], g2: ['b', branca.P, 'peão branco'], h2: ['b', branca.P, 'peão branco'],
+    g8: ['p', preta.K, 'rei preto'], f7: ['p', preta.P, 'peão preto'], g7: ['p', preta.P, 'peão preto'], h7: ['p', preta.P, 'peão preto'],
   };
-  const check = field => {
-    const valid = rules[field.name](field.value);
-    const error = form.querySelector(`#${field.id}-erro`);
-    field.setAttribute('aria-invalid', String(!valid));
-    error.hidden = valid;
-    error.textContent = valid ? '' : profile[language][error.dataset.error];
-    return valid;
-  };
-  fields.forEach(field => field.addEventListener('input', () => {
-    if (field.hasAttribute('aria-invalid')) check(field);
-  }));
-  form.addEventListener('submit', event => {
-    const invalid = fields.filter(field => !check(field));
-    if (invalid.length) {
-      event.preventDefault();
-      invalid[0].focus();
-      return;
+  let estado;
+
+  function reiniciar() {
+    estado = { pos: { ...inicial }, sel: null, resolvido: false };
+    mensagem(DICA, '');
+  }
+
+  function mensagem(texto, tipo) {
+    msgEl.textContent = texto;
+    msgEl.className = 'xadrez-msg' + (tipo ? ' ' + tipo : '');
+  }
+
+  function desenhar() {
+    casasEl.textContent = '';
+    for (let r = 8; r >= 1; r--) {
+      for (let i = 0; i < 8; i++) {
+        const nome = 'abcdefgh'[i] + r;
+        const peca = estado.pos[nome];
+        const botao = document.createElement('button');
+        botao.type = 'button';
+        botao.className = 'casa' + ((i + r) % 2 === 1 ? ' escura' : '');
+        if (estado.sel === nome) botao.classList.add('selecionada');
+        if (estado.resolvido && nome === 'a8') botao.classList.add('vitoria');
+        if (estado.resolvido && nome === 'g8') botao.classList.add('derrota');
+        botao.textContent = peca ? peca[1] : '';
+        botao.setAttribute('aria-label', nome + (peca ? ', ' + peca[2] : ', vazia'));
+        if (estado.sel === nome) botao.setAttribute('aria-pressed', 'true');
+        botao.addEventListener('click', () => escolher(nome));
+        casasEl.appendChild(botao);
+      }
     }
-    submit.disabled = true;
-    submit.setAttribute('aria-busy', 'true');
-    label.textContent = profile[language].sending;
-  });
-  // Ao voltar pelo histórico, o botão não pode ficar travado.
-  addEventListener('pageshow', event => {
-    if (!event.persisted) return;
-    submit.disabled = false;
-    submit.removeAttribute('aria-busy');
-    label.textContent = profile[language].formSubmit;
-  });
+  }
+
+  function escolher(nome) {
+    if (estado.resolvido) return;
+    const peca = estado.pos[nome];
+    const minha = peca && peca[0] === 'b';
+    if (!estado.sel) {
+      if (minha) { estado.sel = nome; mensagem('Agora escolhe a casa.', ''); }
+      else mensagem('Escolhe uma peça branca primeiro.', 'erro');
+    } else if (nome === estado.sel) {
+      estado.sel = null; mensagem(DICA, '');
+    } else if (minha) {
+      estado.sel = nome; mensagem('Agora escolhe a casa.', '');
+    } else if (estado.sel === 'a1' && nome === 'a8') {
+      estado.pos.a8 = estado.pos.a1;
+      delete estado.pos.a1;
+      estado.sel = null;
+      estado.resolvido = true;
+      mensagem('Xeque-mate! Torre em a8: o rei preto ficou preso atrás dos próprios peões.', 'ok');
+    } else {
+      estado.sel = null;
+      mensagem('Esse não dá mate. Tenta outro lance.', 'erro');
+    }
+    desenhar();
+    const foco = casasEl.querySelector(`[aria-label^="${nome}"]`);
+    if (foco) foco.focus();
+  }
+
+  recomecar.addEventListener('click', () => { reiniciar(); desenhar(); });
+  reiniciar();
+  desenhar();
 }
 
-/* ---------- Erro e inicialização ---------- */
+function iniciarFormulario(form) {
+  const regras = [
+    { campo: form.elements.name, teste: (v) => v.trim().length >= 2, texto: 'Escreve seu nome.' },
+    { campo: form.elements.email, teste: (v) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v.trim()), texto: 'Confere o email, parece que falta alguma coisa.' },
+    { campo: form.elements.message, teste: (v) => v.trim().length >= 10, texto: 'A mensagem precisa de pelo menos 10 caracteres.' },
+  ];
 
-function showError(error) {
-  console.error(error);
-  const box = document.querySelector('#content-status');
-  document.querySelectorAll('[aria-busy="true"]').forEach(element => {
-    element.setAttribute('aria-busy', 'false');
-    element.querySelectorAll('[data-skeleton]').forEach(item => item.remove());
-  });
-  if (!box) return;
-  const text = profile?.[language];
-  const message = text ? text.loadError
-    : 'Não foi possível carregar o conteúdo. Tente de novo ou escreva para christiano.gonara@gmail.com.';
-  const retry = node('button', 'button', text ? text.retry : 'Tentar de novo');
-  retry.type = 'button';
-  retry.addEventListener('click', () => location.reload());
-  box.replaceChildren(icon('warning'), node('p', '', message), retry);
-  box.hidden = false;
-}
-/* ---------- Copiar email ---------- */
-
-// Cada sistema abre um app de email diferente, então copiar o endereço é o caminho universal.
-async function copyText(value) {
-  try {
-    await navigator.clipboard.writeText(value);
-    return true;
-  } catch {
-    const field = node('textarea');
-    field.value = value;
-    field.style.cssText = 'position:fixed;opacity:0';
-    document.body.append(field);
-    field.select();
-    const ok = document.execCommand('copy');
-    field.remove();
+  function validar(regra) {
+    const ok = regra.teste(regra.campo.value);
+    const erro = document.getElementById(regra.campo.getAttribute('aria-describedby'));
+    regra.campo.setAttribute('aria-invalid', ok ? 'false' : 'true');
+    erro.textContent = ok ? '' : regra.texto;
+    erro.hidden = ok;
     return ok;
   }
-}
-function initCopy() {
-  document.querySelectorAll('[data-copy-email]').forEach(button => {
-    const label = button.querySelector('span');
-    label.setAttribute('aria-live', 'polite');
-    let timer;
-    button.addEventListener('click', async () => {
-      if (!(await copyText(button.dataset.copyEmail))) return;
-      button.dataset.copied = '';
-      label.textContent = profile[language].copied;
-      clearTimeout(timer);
-      timer = setTimeout(() => {
-        delete button.dataset.copied;
-        label.textContent = profile[language].copyEmail;
-      }, 2000);
-    });
-  });
-}
-async function init() {
-  if (menuButton && overlay) initMenu();
-  initHeaderScroll();
-  profile = await loadJSON('perfil.json');
-  document.querySelectorAll('[data-language]').forEach(button => {
-    button.addEventListener('click', () => {
-      language = button.dataset.language;
-      try { localStorage.setItem('portfolio-language', language); } catch { /* Idioma funciona sem armazenamento. */ }
-      const url = new URL(location.href);
-      url.searchParams.set('lang', language);
-      history.replaceState(null, '', url);
-      renderLanguage();
-    });
-  });
-  initForm();
-  initCopy();
-  // O gráfico de linguagens é opcional; se falhar, a página segue sem ele.
-  if (page === 'about') languages = await loadJSON('linguagens.json').catch(() => undefined);
-  renderLanguage();
-  observeReveals();
-  if (page === 'projects') {
-    projects = await loadJSON('projetos.json');
-    renderProjects({ scrollToHash: true });
-  }
-  if (page === 'experience') {
-    experiences = await loadJSON('experiencias.json');
-    renderExperiences();
-  }
-}
-// A barra de navegação some ao descer e volta ao subir.
-function initHeaderScroll() {
-  const header = document.querySelector('.site-header');
-  if (!header) return;
-  let last = window.scrollY;
-  window.addEventListener('scroll', () => {
-    const current = window.scrollY;
-    const menuOpen = document.body.classList.contains('menu-open');
-    if (menuOpen || current < 80 || current < last - 4) header.classList.remove('is-hidden');
-    else if (current > last + 4) header.classList.add('is-hidden');
-    last = current;
-  }, { passive: true });
-  header.addEventListener('focusin', () => header.classList.remove('is-hidden'));
-}
 
-init().catch(showError);
+  regras.forEach((regra) => {
+    regra.campo.addEventListener('blur', () => { if (regra.campo.value) validar(regra); });
+  });
+
+  form.addEventListener('submit', (evento) => {
+    const invalidas = regras.filter((regra) => !validar(regra));
+    if (invalidas.length) {
+      evento.preventDefault();
+      invalidas[0].campo.focus();
+    }
+  });
+}

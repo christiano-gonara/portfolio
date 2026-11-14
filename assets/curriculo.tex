@@ -1,0 +1,93 @@
+\documentclass[a4paper,11pt]{article}
+\usepackage{fontspec}
+\setmainfont{Inter}
+\setsansfont{Inter}
+\renewcommand{\familydefault}{\sfdefault}
+\usepackage[top=0.9cm, bottom=0.7cm, left=1.5cm, right=1.5cm]{geometry}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage{hyperref}
+\definecolor{navy}{RGB}{13,44,110}
+\hypersetup{
+    colorlinks=true,
+    urlcolor=navy,
+    linkcolor=navy,
+    pdftitle={Currículo — Christiano Gonçalves},
+    pdfauthor={Christiano Gonçalves}
+}
+\linespread{1.08}
+
+\newcommand{\secao}[1]{%
+  \par
+  \vspace{7pt}
+  \noindent\hspace{-\fboxsep}\colorbox{black}{\makebox[\linewidth][l]{%
+    \hspace{4pt}\small\bfseries\color{white}\uppercase{#1}%
+  }}%
+  \par\vspace{3pt}
+}
+
+\newcommand{\entrada}[4]{%
+  \textbf{#1} \hfill \textit{#2}\par
+  \ifx\relax#3\relax\else{\small\textit{\color{gray}#3}\par}\fi
+  #4\par
+  \vspace{6pt}
+}
+
+\pagestyle{empty}
+\parindent=0pt
+\parskip=0pt
+\begin{document}
+
+\begin{center}
+{\LARGE\bfseries Christiano Gonçalves}\par\vspace{3pt}
+{\normalsize Estudante de Engenharia de Software | Full Stack e Dados}\par\vspace{4pt}
+{\small christiano.gonara@gmail.com $\cdot$ (31) 99890-9804 $\cdot$ Belo Horizonte, MG\par}
+{\small
+\href{https://linkedin.com/in/christiano-gonara}{linkedin.com/in/christiano-gonara}
+$\cdot$
+\href{https://github.com/christiano-gonara}{github.com/christiano-gonara}\par}
+\end{center}
+
+\secao{Objetivo}
+Graduando em Engenharia de Software na PUC Minas, com experiência em automação e dados com Python e em aplicações web com React. Busco estágio em desenvolvimento web ou dados.\par
+
+\secao{Habilidades}
+\textbf{Linguagens:} Python, JavaScript, Java, C, HTML, CSS\par
+\textbf{Backend:} Flask, FastAPI, Spring Boot, REST API, Scrapy, pytest\par
+\textbf{Dados e Banco:} PostgreSQL, SQLite, DuckDB, Parquet\par
+\textbf{Frontend:} React, Next.js, Vite, Tailwind CSS, Bootstrap, Chart.js\par
+\textbf{Ferramentas e IA:} Git, GitHub, Docker, Railway, Render, Claude Code, Codex\par
+\textbf{Idiomas:} Inglês técnico (leitura de documentação)\par
+
+\secao{Projetos}
+\entrada{Desenvolvedor Backend e Dados — CNPJ Alimentação}{2026}
+{Python · DuckDB · Parquet · FastAPI · React}
+{Pipeline com dados abertos da Receita Federal sobre alimentação fora do lar. Processei 72,8 milhões de registros com DuckDB e construí um dashboard em React que resume o setor.}
+
+\entrada{Desenvolvedor Backend — Padrinho Track}{Mar/2026 a Jul/2026}
+{Python · Flask · PostgreSQL · Google Sheets API · pytest}
+{Sistema em produção que gerencia o Programa de Apadrinhamento da PUC Minas (50 padrinhos e 127 calouros). Gera certificados e relatórios automaticamente e tem 62 testes automatizados.}
+
+\entrada{Hackathon Localiza — 4º lugar entre 40 equipes}{2026}
+{JavaScript · HTML · CSS · API externa · GitHub Pages}
+{Simulador que mostra se um carro elétrico por assinatura cabe na rotina do cliente, comparando os custos com a gasolina por estado via API.}
+
+\entrada{Desenvolvedor Full Stack — MinhaReceita}{2026}
+{React · Next.js · MongoDB · Docker}
+{Receituário digital para o SUS, feito em equipe de quatro: o médico prescreve, o sistema gera um código e a farmácia valida. Desenvolvi a landing page e as telas do médico em React.}
+
+\secao{Experiência}
+\entrada{Coordenador de Mentoria Acadêmica — PUC Minas}{Fev/2026 a Atual}{}
+{Coordeno cerca de 50 padrinhos voluntários no acompanhamento de 127 calouros. Planejo o cronograma e conduzo as reuniões do programa.}
+
+\secao{Formação}
+\textbf{Graduação em Engenharia de Software} \hfill \textit{Jan/2025 a Dez/2028}\par
+PUC Minas\par\vspace{3pt}
+\textbf{Python e Análise de Dados (20h)} \hfill \textit{Mar/2026}\par
+Universidade Federal de Minas Gerais (UFMG)\par\vspace{3pt}
+\textbf{Claude Code in Action} \hfill \textit{Jun/2026}\par
+Anthropic\par\vspace{3pt}
+\textbf{Comunicação e Oratória} \hfill \textit{Mar/2026 a Dez/2026}\par
+Escola de Teatro PUC Minas\par
+
+\end{document}
